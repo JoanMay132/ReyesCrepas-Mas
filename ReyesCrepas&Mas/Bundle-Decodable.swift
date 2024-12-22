@@ -8,7 +8,7 @@
 import Foundation
 
     extension Bundle {
-        func decode(_ file: String) -> [String: Frappes] {
+        func decode<T : Codable>(_ file: String) -> T {
             guard let url = self.url(forResource: file, withExtension: nil) else {
                 fatalError("Failed to locate \(file) in the bundle")
             }
@@ -19,7 +19,7 @@ import Foundation
             let decoder = JSONDecoder()
             
             do {
-                return try decoder.decode([String: Frappes].self, from: data)
+                return try decoder.decode(T.self, from: data)
             }catch DecodingError.keyNotFound(let key, let context) {
                 fatalError("Failed to decode \(file) from bundle to missing key '\(key.stringValue)' - \(context.debugDescription)")
             }catch DecodingError.typeMismatch(_, let context) {
