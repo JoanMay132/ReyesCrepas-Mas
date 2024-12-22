@@ -7,13 +7,29 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		88A353522D16098400A50E0F /* ReyesCrepas&Mas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ReyesCrepas&Mas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88A353522D16098400A50E0F /* Reyes Crepas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reyes Crepas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8830C57C2D189D6A00E8D066 /* Exceptions for "Reyes Crepas" folder in "Reyes Crepas" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Preview Content",
+			);
+			target = 88A353512D16098400A50E0F /* Reyes Crepas */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		88A353542D16098400A50E0F /* ReyesCrepas&Mas */ = {
+		88A353542D16098400A50E0F /* Reyes Crepas */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "ReyesCrepas&Mas";
+			exceptions = (
+				8830C57C2D189D6A00E8D066 /* Exceptions for "Reyes Crepas" folder in "Reyes Crepas" target */,
+			);
+			explicitFolders = (
+				"Preview Content",
+			);
+			path = "Reyes Crepas";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +48,7 @@
 		88A353492D16098400A50E0F = {
 			isa = PBXGroup;
 			children = (
-				88A353542D16098400A50E0F /* ReyesCrepas&Mas */,
+				88A353542D16098400A50E0F /* Reyes Crepas */,
 				88A353532D16098400A50E0F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +56,7 @@
 		88A353532D16098400A50E0F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				88A353522D16098400A50E0F /* ReyesCrepas&Mas.app */,
+				88A353522D16098400A50E0F /* Reyes Crepas.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +64,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		88A353512D16098400A50E0F /* ReyesCrepas&Mas */ = {
+		88A353512D16098400A50E0F /* Reyes Crepas */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 88A353602D16098500A50E0F /* Build configuration list for PBXNativeTarget "ReyesCrepas&Mas" */;
+			buildConfigurationList = 88A353602D16098500A50E0F /* Build configuration list for PBXNativeTarget "Reyes Crepas" */;
 			buildPhases = (
 				88A3534E2D16098400A50E0F /* Sources */,
 				88A3534F2D16098400A50E0F /* Frameworks */,
@@ -61,13 +77,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				88A353542D16098400A50E0F /* ReyesCrepas&Mas */,
+				88A353542D16098400A50E0F /* Reyes Crepas */,
 			);
-			name = "ReyesCrepas&Mas";
+			name = "Reyes Crepas";
 			packageProductDependencies = (
 			);
 			productName = "ReyesCrepas&Mas";
-			productReference = 88A353522D16098400A50E0F /* ReyesCrepas&Mas.app */;
+			productReference = 88A353522D16098400A50E0F /* Reyes Crepas.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +101,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 88A3534D2D16098400A50E0F /* Build configuration list for PBXProject "ReyesCrepas&Mas" */;
+			buildConfigurationList = 88A3534D2D16098400A50E0F /* Build configuration list for PBXProject "Reyes Crepas" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				88A353512D16098400A50E0F /* ReyesCrepas&Mas */,
+				88A353512D16098400A50E0F /* Reyes Crepas */,
 			);
 		};
 /* End PBXProject section */
@@ -251,7 +267,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ReyesCrepas&Mas/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Reyes Crepas/Preview Content\"";
 				DEVELOPMENT_TEAM = 6776XB22R8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -280,7 +296,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ReyesCrepas&Mas/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Reyes Crepas/Preview Content\"";
 				DEVELOPMENT_TEAM = 6776XB22R8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -305,7 +321,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		88A3534D2D16098400A50E0F /* Build configuration list for PBXProject "ReyesCrepas&Mas" */ = {
+		88A3534D2D16098400A50E0F /* Build configuration list for PBXProject "Reyes Crepas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				88A3535E2D16098500A50E0F /* Debug */,
@@ -314,7 +330,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		88A353602D16098500A50E0F /* Build configuration list for PBXNativeTarget "ReyesCrepas&Mas" */ = {
+		88A353602D16098500A50E0F /* Build configuration list for PBXNativeTarget "Reyes Crepas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				88A353612D16098500A50E0F /* Debug */,
