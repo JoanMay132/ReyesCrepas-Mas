@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    let frappes = Bundle.main.decode("frappes.json")
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+       
+        Text(String(frappes.count))
     }
 }
 
