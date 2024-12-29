@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    let frappes : [String : Frappes] = Bundle.main.decode("frappes.json")
+    let frappes : [Frappes] = Bundle.main.decode("frappes.json")
     let products : [Products] = Bundle.main.decode("products.json")
     let columns = [
         GridItem(.adaptive(minimum: 150))

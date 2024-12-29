@@ -8,45 +8,50 @@
 import SwiftUI
 
 struct FrappeView: View {
-    let frappe: Frappes
+    let frappes: [Frappes]
     
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                Image(frappe.id)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: 300, maxHeight: 300)
+        
+        
+        
+        List(frappes) { frappe in
+            VStack(alignment: .leading) {
                 
-                Text(frappe.name)
+                Image(frappe.name)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 150, height: 150)
+                    .cornerRadius(10)
+                    .padding(.trailing, 10)
+                
+                Text(frappe.id)
                     .font(.largeTitle)
-                    .fontWeight(.semibold)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .padding(.top)
+                
+                
                 
                 Text("Precio: \(frappe.price)")
-                    .font(.title)
-                    .fontWeight(.semibold)
+                    .font(.headline)
                 
-                Text("Extras:")
-                    .font(.largeTitle)
-                    .fontWeight(.semibold)
-                
-                
-                        
-                        
-                        
-                        
-                        // extras aquí
-                        
-                    }
+                ForEach(frappe.extras) { extra in
+                    Text("\(extra.name) - \(extra.price)")
+                        .font(.body)
                 }
             }
+            .padding()
         }
-
+        .navigationTitle("Frappes")
+    }
+}
 
 #Preview {
-    let frappes: Frappes = Bundle.main.decode("frappes.json")
-
-    FrappeView(frappe: frappes)
+    // Decodifica el JSON de frappes
+    let frappes: [Frappes] = Bundle.main.decode("frappes.json")
+    
+    // Retorna la vista FrappeDetailView con el primer frappe
+    return FrappeView(frappes: frappes)
         
 }
