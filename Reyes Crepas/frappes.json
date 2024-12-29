@@ -1,616 +1,547 @@
-{
-
-            "coffee": {
-                "id": "coffee",
-                "name": "Café",
-                "price": "$66",
-                "extras": [
-                    {
-                        "id": 1,
-                        "name": "Leche de coco",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Leche de almendras",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Extra tapioca",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Extra perlas",
-                        "price": "$7"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Sabor combinado",
-                        "price": "$10"
-                    }
-                ]
+[
+    {
+        "id": "coffee",
+        "name": "Café",
+        "price": "$66",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
             },
-            "oreo": {
-                "id": "oreo",
-                "name": "Oreo",
-                "price": "$72",
-                "extras": [
-                    {
-                        "id": 1,
-                        "name": "Leche de coco",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Leche de almendras",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Extra tapioca",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Extra perlas",
-                        "price": "$7"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Sabor combinado",
-                        "price": "$10"
-                    }
-                ]
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
             },
-            "chokis": {
-                "id": "chokis",
-                "name": "Chokis",
-                "price": "$73",
-                "extras": [
-                    {
-                        "id": 1,
-                        "name": "Leche de coco",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Leche de almendras",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Extra tapioca",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Extra perlas",
-                        "price": "$7"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Sabor combinado",
-                        "price": "$10"
-                    }
-                ]
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
             },
-            "mazapan": {
-                "id": "mazapan",
-                "name": "Mazapán",
-                "price": "$73",
-                "extras": [
-                    {
-                        "id": 1,
-                        "name": "Leche de coco",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Leche de almendras",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Extra tapioca",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Extra perlas",
-                        "price": "$7"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Sabor combinado",
-                        "price": "$10"
-                    }
-                ]
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
             },
-            "vainilla": {
-                "id": "vainilla",
-                "name": "Vainilla",
-                "price": "$75",
-                "extras": [
-                    {
-                        "id": 1,
-                        "name": "Leche de coco",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Leche de almendras",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Extra tapioca",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Extra perlas",
-                        "price": "$7"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Sabor combinado",
-                        "price": "$10"
-                    }
-                ]
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "oreo",
+        "name": "Oreo",
+        "price": "$72",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
             },
-            "moka": {
-                "id": "moka",
-                "name": "Moka",
-                "price": "$75",
-                "extras": [
-                    {
-                        "id": 1,
-                        "name": "Leche de coco",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Leche de almendras",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Extra tapioca",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Extra perlas",
-                        "price": "$7"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Sabor combinado",
-                        "price": "$10"
-                    }
-                ]
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
             },
-            "coco": {
-                "id": "coco",
-                "name": "Coco",
-                "price": "$75",
-                "extras": [
-                    {
-                        "id": 1,
-                        "name": "Leche de coco",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Leche de almendras",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Extra tapioca",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Extra perlas",
-                        "price": "$7"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Sabor combinado",
-                        "price": "$10"
-                    }
-                ]
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
             },
-            "cajeta": {
-                "id": "cajeta",
-                "name": "Cajeta",
-                "price": "$75",
-                "extras": [
-                    {
-                        "id": 1,
-                        "name": "Leche de coco",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Leche de almendras",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Extra tapioca",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Extra perlas",
-                        "price": "$7"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Sabor combinado",
-                        "price": "$10"
-                    }
-                ]
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
             },
-            "taro": {
-                "id": "taro",
-                "name": "Taro",
-                "price": "$70",
-                "extras": [
-                    {
-                        "id": 1,
-                        "name": "Leche de coco",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Leche de almendras",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Extra tapioca",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Extra perlas",
-                        "price": "$7"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Sabor combinado",
-                        "price": "$10"
-                    }
-                ]
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "chokis",
+        "name": "Chokis",
+        "price": "$73",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
             },
-            "chai": {
-                "id": "chai",
-                "name": "Chai",
-                "price": "$70",
-                "extras": [
-                    {
-                        "id": 1,
-                        "name": "Leche de coco",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Leche de almendras",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Extra tapioca",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Extra perlas",
-                        "price": "$7"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Sabor combinado",
-                        "price": "$10"
-                    }
-                ]
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
             },
-            "matcha": {
-                "id": "matcha",
-                "name": "Matcha",
-                "price": "$70",
-                "extras": [
-                    {
-                        "id": 1,
-                        "name": "Leche de coco",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Leche de almendras",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Extra tapioca",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Extra perlas",
-                        "price": "$7"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Sabor combinado",
-                        "price": "$10"
-                    }
-                ]
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
             },
-            "chocomenta": {
-                "id": "chocomenta",
-                "name": "Chocomenta",
-                "price": "$79",
-                "extras": [
-                    {
-                        "id": 1,
-                        "name": "Leche de coco",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Leche de almendras",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Extra tapioca",
-                        "price": "$12"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Extra perlas",
-                        "price": "$7"
-                    },
-                    {
-                        "id": 5,
-                        "name": "Sabor combinado",
-                        "price": "$10"
-                    }
-                ]
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
             },
-            "fresa": {
-                    "id": "fresa",
-                    "name": "Fresa",
-                    "price": "$75",
-                    "extras": [
-                        {
-                            "id": 1,
-                            "name": "Leche de coco",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 2,
-                            "name": "Leche de almendras",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 3,
-                            "name": "Extra tapioca",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 4,
-                            "name": "Extra perlas",
-                            "price": "$7"
-                        },
-                        {
-                            "id": 5,
-                            "name": "Sabor combinado",
-                            "price": "$10"
-                        }
-                    ]
-                },
-                "chocobanana": {
-                    "id": "chocobanana",
-                    "name": "Chocobanana",
-                    "price": "$77",
-                    "extras": [
-                        {
-                            "id": 1,
-                            "name": "Leche de coco",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 2,
-                            "name": "Leche de almendras",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 3,
-                            "name": "Extra tapioca",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 4,
-                            "name": "Extra perlas",
-                            "price": "$7"
-                        },
-                        {
-                            "id": 5,
-                            "name": "Sabor combinado",
-                            "price": "$10"
-                        }
-                    ]
-                },
-                "gansito": {
-                    "id": "gansito",
-                    "name": "Gansito",
-                    "price": "$80",
-                    "extras": [
-                        {
-                            "id": 1,
-                            "name": "Leche de coco",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 2,
-                            "name": "Leche de almendras",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 3,
-                            "name": "Extra tapioca",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 4,
-                            "name": "Extra perlas",
-                            "price": "$7"
-                        },
-                        {
-                            "id": 5,
-                            "name": "Sabor combinado",
-                            "price": "$10"
-                        }
-                    ]
-                },
-                "nutella": {
-                    "id": "nutella",
-                    "name": "Nutella",
-                    "price": "$80",
-                    "extras": [
-                        {
-                            "id": 1,
-                            "name": "Leche de coco",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 2,
-                            "name": "Leche de almendras",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 3,
-                            "name": "Extra tapioca",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 4,
-                            "name": "Extra perlas",
-                            "price": "$7"
-                        },
-                        {
-                            "id": 5,
-                            "name": "Sabor combinado",
-                            "price": "$10"
-                        }
-                    ]
-                },
-                "frutos_rojos": {
-                    "id": "frutos_rojos",
-                    "name": "Frutos Rojos",
-                    "price": "$80",
-                    "extras": [
-                        {
-                            "id": 1,
-                            "name": "Leche de coco",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 2,
-                            "name": "Leche de almendras",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 3,
-                            "name": "Extra tapioca",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 4,
-                            "name": "Extra perlas",
-                            "price": "$7"
-                        },
-                        {
-                            "id": 5,
-                            "name": "Sabor combinado",
-                            "price": "$10"
-                        }
-                    ]
-                },
-                "ferrero": {
-                    "id": "ferrero",
-                    "name": "Ferrero Rocher",
-                    "price": "$85",
-                    "extras": [
-                        {
-                            "id": 1,
-                            "name": "Leche de coco",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 2,
-                            "name": "Leche de almendras",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 3,
-                            "name": "Extra tapioca",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 4,
-                            "name": "Extra perlas",
-                            "price": "$7"
-                        },
-                        {
-                            "id": 5,
-                            "name": "Sabor combinado",
-                            "price": "$10"
-                        }
-                    ]
-                },
-                "magnum": {
-                    "id": "magnum",
-                    "name": "Magnum",
-                    "price": "$100",
-                    "extras": [
-                        {
-                            "id": 1,
-                            "name": "Leche de coco",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 2,
-                            "name": "Leche de almendras",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 3,
-                            "name": "Extra tapioca",
-                            "price": "$12"
-                        },
-                        {
-                            "id": 4,
-                            "name": "Extra perlas",
-                            "price": "$7"
-                        },
-                        {
-                            "id": 5,
-                            "name": "Sabor combinado",
-                            "price": "$10"
-                        }
-                    ]
-                }
-    
-
-}
-
-
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "mazapan",
+        "name": "Mazapán",
+        "price": "$73",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
+            },
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
+            },
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
+            },
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
+            },
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "vainilla",
+        "name": "Vainilla",
+        "price": "$75",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
+            },
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
+            },
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
+            },
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
+            },
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "moka",
+        "name": "Moka",
+        "price": "$75",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
+            },
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
+            },
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
+            },
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
+            },
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "coco",
+        "name": "Coco",
+        "price": "$75",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
+            },
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
+            },
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
+            },
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
+            },
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "cajeta",
+        "name": "Cajeta",
+        "price": "$75",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
+            },
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
+            },
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
+            },
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
+            },
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "taro",
+        "name": "Taro",
+        "price": "$70",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
+            },
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
+            },
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
+            },
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
+            },
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "chai",
+        "name": "Chai",
+        "price": "$70",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
+            },
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
+            },
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
+            },
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
+            },
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "matcha",
+        "name": "Matcha",
+        "price": "$70",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
+            },
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
+            },
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
+            },
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
+            },
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "chocomenta",
+        "name": "Chocomenta",
+        "price": "$79",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
+            },
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
+            },
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
+            },
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
+            },
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "fresa",
+        "name": "Fresa",
+        "price": "$75",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
+            },
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
+            },
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
+            },
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
+            },
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "chocobanana",
+        "name": "Chocobanana",
+        "price": "$77",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
+            },
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
+            },
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
+            },
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
+            },
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "gansito",
+        "name": "Gansito",
+        "price": "$80",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
+            },
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
+            },
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
+            },
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
+            },
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "nutella",
+        "name": "Nutella",
+        "price": "$80",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
+            },
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
+            },
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
+            },
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
+            },
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    },
+    {
+        "id": "frutos_rojos",
+        "name": "Frutos Rojos",
+        "price": "$80",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Leche de coco",
+                "price": "$12"
+            },
+            {
+                "id": 2,
+                "name": "Leche de almendras",
+                "price": "$12"
+            },
+            {
+                "id": 3,
+                "name": "Extra tapioca",
+                "price": "$12"
+            },
+            {
+                "id": 4,
+                "name": "Extra perlas",
+                "price": "$7"
+            },
+            {
+                "id": 5,
+                "name": "Sabor combinado",
+                "price": "$10"
+            }
+        ]
+    }
+]
 
