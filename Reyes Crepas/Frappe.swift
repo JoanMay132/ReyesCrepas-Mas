@@ -20,6 +20,10 @@ struct Frappes: Identifiable, Codable {
     let name: String
     let price: String
     let extras: [Extra]
+    
+    var image : String {
+        "\(name)"
+    }
 }
 
 
