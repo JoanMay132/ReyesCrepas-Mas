@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Products : Codable, Identifiable {
+struct Product : Codable, Identifiable {
     let id : Int
     let productType : String
     
@@ -19,3 +19,6 @@ struct Products : Codable, Identifiable {
         "\(productType)"
     }
 }
+
+
+ 

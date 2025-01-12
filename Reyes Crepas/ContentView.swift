@@ -9,39 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     let frappes : [Frappes] = Bundle.main.decode("frappes.json")
-    let products : [Products] = Bundle.main.decode("products.json")
-    let columns = [
-        GridItem(.adaptive(minimum: 150))
-    ]
+    let products : [Product] = Bundle.main.decode("products.json")
+    
     var body: some View {
-       
-        Text(String(products.count))
+
         NavigationStack {
-            ScrollView {
-                LazyVGrid(columns: columns) {
-                    ForEach(products) { product in
-                        NavigationLink {
-                            Text("Detail View")
-                        } label : {
-                            VStack {
-                                Image(product.image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 100, height: 150)
-                                
-                                VStack {
-                                    Text(product.productType)
-                                        .font(.headline)
-                                }
-                            }
-                        }
-                    }
-                }
+            LinearGradient(stops: [.init(color: Color(red: 0.9686, green: 0.749, blue: 0.8471), location: 0.4)], startPoint: .bottom, endPoint: .top)
+                .ignoresSafeArea()
             }
-            .navigationTitle("Menu Reyes Crepas & Más")
+            .navigationTitle("Reyes Crepas & Más")
         }
         
-    }
+    
+    
 }
 
 #Preview {
