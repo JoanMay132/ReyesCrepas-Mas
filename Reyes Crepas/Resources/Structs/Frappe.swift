@@ -8,9 +8,9 @@
 import Foundation
 
 
-struct Frappes: Identifiable, Codable {
+struct Frappe: Identifiable, Codable, Hashable {
     
-    struct Extra: Identifiable, Codable {
+    struct Extra: Identifiable, Codable, Hashable {
         let id: Int
         let name: String
         let price: String

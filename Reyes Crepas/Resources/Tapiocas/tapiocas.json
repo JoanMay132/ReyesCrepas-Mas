@@ -1,0 +1,51 @@
+[
+    {
+        "id" : "milk_based",
+        "tapioca_type": "Base leche",
+        "tapioca_drinks": [
+            {
+                "id": "iced_coffee",
+                "name": "Iced Coffee",
+                "size": [
+                    {
+                        "type": "normal",
+                        "price": "$60"
+                    },
+                    {
+                        "type": "Litro",
+                        "price": "$93"
+                    }
+                ]
+            },
+            {
+                "id": "platano",
+                "name": "Plátano",
+                "size": [
+                    {
+                        "type": "normal",
+                        "price": "$65"
+                    },
+                    {
+                        "type": "Litro",
+                        "price": "$107"
+                    }
+                ]
+            },
+            {
+                "id": "Coffee",
+                "name": "Café",
+                "size": [
+                    {
+                        "type": "normal",
+                        "price": "$70"
+                    },
+                    {
+                        "type": "Litro",
+                        "price": "$110"
+                    }
+                ]
+            },
+            
+        ]
+    }
+]
