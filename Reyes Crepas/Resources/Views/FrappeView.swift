@@ -51,7 +51,7 @@ struct FrappeView: View {
 
                 }
             }
-            .navigationTitle("Frappes")
+//            .navigationTitle("Frappes")
             .background(.pinkCakeBackground)
         }
     }
