@@ -1,35 +1,36 @@
 //
-//  ContentView.swift
-//  ReyesCrepas&Mas
+//  CrepasView.swift
+//  Reyes Crepas
 //
-//  Created by Joan May on 20/12/24.
+//  Created by David Chong on 1/25/25.
 //
 
 import SwiftUI
 
-struct ContentView: View {
-    let frappes: [Frappe] = Bundle.main.decode("frappes.json")
-    let products: [Product] = Bundle.main.decode("products.json")
-    let tapiocas : [Tapioca] = Bundle.main.decode("tapiocas.json")
-    let pancakes: [Pancake] = Bundle.main.decode("pancakes.json")
-    let columns = [ GridItem(.adaptive(minimum : 150)) ]
+
+struct CrepasView: View {
+    let crepas: [Crepas]
+    let columns = [
+        GridItem(.adaptive(minimum: 150))
+    ]
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns) {
-                    ForEach(products) { product in
+                    ForEach(crepas) { crepa in
                         NavigationLink {
-                            destinationProduct(for: product, frappes: frappes, tapiocas: tapiocas)
-                        } label : {
+                            Text("Detalles de \(crepa.name)")
+                        } label: {
                             VStack {
-                                Image(product.image)
+                                Image(crepa.name)
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 150, height: 130)
                                     .padding()
                                 
                                 VStack {
-                                    Text(product.productType)
+                                    Text(crepa.name)
                                         .font(.headline)
                                         .foregroundStyle(.black)
                                 }
@@ -41,29 +42,35 @@ struct ContentView: View {
                                         .stroke(Color.clear)
                                 )
                             }
-                            .clipShape(.rect(cornerRadius : 10)
-                            )
-                            
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .strokeBorder(.yellowBackground, lineWidth : 2)
-
-                            )
-
                         }
+                        .clipShape(.rect(cornerRadius : 10))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(.yellowBackground)
+                        )
                     }
+                    .padding([.horizontal, .bottom])
+                    
                 }
-                .padding([.horizontal, .bottom])
-           
-
             }
-            .navigationTitle("Reyes Crepas y Más")
+            //
             .background(.pinkCakeBackground)
-            
         }
     }
 }
 
 #Preview {
-    ContentView()
+    // Decodifica el JSON de frappes
+    let crepas: [Crepas] = Bundle.main.decode("crepas.json")
+    
+    // Retorna la vista FrappeView con los frappes
+    return CrepasView(crepas: crepas)
 }
+
+
+    
+    
+    
+    
+    
+

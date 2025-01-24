@@ -1,0 +1,104 @@
+[
+    {
+        "id": "crepa_personalizada",
+        "name": "Crepas Personalizadas",
+        "description": "Combina tus ingredientes para crear tu propia crepa.",
+        "base_prices": {
+            "1 ingrediente": "$35",
+            "2 clásicos": "$40",
+            "1 clásico + 1 premium": "$45",
+            "2 premium": "$50"
+        },
+        "ingredients": {
+            "clasico": [
+                "Jamón",
+                "Mermelada de fresa",
+                "Hershey's líquido",
+                "Oreo",
+                "Lechera",
+                "Plátano",
+                "Mermelada de zarzamora"
+            ],
+            "premium": [
+                "Queso Philadelphia",
+                "Nutella",
+                "Pepperoni",
+                "Fresa",
+                "Cajeta",
+                "Nuez"
+            ]
+        },
+        "extras": {
+            "free_toppings": [
+                "Chipotle",
+                "Crema batida",
+                "Hershey's líquido",
+                "Lechera",
+                "Oreo"
+            ],
+            "paid_toppings": [
+                {
+                    "name": "Chokis",
+                    "price": "$6"
+                },
+                {
+                    "name": "M&M",
+                    "price": "$6"
+                },
+                {
+                    "name": "Nuez",
+                    "price": "$8"
+                },
+                {
+                    "name": "Cajeta",
+                    "price": "$8"
+                },
+                {
+                    "name": "KitKat",
+                    "price": "$10"
+                },
+                {
+                    "name": "Helado",
+                    "price": "$12"
+                }
+            ]
+        }
+    },
+    {
+        "id": "crepizza",
+        "name": "Crepizza",
+        "price": "$60",
+        "description": "Queso manchego y pepperoni con topping de chipotle."
+    },
+    {
+        "id": "chocofresa",
+        "name": "Chocofresa",
+        "price": "$72",
+        "description": "Queso Philadelphia, fresa natural, Nutella con topping de Oreo y Hershey's."
+    },
+    {
+        "id": "hawaiana",
+        "name": "Hawaiana",
+        "price": "$65",
+        "description": "Queso manchego, jamón, piña y topping de chipotle."
+    },
+    {
+        "id": "cajenuez",
+        "name": "Cajenuez",
+        "price": "$84",
+        "description": "Queso Philadelphia, nuez y cajeta con topping de helado y trozos de KitKat."
+    },
+    {
+        "id": "suprema_salada",
+        "name": "Suprema Salada",
+        "price": "$82",
+        "description": "Queso manchego, queso de bola, jamón, pepperoni, piña y topping de chipotle."
+    },
+    {
+        "id": "crepidulce",
+        "name": "Crepidulce",
+        "price": "$65",
+        "description": "Queso Philadelphia, queso manchego y lechera con topping de crema batida."
+    }
+]
+
