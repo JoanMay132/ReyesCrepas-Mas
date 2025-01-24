@@ -16,11 +16,52 @@ struct TapiocaView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
+                VStack (alignment: .leading){
+                    Text("Tapiocas base agua")
+
+                    ScrollView(.horizontal, showsIndicators: false){
+
+                        HStack {
+                            if let waterBasedTapiocas = tapiocas.first(where : {$0.id == "water_based"}) {
+                                ForEach(waterBasedTapiocas.tapioca_drinks) { drink in
+                                    NavigationLink {
+                                            Text("Horizontales de \(drink.name)")
+
+                                      
+                                    } label: {
+                                        VStack {
+                                            Image(drink.name)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 150, height: 130)
+                                                .clipShape(.capsule)
+                                                .overlay(
+                                                    Capsule()
+                                                        .strokeBorder(.white, lineWidth: 1)
+                                                )
+                                            VStack(alignment : .leading ) {
+                                                Text(drink.name)
+                                                    .foregroundStyle(.black)
+                                                    .font(.headline)
+                                            }
+                                           
+                                         
+                                        }
+                                        .padding(.horizontal)
+                                    }
+                                    .frame(width: 150)
+                                    .background(Color.white.opacity(0.8))
+                                }
+                            }
+                        }
+                    }
+                }
                 LazyVGrid(columns: columns) {
                     ForEach(tapiocas) { tapioca in
                         ForEach(tapioca.tapioca_drinks) { drink in
                             NavigationLink {
                                 VStack {
+                                    
                                     Text("Detalles de \(drink.name)")
                                     ForEach(drink.size, id: \.type) { size in
                                         Text("\(size.type): \(size.price)")
@@ -28,6 +69,10 @@ struct TapiocaView: View {
                                 }
                             } label: {
                                 VStack {
+                                    Rectangle()
+                                        .frame(height: 2)
+                                        .foregroundStyle(Color.gray)
+                                        .padding(.vertical)
                                     Image(drink.name)  //
                                         .resizable()
                                         .scaledToFill()
@@ -58,7 +103,7 @@ struct TapiocaView: View {
                     .padding([.horizontal, .bottom])
                 }
             }
-            .navigationTitle("Tapiocas")
+//            .navigationTitle("Tapiocas")
             .background(.pinkCakeBackground)
         }
     }
