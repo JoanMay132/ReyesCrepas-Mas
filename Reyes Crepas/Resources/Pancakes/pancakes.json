@@ -1,0 +1,27 @@
+[
+    {
+        "id": "tocineta_pancake",
+        "name": "Tocineta Pancake",
+        "price": "$105",
+        "description": "Torre de pancakes con queso manchego coronado con tocino y cubierto de aderezo de chipotle."
+    },
+    {
+        "id": "cheesecake",
+        "name": "Cheesecake",
+        "price": "$95",
+        "description": "Torre de pancakes con queso philadelphia, mermelada de zarzamora y crema batida."
+    },
+    {
+        "id": "heladito",
+        "name": "Heladito",
+        "price": "$95",
+        "description": "Torre de pancakes con nuez y queso philadelphia coronado con helado de vainilla."
+    },
+    {
+        "id": "triple_chocolate",
+        "name": "Triple Chocolate",
+        "price": "$110",
+        "description": "Torre de pancakes cubiertos de crema de avellanas con trozos de Kinder Bueno y Kinder Delice."
+    }
+]
+
