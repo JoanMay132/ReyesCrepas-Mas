@@ -12,6 +12,7 @@ import SwiftUI
 enum ProductTypes: String, Codable {
     case frappe = "Frappes"
     case tapiocas = "Tapiocas"
+    case pancakes = "Pancakes" 
 //    case otro = "Otro"
 }
 

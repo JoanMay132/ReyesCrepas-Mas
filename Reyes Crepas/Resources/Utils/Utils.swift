@@ -8,12 +8,14 @@
 import Foundation
 import SwiftUI
 
-func destinationProduct(for product : Product, frappes : [Frappe], tapiocas : [Tapioca]) -> AnyView {
+func destinationProduct(for product : Product, frappes : [Frappe], tapiocas : [Tapioca], pancakes : [Pancake]) -> AnyView {
     switch ProductTypes(rawValue : product.productType){
     case .frappe :
         return AnyView(FrappeView(frappes: frappes))
     case .tapiocas :
         return AnyView(TapiocaView(tapiocas : tapiocas))
+    case .pancakes :
+        return AnyView(PancakesView(pancakes : pancakes))
     case .none :
         return AnyView(Text("Product not found!"))
     }
