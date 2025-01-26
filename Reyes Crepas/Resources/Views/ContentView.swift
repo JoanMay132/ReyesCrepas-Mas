@@ -19,7 +19,9 @@ struct ContentView: View {
                 LazyVGrid(columns: columns) {
                     ForEach(products) { product in
                         NavigationLink {
-                            destinationProduct(for: product, frappes: frappes, tapiocas: tapiocas)
+
+                            destinationProduct(for: product, frappes: frappes, tapiocas: tapiocas, pancakes : pancakes)
+
                         } label : {
                             VStack {
                                 Image(product.image)
