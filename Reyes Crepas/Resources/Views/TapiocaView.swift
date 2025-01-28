@@ -16,91 +16,115 @@ struct TapiocaView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack (alignment: .leading){
-                    Text("Tapiocas base agua")
-
+                VStack{
+                    VStack(alignment: .leading) {
+                      
+                 
+                        Text("Tapiocas base agua")
+                            .font(.title.bold())
+                            .padding(.horizontal)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    
                     ScrollView(.horizontal, showsIndicators: false){
-
                         HStack {
                             if let waterBasedTapiocas = tapiocas.first(where : {$0.id == "water_based"}) {
                                 ForEach(waterBasedTapiocas.tapioca_drinks) { drink in
                                     NavigationLink {
-                                            Text("Horizontales de \(drink.name)")
-
-                                      
+                                        Text("Horizontales de \(drink.name)")
                                     } label: {
                                         VStack {
                                             Image(drink.name)
                                                 .resizable()
-                                                .scaledToFit()
+                                                .scaledToFill()
                                                 .frame(width: 150, height: 130)
-                                                .clipShape(.capsule)
-                                                .overlay(
-                                                    Capsule()
-                                                        .strokeBorder(.white, lineWidth: 1)
-                                                )
+                                                .padding()
+                                            
                                             VStack(alignment : .leading ) {
                                                 Text(drink.name)
-                                                    .foregroundStyle(.black)
                                                     .font(.headline)
+                                                    .foregroundStyle(.black)
                                             }
-                                           
-                                         
+                                            .padding(.vertical)
+                                            .frame(maxWidth: .infinity)
+                                            .background(.yellowBackground)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .stroke(Color.clear)
+                                            )
                                         }
                                         .padding(.horizontal)
                                     }
-                                    .frame(width: 150)
-                                    .background(Color.white.opacity(0.8))
-                                }
-                            }
-                        }
-                    }
-                }
-                LazyVGrid(columns: columns) {
-                    ForEach(tapiocas) { tapioca in
-                        ForEach(tapioca.tapioca_drinks) { drink in
-                            NavigationLink {
-                                VStack {
-                                    
-                                    Text("Detalles de \(drink.name)")
-                                    ForEach(drink.size, id: \.type) { size in
-                                        Text("\(size.type): \(size.price)")
-                                    }
-                                }
-                            } label: {
-                                VStack {
-                                    Rectangle()
-                                        .frame(height: 2)
-                                        .foregroundStyle(Color.gray)
-                                        .padding(.vertical)
-                                    Image(drink.name)  //
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 150, height: 130)
-                                        .padding()
-                                    
-                                    VStack {
-                                        Text(drink.name)
-                                            .font(.headline)
-                                            .foregroundStyle(.black)
-                                    }
-                                    .padding(.vertical)
-                                    .frame(maxWidth: .infinity)
-                                    .background(.yellowBackground)
+                                    .clipShape(.rect(cornerRadius: 10))
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color.clear)
+                                            .stroke(.yellowBackground)
+                                    )
+                       
+                                }
+                            }
+
+                        }
+               
+
+                        .padding(.horizontal)
+                    }
+                
+                    VStack(alignment: .leading) {
+                        Text("Tapiocas base leche")
+                            .font(.title.bold())
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .padding(.horizontal)
+                    
+                    
+                    VStack {
+                        
+        
+                 
+                        LazyVGrid(columns: columns) {
+                            
+                            ForEach(tapiocas) { tapioca in
+                                ForEach(tapioca.tapioca_drinks) { drink in
+                                    NavigationLink {
+                                        VStack {
+                                            Text("Detalles de \(drink.name)")
+                                            ForEach(drink.size, id: \.type) { size in
+                                                Text("\(size.type): \(size.price)")
+                                            }
+                                        }
+                                    } label: {
+                                        VStack {
+                                            Image(drink.name)  //
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(width: 150, height: 130)
+                                                .padding()
+                                            
+                                            VStack {
+                                                Text(drink.name)
+                                                    .font(.headline)
+                                                    .foregroundStyle(.black)
+                                            }
+                                            .padding(.vertical)
+                                            .frame(maxWidth: .infinity)
+                                            .background(.yellowBackground)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .stroke(Color.clear)
+                                            )
+                                        }
+                                    }
+                                    .clipShape(.rect(cornerRadius: 10))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(.yellowBackground)
                                     )
                                 }
                             }
-                            .clipShape(.rect(cornerRadius: 10))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.yellowBackground)
-                            )
+                            .padding([.horizontal, .bottom])
                         }
                     }
-                    .padding([.horizontal, .bottom])
                 }
             }
 //            .navigationTitle("Tapiocas")
