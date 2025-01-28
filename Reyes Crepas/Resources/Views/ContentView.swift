@@ -12,6 +12,8 @@ struct ContentView: View {
     let products: [Product] = Bundle.main.decode("products.json")
     let tapiocas : [Tapioca] = Bundle.main.decode("tapiocas.json")
     let pancakes: [Pancake] = Bundle.main.decode("pancakes.json")
+    let crepas: [Crepas] = Bundle.main.decode("crepas.json")
+    let barraDeCafe: [BarraDeCafe] = Bundle.main.decode("barra.json")
     let columns = [ GridItem(.adaptive(minimum : 150)) ]
     var body: some View {
         NavigationStack {
@@ -20,7 +22,7 @@ struct ContentView: View {
                     ForEach(products) { product in
                         NavigationLink {
 
-                            destinationProduct(for: product, frappes: frappes, tapiocas: tapiocas, pancakes : pancakes)
+                            destinationProduct(for: product, frappes: frappes, tapiocas: tapiocas, pancakes : pancakes, crepas: crepas, barraDeCafe: barraDeCafe)
 
                         } label : {
                             VStack {

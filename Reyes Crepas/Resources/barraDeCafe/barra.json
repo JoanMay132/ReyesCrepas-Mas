@@ -1,0 +1,113 @@
+
+[
+    {
+        "id": "americano",
+        "name": "Americano",
+        "price": "$55",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Expresso extra",
+                "price": "$15"
+            },
+            {
+                "id": 2,
+                "name": "Leche vegetal",
+                "price": "$5"
+            },
+            {
+                "id": 3,
+                "name": "Tapioca",
+                "price": "$9"
+            }
+        ]
+    },
+    {
+        "id": "latte",
+        "name": "Latte",
+        "price": "$70",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Expresso extra",
+                "price": "$15"
+            },
+            {
+                "id": 2,
+                "name": "Leche vegetal",
+                "price": "$5"
+            },
+            {
+                "id": 3,
+                "name": "Tapioca",
+                "price": "$9"
+            }
+        ]
+    },
+    {
+        "id": "moka",
+        "name": "Moka",
+        "price": "$75",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Expresso extra",
+                "price": "$15"
+            },
+            {
+                "id": 2,
+                "name": "Leche vegetal",
+                "price": "$5"
+            },
+            {
+                "id": 3,
+                "name": "Tapioca",
+                "price": "$9"
+            }
+        ]
+    },
+    {
+        "id": "chai",
+        "name": "Chai Latte",
+        "price": "$70",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Expresso extra",
+                "price": "$15"
+            },
+            {
+                "id": 2,
+                "name": "Leche vegetal",
+                "price": "$5"
+            },
+            {
+                "id": 3,
+                "name": "Tapioca",
+                "price": "$9"
+            }
+        ]
+    },
+    {
+        "id": "matcha",
+        "name": "Matcha Latte",
+        "price": "$70",
+        "extras": [
+            {
+                "id": 1,
+                "name": "Expresso extra",
+                "price": "$15"
+            },
+            {
+                "id": 2,
+                "name": "Leche vegetal",
+                "price": "$5"
+            },
+            {
+                "id": 3,
+                "name": "Tapioca",
+                "price": "$9"
+            }
+        ]
+    }
+]
