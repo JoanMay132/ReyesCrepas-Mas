@@ -35,8 +35,7 @@ struct BarraDeCafeView: View {
                                     
                                     VStack {
                                         Text(barra.name)
-                                            .font(.headline)
-                                            .foregroundStyle(.black)
+                                            .productTextStyleModifier()
                                     }
                                     .productStyleVStack()
                                 }

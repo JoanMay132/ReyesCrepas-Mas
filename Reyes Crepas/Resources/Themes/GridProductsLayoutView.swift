@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct GridProductsLayout: View {
+struct GridProductsLayoutView: View {
     let products: [Product]
     let frappes: [Frappe]  // Asegúrate de pasar esta variable al inicializar la vista
     let tapiocas : [Tapioca]
@@ -56,7 +56,7 @@ struct GridProductsLayout: View {
     let tallarines: [Tallarines] = Bundle.main.decode("tallarines.json")
     let barraDeCafe: [BarraDeCafe] = Bundle.main.decode("barra.json")
     
-    GridProductsLayout(
+    GridProductsLayoutView(
         products: products,
         frappes: frappes,
         tapiocas: tapiocas,
