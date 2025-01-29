@@ -33,8 +33,8 @@ struct TallarinesView: View {
                                     
                                     VStack {
                                         Text(tallarine.name)
-                                            .font(.headline)
-                                            .foregroundStyle(.black)
+                                            .productTextStyleModifier()
+
                                     }
                                     .productStyleVStack()
                                 }

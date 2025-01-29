@@ -32,8 +32,7 @@ struct FrappeView: View {
                                     
                                     VStack {
                                         Text(frappe.name)
-                                            .font(.headline)
-                                            .foregroundStyle(.black)
+                                            .productTextStyleModifier()
                                     }
                                     .productStyleVStack()                                }
                             }

@@ -86,8 +86,8 @@ struct TapiocaView: View {
                                             
                                             VStack {
                                                 Text(drink.name)
-                                                    .font(.headline)
-                                                    .foregroundStyle(.black)
+                                                    .productTextStyleModifier()
+
                                             }
                                             .productStyleVStack()
                                         }

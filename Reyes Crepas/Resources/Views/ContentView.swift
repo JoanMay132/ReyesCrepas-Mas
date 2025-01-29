@@ -18,7 +18,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            GridProductsLayout(products: products, frappes: frappes, tapiocas: tapiocas, pancakes: pancakes, crepas: crepas, tallarines: tallarines, barraDeCafe: barraDeCafe)
+            GridProductsLayoutView(products: products, frappes: frappes, tapiocas: tapiocas, pancakes: pancakes, crepas: crepas, tallarines: tallarines, barraDeCafe: barraDeCafe)
         }
     }
 }

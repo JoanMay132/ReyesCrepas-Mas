@@ -34,8 +34,7 @@ struct CrepasView: View {
                                     
                                     VStack {
                                         Text(crepa.name)
-                                            .font(.headline)
-                                            .foregroundStyle(.black)
+                                            .productTextStyleModifier()
                                     }
                                     .productStyleVStack()
                                 }
