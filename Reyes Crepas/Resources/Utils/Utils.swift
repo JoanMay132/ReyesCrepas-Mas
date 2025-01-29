@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-func destinationProduct(for product : Product, frappes : [Frappe], tapiocas : [Tapioca], pancakes : [Pancake], crepas: [Crepas], barraDeCafe : [BarraDeCafe]) -> AnyView {
+func destinationProduct(for product : Product, frappes : [Frappe], tapiocas : [Tapioca], pancakes : [Pancake], crepas: [Crepas], barraDeCafe : [BarraDeCafe], tallarines : [Tallarines]) -> AnyView {
 
     switch ProductTypes(rawValue : product.productType){
     case .frappe :
@@ -22,6 +22,8 @@ func destinationProduct(for product : Product, frappes : [Frappe], tapiocas : [T
         return AnyView(CrepasView(crepas: crepas))
     case .barraDeCafe :
         return AnyView(BarraDeCafeView(barraDeCafe: barraDeCafe))
+    case .tallarines :
+        return AnyView(TallarinesView(tallarines : tallarines))
     case .none :
         return AnyView(Text("Product not found!"))
     }

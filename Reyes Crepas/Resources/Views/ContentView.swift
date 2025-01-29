@@ -14,56 +14,11 @@ struct ContentView: View {
     let pancakes: [Pancake] = Bundle.main.decode("pancakes.json")
     let crepas: [Crepas] = Bundle.main.decode("crepas.json")
     let barraDeCafe: [BarraDeCafe] = Bundle.main.decode("barra.json")
-    let columns = [ GridItem(.adaptive(minimum : 150)) ]
+    let tallarines : [Tallarines] = Bundle.main.decode("tallarines.json")
+    
     var body: some View {
         NavigationStack {
-            ScrollView {
-                LazyVGrid(columns: columns) {
-                    ForEach(products) { product in
-                        NavigationLink {
-
-                            destinationProduct(for: product, frappes: frappes, tapiocas: tapiocas, pancakes : pancakes, crepas: crepas, barraDeCafe: barraDeCafe)
-
-                        } label : {
-                            VStack {
-                                Image(product.image)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 150, height: 130)
-                                    .padding()
-                                
-                                VStack {
-                                    Text(product.productType)
-                                        .font(.headline)
-                                        .foregroundStyle(.black)
-                                }
-                                .padding(.vertical)
-                                .frame(maxWidth: .infinity)
-                                .background(.yellowBackground)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.clear)
-                                )
-                            }
-                            .clipShape(.rect(cornerRadius : 10)
-                            )
-                            
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .strokeBorder(.yellowBackground, lineWidth : 2)
-
-                            )
-
-                        }
-                    }
-                }
-                .padding([.horizontal, .bottom])
-           
-
-            }
-            .navigationTitle("Reyes Crepas y Más")
-            .background(.pinkCakeBackground)
-            
+            GridProductsLayout(products: products, frappes: frappes, tapiocas: tapiocas, pancakes: pancakes, crepas: crepas, tallarines: tallarines, barraDeCafe: barraDeCafe)
         }
     }
 }

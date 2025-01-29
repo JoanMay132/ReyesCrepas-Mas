@@ -17,44 +17,38 @@ struct CrepasView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVGrid(columns: columns) {
-                    ForEach(crepas) { crepa in
-                        NavigationLink {
-                            Text("Detalles de \(crepa.name)")
-                        } label: {
-                            VStack {
-                                Image(crepa.name)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 150, height: 130)
-                                    .padding()
-                                
-                                VStack {
-                                    Text(crepa.name)
-                                        .font(.headline)
-                                        .foregroundStyle(.black)
-                                }
-                                .padding(.vertical)
-                                .frame(maxWidth: .infinity)
-                                .background(.yellowBackground)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.clear)
-                                )
-                            }
-                        }
-                        .clipShape(.rect(cornerRadius : 10))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.yellowBackground)
-                        )
+                VStack {
+                    VStack(alignment: .leading) {
+                        Text("Crepas")
+                            .productTitleStyleModifier()
                     }
-                    .padding([.horizontal, .bottom])
-                    
+
+                    LazyVGrid(columns: columns) {
+                        ForEach(crepas) { crepa in
+                            NavigationLink {
+                                Text("Detalles de \(crepa.name)")
+                            } label: {
+                                VStack {
+                                    Image(crepa.name)
+                                        .productImageStyle()
+                                    
+                                    VStack {
+                                        Text(crepa.name)
+                                            .font(.headline)
+                                            .foregroundStyle(.black)
+                                    }
+                                    .productStyleVStack()
+                                }
+                            }
+                            .shapeProduct()
+                        }
+                        .paddingProductList()
+                        
+                    }
                 }
             }
             //
-            .background(.pinkCakeBackground)
+            .pinkCakeBackground()
         }
     }
 }

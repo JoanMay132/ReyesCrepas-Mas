@@ -15,6 +15,7 @@ enum ProductTypes: String, Codable {
     case pancakes = "Pancakes"
     case crepas = "Crepas"
     case barraDeCafe = "Barra de Café"
+    case tallarines = "Tallarines"
 //    case otro = "Otro"
 }
 
