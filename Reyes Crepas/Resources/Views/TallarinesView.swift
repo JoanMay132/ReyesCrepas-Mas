@@ -1,40 +1,38 @@
 //
-//  BarraDeCafe.swift
+//  TallarinesView.swift
 //  Reyes Crepas
 //
-//  Created by David Chong on 1/27/25.
+//  Created by Joan May on 28/01/25.
 //
 
 import SwiftUI
 
-
-struct BarraDeCafeView: View {
-    let barraDeCafe: [BarraDeCafe]
+struct TallarinesView: View {
+    let tallarines : [Tallarines]
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
-    
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack {
                     VStack(alignment: .leading) {
-                 
-                        Text("Barra de Café")
+                        Text("Tallarines")
                             .productTitleStyleModifier()
+
                     }
 
                     LazyVGrid(columns: columns) {
-                        ForEach(barraDeCafe) { barra in
+                        ForEach(tallarines) { tallarine in
                             NavigationLink {
-                                Text("Detalles de \(barra.name)")
+                                Text("Detalles de \(tallarine.name)")
                             } label: {
                                 VStack {
-                                    Image(barra.name)
+                                    Image(tallarine.name)
                                         .productImageStyle()
                                     
                                     VStack {
-                                        Text(barra.name)
+                                        Text(tallarine.name)
                                             .font(.headline)
                                             .foregroundStyle(.black)
                                     }
@@ -48,17 +46,13 @@ struct BarraDeCafeView: View {
                     }
                 }
             }
-            //
             .pinkCakeBackground()
         }
     }
+
 }
 
 #Preview {
-    // Decodifica el JSON de frappes
-    let barraDeCafe: [BarraDeCafe] = Bundle.main.decode("barra.json")
-    
-    // Retorna la vista FrappeView con los frappes
-    return BarraDeCafeView(barraDeCafe: barraDeCafe)
+    let tallarines : [Tallarines] = Bundle.main.decode("tallarines.json")
+    return TallarinesView(tallarines : tallarines)
 }
-

@@ -21,9 +21,8 @@ struct TapiocaView: View {
                       
                  
                         Text("Tapiocas base agua")
-                            .font(.title.bold())
-                            .padding(.horizontal)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .productTitleStyleModifier()
+
                     }
                     
                     ScrollView(.horizontal, showsIndicators: false){
@@ -35,31 +34,18 @@ struct TapiocaView: View {
                                     } label: {
                                         VStack {
                                             Image(drink.name)
-                                                .resizable()
-                                                .scaledToFill()
-                                                .frame(width: 150, height: 130)
-                                                .padding()
+                                                .productImageStyle()
                                             
                                             VStack(alignment : .leading ) {
                                                 Text(drink.name)
                                                     .font(.headline)
                                                     .foregroundStyle(.black)
                                             }
-                                            .padding(.vertical)
-                                            .frame(maxWidth: .infinity)
-                                            .background(.yellowBackground)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.clear)
-                                            )
+                                            .productStyleVStack()
                                         }
-                                        .padding(.horizontal)
+                                        .paddingProductList()
                                     }
-                                    .clipShape(.rect(cornerRadius: 10))
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(.yellowBackground)
-                                    )
+                                    .shapeProduct()
                        
                                 }
                             }
@@ -72,8 +58,8 @@ struct TapiocaView: View {
                 
                     VStack(alignment: .leading) {
                         Text("Tapiocas base leche")
-                            .font(.title.bold())
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .productTitleStyleModifier()
+
                     }
                     .padding(.horizontal)
                     
@@ -96,39 +82,26 @@ struct TapiocaView: View {
                                     } label: {
                                         VStack {
                                             Image(drink.name)  //
-                                                .resizable()
-                                                .scaledToFill()
-                                                .frame(width: 150, height: 130)
-                                                .padding()
+                                                .productImageStyle()
                                             
                                             VStack {
                                                 Text(drink.name)
                                                     .font(.headline)
                                                     .foregroundStyle(.black)
                                             }
-                                            .padding(.vertical)
-                                            .frame(maxWidth: .infinity)
-                                            .background(.yellowBackground)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.clear)
-                                            )
+                                            .productStyleVStack()
                                         }
                                     }
-                                    .clipShape(.rect(cornerRadius: 10))
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(.yellowBackground)
-                                    )
+                                    .shapeProduct()
                                 }
                             }
-                            .padding([.horizontal, .bottom])
+                            .paddingProductList()
                         }
                     }
                 }
             }
 //            .navigationTitle("Tapiocas")
-            .background(.pinkCakeBackground)
+            .pinkCakeBackground()
         }
     }
 }
