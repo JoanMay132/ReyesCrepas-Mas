@@ -30,7 +30,7 @@ struct TapiocaView: View {
                             if let waterBasedTapiocas = tapiocas.first(where : {$0.id == "water_based"}) {
                                 ForEach(waterBasedTapiocas.tapioca_drinks) { drink in
                                     NavigationLink {
-                                        Text("Horizontales de \(drink.name)")
+                                        TapiocaDetailsView(tapioca: waterBasedTapiocas, tapiocaDrink: drink, tapiocaSize: drink.size)
                                     } label: {
                                         VStack {
                                             Image(drink.name)
@@ -62,23 +62,14 @@ struct TapiocaView: View {
 
                     }
                     .padding(.horizontal)
-                    
-                    
                     VStack {
-                        
-        
-                 
                         LazyVGrid(columns: columns) {
                             
                             ForEach(tapiocas) { tapioca in
                                 ForEach(tapioca.tapioca_drinks) { drink in
                                     NavigationLink {
-                                        VStack {
-                                            Text("Detalles de \(drink.name)")
-                                            ForEach(drink.size, id: \.type) { size in
-                                                Text("\(size.type): \(size.price)")
-                                            }
-                                        }
+                                        TapiocaDetailsView(tapioca: tapioca, tapiocaDrink: drink, tapiocaSize: drink.size)
+
                                     } label: {
                                         VStack {
                                             Image(drink.name)  //

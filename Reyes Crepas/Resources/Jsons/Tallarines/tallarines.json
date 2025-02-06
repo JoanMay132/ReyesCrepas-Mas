@@ -3,13 +3,13 @@
     {
         "id" : "kinder_fresa",
         "name" : "Kinder con Fresa",
-        "price" : "110",
+        "price" : "$110.00",
         "description" : "Tallarines cubiertos de crema de avellanas con trozos de kinder bueno y fresa natural."
     },
     {
         "id" : "cookies_cream",
         "name" : "Cookies and cream",
-        "price" : "100",
+        "price" : "$100.00",
         "description" : "Tallarines con queso philadelphia galleta oreo hersheys cookies and cream coronado con crema batida."
     },
 ]

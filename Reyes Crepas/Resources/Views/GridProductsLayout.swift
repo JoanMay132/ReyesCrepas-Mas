@@ -41,6 +41,7 @@ struct GridProductsLayout: View {
             
             
         }
+        .navigationBarBackButtonHidden(true)
         .navigationTitle("Reyes Crepas y Más")
         .pinkCakeBackground()
         

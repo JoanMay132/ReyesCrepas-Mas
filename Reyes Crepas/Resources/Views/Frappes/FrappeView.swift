@@ -24,7 +24,8 @@ struct FrappeView: View {
                     LazyVGrid(columns: columns) {
                         ForEach(frappes) { frappe in
                             NavigationLink {
-                                Text("Detalles de \(frappe.name)")
+                                // Asegúrate de pasar los extras correctamente
+                                FrappeDetailsView(frappe: frappe, extra: frappe.extras)
                             } label: {
                                 VStack {
                                     Image(frappe.name)
@@ -35,12 +36,12 @@ struct FrappeView: View {
                                             .font(.headline)
                                             .foregroundStyle(.black)
                                     }
-                                    .productStyleVStack()                                }
+                                    .productStyleVStack()
+                                }
                             }
                             .shapeProduct()
                         }
                         .paddingProductList()
-                        
                     }
                 }
             }
@@ -48,13 +49,10 @@ struct FrappeView: View {
             .pinkCakeBackground()
         }
     }
-
 }
 
 #Preview {
-    // Decodifica el JSON de frappes
     let frappes: [Frappe] = Bundle.main.decode("frappes.json")
     
-    // Retorna la vista FrappeView con los frappes
     return FrappeView(frappes: frappes)
 }
