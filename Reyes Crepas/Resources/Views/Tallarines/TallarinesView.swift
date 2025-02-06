@@ -23,16 +23,16 @@ struct TallarinesView: View {
                     }
 
                     LazyVGrid(columns: columns) {
-                        ForEach(tallarines) { tallarine in
+                        ForEach(tallarines) { tallarin in
                             NavigationLink {
-                                Text("Detalles de \(tallarine.name)")
+                                TallarinesDetailsView(tallarines : tallarin)
                             } label: {
                                 VStack {
-                                    Image(tallarine.name)
+                                    Image(tallarin.name)
                                         .productImageStyle()
                                     
                                     VStack {
-                                        Text(tallarine.name)
+                                        Text(tallarin.name)
                                             .font(.headline)
                                             .foregroundStyle(.black)
                                     }

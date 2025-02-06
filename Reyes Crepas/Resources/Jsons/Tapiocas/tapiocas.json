@@ -8,12 +8,14 @@
                 "name": "Iced Coffee",
                 "size": [
                     {
-                        "type": "normal",
-                        "price": "$60"
+                        "id" : "normal",
+                        "type": "Normal",
+                        "price": "$60.00"
                     },
                     {
+                        "id" : "liter",
                         "type": "Litro",
-                        "price": "$93"
+                        "price": "$93.00"
                     }
                 ]
             },
@@ -22,12 +24,14 @@
                 "name": "Plátano",
                 "size": [
                     {
-                        "type": "normal",
-                        "price": "$65"
+                        "id" : "normal",
+                        "type": "Normal",
+                        "price": "$65.00"
                     },
                     {
+                        "id" : "liter",
                         "type": "Litro",
-                        "price": "$107"
+                        "price": "$107.00"
                     }
                 ]
             },
@@ -36,12 +40,14 @@
                 "name": "Café",
                 "size": [
                     {
-                        "type": "normal",
-                        "price": "$70"
+                        "id" : "normal",
+                        "type": "Normal",
+                        "price": "$70.00"
                     },
                     {
+                        "id" : "liter",
                         "type": "Litro",
-                        "price": "$110"
+                        "price": "$110.00"
                     }
                 ]
             },
@@ -50,12 +56,14 @@
                 "name" : "Oreo",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$78"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$78.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$116"
+                        "price" : "$116.00"
                     }
                 ]
             },
@@ -64,12 +72,14 @@
                 "name" : "Chokis",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$78"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$78.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$129"
+                        "price" : "$129.00"
                     }
                 ]
             },
@@ -78,12 +88,14 @@
                 "name" : "Vainilla",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$79"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$79.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$129"
+                        "price" : "$129.00"
                     }
                 ]
             },
@@ -92,12 +104,14 @@
                 "name" : "Moka",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$79"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$79.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$129"
+                        "price" : "$129.00"
                     }
                 ]
             },
@@ -106,12 +120,14 @@
                 "name" : "Coco",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$75"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$75.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$129"
+                        "price" : "$129.00"
                     }
                 ]
             },
@@ -120,12 +136,14 @@
                 "name" : "Mango",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$75"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$75.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$129"
+                        "price" : "$129.00"
                     }
                 ]
             },
@@ -134,12 +152,14 @@
                 "name" : "Taro",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$75"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$75.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$129"
+                        "price" : "$129.00"
                     }
                 ]
             },
@@ -148,12 +168,14 @@
                 "name" : "Chai",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$75"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$75.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$129"
+                        "price" : "$129.00"
                     }
                 ]
             },
@@ -163,12 +185,14 @@
                 "name" : "Matcha",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$75"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$75.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$129"
+                        "price" : "$129.00"
                     }
                 ]
             },
@@ -178,12 +202,14 @@
                 "name" : "Fresa",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$80"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$80.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$129"
+                        "price" : "$129.00"
                     }
                 ]
             },
@@ -192,12 +218,14 @@
                 "name" : "Chocobanana",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$80"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$80.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$129"
+                        "price" : "$129.00"
                     }
                 ]
             },
@@ -206,12 +234,14 @@
                 "name" : "Frutos rojos",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$82"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$82.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$131"
+                        "price" : "$131.00"
                     }
                 ]
             },
@@ -220,12 +250,14 @@
                 "name" : "Chocomenta",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$85"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$85.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$133"
+                        "price" : "$133.00"
                     }
                 ]
             },
@@ -234,12 +266,14 @@
                 "name" : "Gansito",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$85"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$85.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$133"
+                        "price" : "$133.00"
                     }
                 ]
             },
@@ -248,12 +282,14 @@
                 "name" : "Nutella",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$85"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$85.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$133"
+                        "price" : "$133.00"
                     }
                 ]
             },
@@ -262,12 +298,14 @@
                 "name" : "Cajeta",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$85"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$85.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$133"
+                        "price" : "$133.00"
                     }
                 ]
             },
@@ -276,12 +314,14 @@
                 "name" : "Ferrero Rocher",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$85"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$85.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$151"
+                        "price" : "$151.00"
                     }
                 ]
             },
@@ -296,12 +336,14 @@
                 "name" : "Fresa",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$68"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$68.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$120"
+                        "price" : "$120.00"
                     }
                 ]
             },
@@ -310,12 +352,14 @@
                 "name" : "Mango",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$68"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$68.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$120"
+                        "price" : "$120.00"
                     }
                 ]
             },
@@ -324,12 +368,14 @@
                 "name" : "Frutos rojos",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$68"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$68.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$120"
+                        "price" : "$120.00"
                     }
                 ]
             },
@@ -338,12 +384,14 @@
                 "name" : "Chamoyada",
                 "size" : [
                     {
-                        "type" : "normal",
-                        "price" : "$75"
+                        "id" : "normal",
+                        "type" : "Normal",
+                        "price" : "$75.00"
                     },
                     {
+                        "id" : "liter",
                         "type" : "Litro",
-                        "price" : "$131"
+                        "price" : "$131.00"
                     }
                 ]
             },

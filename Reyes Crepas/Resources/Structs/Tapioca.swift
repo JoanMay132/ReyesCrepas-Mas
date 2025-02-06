@@ -17,7 +17,8 @@ struct Tapioca : Identifiable, Codable, Hashable {
         let name : String
         let size : [DrinkSize]
         
-        struct DrinkSize : Codable, Hashable{
+        struct DrinkSize : Codable, Hashable, Identifiable{
+            let id : String
             let type : String
             let price : String
             
