@@ -1,14 +1,15 @@
 //
-//  Pancakes.swift
+//  BarraDeCafe.swift
 //  Reyes Crepas
 //
-//  Created by David Chong on 1/24/25.
+//  Created by David Chong on 1/27/25.
 //
 
 import SwiftUI
 
-struct PancakesView: View {
-    let pancakes: [Pancake]
+
+struct BarraDeCafeView: View {
+    let barraDeCafe: [BarraDeCafe]
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
@@ -18,23 +19,24 @@ struct PancakesView: View {
             ScrollView {
                 VStack {
                     VStack(alignment: .leading) {
-                        Text("Pancakes")
+                 
+                        Text("Barra de Café")
                             .productTitleStyleModifier()
-
                     }
 
                     LazyVGrid(columns: columns) {
-                        ForEach(pancakes) { pancake in
+                        ForEach(barraDeCafe) { barra in
                             NavigationLink {
-                                Text("Detalles de \(pancake.name)")
+                                BarraDeCafeDetailsView(barraDeCafe: barra, extra: barra.extras)
                             } label: {
                                 VStack {
-                                    Image(pancake.name)
+                                    Image(barra.name)
                                         .productImageStyle()
-                                     
+                                    
                                     VStack {
-                                        Text(pancake.name)
-                                            .productTextStyleModifier()
+                                        Text(barra.name)
+                                            .font(.headline)
+                                            .foregroundStyle(.black)
                                     }
                                     .productStyleVStack()
                                 }
@@ -42,6 +44,7 @@ struct PancakesView: View {
                             .shapeProduct()
                         }
                         .paddingProductList()
+                        
                     }
                 }
             }
@@ -53,16 +56,9 @@ struct PancakesView: View {
 
 #Preview {
     // Decodifica el JSON de frappes
-    let pancakes: [Pancake] = Bundle.main.decode("pancakes.json")
+    let barraDeCafe: [BarraDeCafe] = Bundle.main.decode("barra.json")
     
     // Retorna la vista FrappeView con los frappes
-    return PancakesView(pancakes: pancakes)
+    return BarraDeCafeView(barraDeCafe: barraDeCafe)
 }
-
-
-    
-    
-    
-    
-    
 
