@@ -1,15 +1,14 @@
 //
-//  CrepasView.swift
+//  Pancakes.swift
 //  Reyes Crepas
 //
-//  Created by David Chong on 1/25/25.
+//  Created by David Chong on 1/24/25.
 //
 
 import SwiftUI
 
-
-struct CrepasView: View {
-    let crepas: [Crepas]
+struct PancakesView: View {
+    let pancakes: [Pancake]
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
@@ -19,23 +18,23 @@ struct CrepasView: View {
             ScrollView {
                 VStack {
                     VStack(alignment: .leading) {
-                        Text("Crepas")
+                        Text("Pancakes")
                             .productTitleStyleModifier()
+
                     }
 
                     LazyVGrid(columns: columns) {
-                        ForEach(crepas) { crepa in
+                        ForEach(pancakes) { pancake in
                             NavigationLink {
-                                Text("Detalles de \(crepa.name)")
+                                PancakesDetailsView(pancake: pancake)
                             } label: {
                                 VStack {
-                                    Image(crepa.name)
+                                    Image(pancake.name)
                                         .productImageStyle()
-                                    
+                                     
                                     VStack {
-                                        Text(crepa.name)
-                                            .font(.headline)
-                                            .foregroundStyle(.black)
+                                        Text(pancake.name)
+                                            .productTextStyleModifier()
                                     }
                                     .productStyleVStack()
                                 }
@@ -43,7 +42,6 @@ struct CrepasView: View {
                             .shapeProduct()
                         }
                         .paddingProductList()
-                        
                     }
                 }
             }
@@ -55,10 +53,10 @@ struct CrepasView: View {
 
 #Preview {
     // Decodifica el JSON de frappes
-    let crepas: [Crepas] = Bundle.main.decode("crepas.json")
+    let pancakes: [Pancake] = Bundle.main.decode("pancakes.json")
     
     // Retorna la vista FrappeView con los frappes
-    return CrepasView(crepas: crepas)
+    return PancakesView(pancakes: pancakes)
 }
 
 

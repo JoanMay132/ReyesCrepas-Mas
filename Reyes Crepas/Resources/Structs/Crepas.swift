@@ -1,8 +1,8 @@
 //
-//  crepas.swift
+//  Crepas.swift
 //  Reyes Crepas
 //
-//  Created by David Chong on 1/25/25.
+//  Created by David Chong on 2/25/25.
 //
 
 import Foundation
@@ -17,10 +17,11 @@ struct Crepas: Identifiable, Codable, Hashable {
     
     let id: String
     let name: String
+  
+   
     
-    
-    
-    var image : String {
-        "\(name)"
+    var image: String {
+        name
     }
 }
+

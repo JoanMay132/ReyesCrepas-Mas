@@ -1,40 +1,40 @@
 //
-//  BarraDeCafe.swift
+//  CrepasView.swift
 //  Reyes Crepas
 //
-//  Created by David Chong on 1/27/25.
+//  Created by David Chong on 1/25/25.
 //
+
 
 import SwiftUI
 
-
-struct BarraDeCafeView: View {
-    let barraDeCafe: [BarraDeCafe]
+struct CrepasView: View {
+    let crepas: [Crepas]
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
-    
+
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack {
                     VStack(alignment: .leading) {
-                 
-                        Text("Barra de Café")
+                        Text("Crepas")
                             .productTitleStyleModifier()
                     }
 
                     LazyVGrid(columns: columns) {
-                        ForEach(barraDeCafe) { barra in
+                        ForEach(crepas) { crepa in
+                            
                             NavigationLink {
-                                Text("Detalles de \(barra.name)")
+                                Text("Not found")
                             } label: {
                                 VStack {
-                                    Image(barra.name)
+                                    Image(crepa.name)
                                         .productImageStyle()
-                                    
+
                                     VStack {
-                                        Text(barra.name)
+                                        Text(crepa.name)
                                             .font(.headline)
                                             .foregroundStyle(.black)
                                     }
@@ -44,21 +44,19 @@ struct BarraDeCafeView: View {
                             .shapeProduct()
                         }
                         .paddingProductList()
-                        
                     }
                 }
             }
-            //
             .pinkCakeBackground()
         }
     }
 }
 
 #Preview {
-    // Decodifica el JSON de frappes
-    let barraDeCafe: [BarraDeCafe] = Bundle.main.decode("barra.json")
-    
-    // Retorna la vista FrappeView con los frappes
-    return BarraDeCafeView(barraDeCafe: barraDeCafe)
-}
+    // Decodifica el JSON de crepas
+    let crepas: [Crepas] = Bundle.main.decode("crepas.json")
 
+    
+    // Retorna la vista CrepasView con las crepas
+    return CrepasView(crepas: crepas)
+}

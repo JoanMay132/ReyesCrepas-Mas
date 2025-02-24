@@ -3,7 +3,7 @@
         "id": "crepa_personalizada",
         "name": "Crepas Personalizadas",
         "description": "Combina tus ingredientes para crear tu propia crepa.",
-        "base_prices": {
+        "price": {
             "1 ingrediente": "$35",
             "2 clásicos": "$40",
             "1 clásico + 1 premium": "$45",
@@ -36,7 +36,7 @@
                 "Lechera",
                 "Oreo"
             ],
-            "paid_toppings": [
+            "topping extra": [
                 {
                     "name": "Chokis",
                     "price": "$6"
@@ -101,4 +101,3 @@
         "description": "Queso Philadelphia, queso manchego y lechera con topping de crema batida."
     }
 ]
-
