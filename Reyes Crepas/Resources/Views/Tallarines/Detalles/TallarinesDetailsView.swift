@@ -9,115 +9,98 @@ import SwiftUI
 
 struct TallarinesDetailsView: View {
     var tallarines: Tallarines
-    
+    @EnvironmentObject var cartManager: CartManager
+    @State private var navigateToContentView = false
     @Environment(\.dismiss) private var dismiss
-    @State private var selectedExtras: [Tallarines: Int] = [:]
+    @State private var selectedQuantity: [Tallarines: Int] = [:]
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack {
-                    // Drink image
-                    VStack {
-                        Image(tallarines.name)
-                            .resizable()
-                            .frame(width: 350, height: 400)
-                            .scaledToFit()
-                    }
-                    .shapeProduct()
-
-                    // Product information
-                    VStack {
-                        Text(tallarines.name)
-                            .font(.title.bold())
-                            .frame(maxWidth: .infinity, alignment: .leading)
-
-                        Text(tallarines.price)
-                            .font(.subheadline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Divider()
-                        Text(tallarines.description)
-                            .font(.subheadline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .padding(.horizontal)
-                    .productStyleVStack()
-                    
-                    //Extras buttons
-                    VStack(alignment: .leading) {
-                        HStack(spacing: 10) {
-                            Text("¿Cuántos tallarines deseas?")
-                            Button(action: {
-                                increaseQuantity(for: tallarines)
-                            }) {
-                                Image(systemName: "plus.circle.fill")
-                                    .font(.system(size: 20))
-                                    .foregroundColor(.black)
-                            }
-
-                            Text("\(selectedExtras[tallarines] ?? 0)")
-                                .font(.body)
-                                .frame(width: 30)
-
-                            Button(action: {
-                                decreaseQuantity(for: tallarines)
-                            }) {
-                                Image(systemName: "minus.circle.fill")
-                                    .font(.system(size: 20))
-                                    .foregroundColor(.black)
-                            }
-                        }
-                        .padding()
-                    }
+        ScrollView {
+            VStack {
                 
-
-                    // Add to cart button
-                    NavigationLink(destination: ContentView()) {
-                        Text("Agregar al carrito")
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
-                    .padding(.top, 20)
-                    .padding()
-                }
-                .navigationBarBackButtonHidden(true)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            dismiss()
-                        } label: {
-                            HStack {
-                                Image(systemName: "chevron.backward")
-                                Text("Tallarines")
-                            }
-                        }
-                    }
+                ProductDetailsView(productID: tallarines.id,productName: tallarines.name, productPrice: tallarines.price, productDescription: tallarines.description)
+                
+                quantitySelector()
+                
+                AddToCartButtonView(
+                    productName: "Tallarin de \(tallarines.name)",
+                    productPrice: tallarines.price,
+                    itemsQuantity: selectedQuantity.isEmpty ? [] : [
+                        ItemsQuantity(name: tallarines.name, price: tallarines.price, quantity: selectedQuantity[tallarines] ?? 1)],
+                    extras : [],
+                    cartManager: cartManager,
+                    navigateToContentView: $navigateToContentView
+                )
+            }
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationBackButtonView(title : "Tallarines")
                 }
             }
-            .pinkCakeBackground()
         }
-    }
-
-    private func increaseQuantity(for tallarines: Tallarines) {
-        let currentQuantity = selectedExtras[tallarines, default: 0]
-        if currentQuantity < 20 {
-            selectedExtras[tallarines] = currentQuantity + 1
-        }
-    }
-
-    private func decreaseQuantity(for tallarines: Tallarines) {
-        if let currentQuantity = selectedExtras[tallarines], currentQuantity > 0 {
-            selectedExtras[tallarines] = currentQuantity - 1
+        .pinkCakeBackground()
+        .navigationDestination(isPresented: $navigateToContentView) {
+            ContentView()
         }
     }
 }
 
+
+
+
+// MARK: - 🔢 Select quantity
+private extension TallarinesDetailsView {
+    func quantitySelector() -> some View {
+        VStack(alignment: .leading) {
+            HStack(spacing: 10) {
+                Text("¿Cuántos tallarines deseas?")
+                
+                // Plus Button to add more items to our cart
+                PlusButtonView(action: { increaseQuantity(for: tallarines) })
+           
+
+                Text("\(selectedQuantity[tallarines] ?? 1)")
+                    .textItemsStyleModifier()
+                
+                MinusButtonView(action: { decreaseQuantity(for: tallarines) })
+
+            }
+            .padding()
+        }
+    }
+}
+
+
+
+
+// MARK: - 🔼  Increase Tallarines Quantity
+private extension TallarinesDetailsView {
+    func increaseQuantity(for tallarines: Tallarines) {
+        let currentQuantity = selectedQuantity[tallarines, default: 0]
+        if currentQuantity < 20 {
+            selectedQuantity[tallarines] = currentQuantity + 1
+        }
+    }
+}
+
+// MARK: - 🔽 Decrease Tallarines Quantity
+private extension TallarinesDetailsView {
+    func decreaseQuantity(for tallarines: Tallarines) {
+        if let currentQuantity = selectedQuantity[tallarines], currentQuantity > 0 {
+            selectedQuantity[tallarines] = currentQuantity - 1
+        }
+    }
+}
+
+// MARK: - 👀 Preview View
 #Preview {
     let tallarines: [Tallarines] = Bundle.main.decode("tallarines.json")
     if let tallarin = tallarines.first(where: { $0.id == "kinder_fresa" }) {
-        return TallarinesDetailsView(tallarines: tallarin)
+        return TallarinesDetailsView(
+            tallarines: tallarin
+        )
+        .environmentObject(CartManager())
     } else {
         return Text("Product Not Found")
     }

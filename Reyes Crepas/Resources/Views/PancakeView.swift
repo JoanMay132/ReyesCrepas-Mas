@@ -14,7 +14,6 @@ struct PancakesView: View {
     ]
     
     var body: some View {
-        NavigationStack {
             ScrollView {
                 VStack {
                     VStack(alignment: .leading) {
@@ -47,7 +46,6 @@ struct PancakesView: View {
             }
             //
             .pinkCakeBackground()
-        }
     }
 }
 
