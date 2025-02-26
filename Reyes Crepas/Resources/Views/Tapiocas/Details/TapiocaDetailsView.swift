@@ -10,7 +10,9 @@ struct TapiocaDetailsView: View {
     var tapioca: Tapioca
     let tapiocaDrink: Tapioca.TapiocaDrinks
     let tapiocaSize: [Tapioca.TapiocaDrinks.DrinkSize]
-    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var cartManager: CartManager
+    @State private var navigateToContentView = false // Estado para controlar la navegación
+
     @State private var selectedSize: Tapioca.TapiocaDrinks.DrinkSize
     init(tapioca : Tapioca, tapiocaDrink : Tapioca.TapiocaDrinks, tapiocaSize : [Tapioca.TapiocaDrinks.DrinkSize]) {
         self.tapioca = tapioca
@@ -28,70 +30,57 @@ struct TapiocaDetailsView: View {
     }
 
     var body: some View {
-        NavigationStack {
             ScrollView {
                 VStack {
                     // Tapioca drink image
-                    VStack {
-                        Image(tapiocaDrink.name)
-                            .resizable()
-                            .frame(width: 350, height: 400)
-                            .scaledToFit()
-                    }
-                    .shapeProduct()
+                    ProductDetailsView(productID: tapioca.id,productName: "Tapioca de \(tapiocaDrink.name)", productPrice: nil, productDescription: tapioca.tapioca_type)
+                    
+                    //Method to choose your tapioca Size
+                    chooseYourProductSize()
+                    
+                    AddToCartButtonView(
+                        productName: "Tapioca de \(tapiocaDrink.name)",
+                                       productPrice: selectedSize.price,
+                                       itemsQuantity: [],
+                                       extras : [],
+                                       cartManager: cartManager,
+                                       navigateToContentView: $navigateToContentView
+                    )
 
-                    // Tapioca details
-                    VStack {
-                        Text("Tapioca de " + tapiocaDrink.name)
-                            .font(.title.bold())
-                            .frame(maxWidth: .infinity, alignment: .leading)
-
-                        Text(tapioca.tapioca_type)
-                            .font(.subheadline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .padding(.horizontal)
-                    .productStyleVStack()
-
-                    // Available size
-                    Section("Tamaño de tu tapioca") {
-                        Picker("Tamaño de tu tapioca", selection: $selectedSize) {
-                            ForEach(tapiocaSize, id: \.self) { size in
-                                Text("\(size.type) \(size.price)")
-                                    .padding(.bottom, 3)
-                            }
-                        }
-                        .pickerStyle(.segmented)
-                       
-                    }
-                    .padding()
-
-                    // Add to cart button
-                    NavigationLink(destination: ContentView()) {
-                        Text("Agregar al carrito")
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
-                    .padding(.top, 20)
-                    .padding()
+             
+                    
                 }
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            dismiss()
-                        } label: {
-                            HStack {
-                                Image(systemName: "chevron.backward")
-                                Text("Tapiocas")
-                            }
-                        }
+                        NavigationBackButtonView(title : "Tapioca")
                     }
                 }
             }
             .pinkCakeBackground()
+            .navigationDestination(isPresented: $navigateToContentView) {
+                ContentView()
+            }
+        
+    }
+}
+
+private extension TapiocaDetailsView {
+    func chooseYourProductSize() -> some View {
+        
+        VStack(alignment: .leading) {
+            
+            Text("Tamaño de tu tapioca")
+                .font(.headline)
+                .padding(.horizontal)
+
+            Picker("Tamaño de tu tapioca", selection: $selectedSize) {
+                ForEach(tapiocaSize, id: \.self) { size in
+                    Text("\(size.type) - \(size.price)")
+                }
+            }
+            .pickerStyle(.segmented)
+            .padding()
         }
     }
 }
@@ -101,6 +90,8 @@ struct TapiocaDetailsView: View {
     if let tapioca = tapiocas.first(where: { $0.tapioca_type == "Base leche" }),
        let drink = tapioca.tapioca_drinks.first(where: { $0.id == "coconut" }) {
         return TapiocaDetailsView(tapioca: tapioca, tapiocaDrink: drink, tapiocaSize: drink.size)
+            .environmentObject(CartManager())
+
     } else {
         return Text("Product Not Found")
     }

@@ -15,7 +15,6 @@ struct CrepasView: View {
     ]
     
     var body: some View {
-        NavigationStack {
             ScrollView {
                 VStack {
                     VStack(alignment: .leading) {
@@ -49,7 +48,7 @@ struct CrepasView: View {
             }
             //
             .pinkCakeBackground()
-        }
+        
     }
 }
 

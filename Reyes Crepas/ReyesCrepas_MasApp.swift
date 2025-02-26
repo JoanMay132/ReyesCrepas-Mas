@@ -9,7 +9,8 @@ import SwiftUI
 
 @main
 struct ReyesCrepas_MasApp: App {
-    
+    @StateObject var cartManager = CartManager()
+
     init() {
         let appearance = UINavigationBarAppearance()
         
@@ -23,6 +24,8 @@ struct ReyesCrepas_MasApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(cartManager) // Pasar CartManager como un environmentObject
+
         }
     }
 }

@@ -10,120 +10,53 @@ import SwiftUI
 struct FrappeDetailsView: View {
     let frappe: Frappe
     let extra: [Frappe.Extra]
-    @Environment(\.dismiss) private var dismiss
-    @State private var selectedExtras: [Frappe.Extra : Int] =  [ : ]
+    @EnvironmentObject var cartManager: CartManager
+
+    @State private var selectedExtras: [Frappe.Extra: Int] = [:]
+    @State private var navigateToContentView = false 
+    private var selectedExtrasList: [Extras] {
+        selectedExtras.compactMap { (extra, quantity) in
+            quantity > 0 ? Extras(name: extra.name, price: extra.price, quantity: quantity) : nil
+        }
+    }
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    VStack {
-                        Image(frappe.name)
-                            .resizable()
-                            .frame(width: 350, height: 400)
-                            .scaledToFit()
+                    ProductDetailsView(productID: frappe.id,productName: "Frappé de \(frappe.name)", productPrice: frappe.price, productDescription: nil)
+                  
+                    // Calling method to show all the extras list in Frappe Details View
+                    extrasList()
             
-                    }
-                    .shapeProduct()
-            
-                    VStack {
-                        Text(frappe.name)
-                            .font(.title.bold())
-                            .frame(maxWidth: .infinity, alignment: .leading)
-        
-                        Text(frappe.price)
-                            .font(.subheadline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-
-                    }
-                    .padding(.horizontal)
-                    .productStyleVStack()
+                    // Add to cart button and going to contentView
                     
-                    VStack(alignment: .leading) {
-                        
-                        
-                       
+                    AddToCartButtonView(
+                        productName: "Frappé de \(frappe.name)",
+                                       productPrice: frappe.price,
+                                       itemsQuantity: [],
+                                       extras: selectedExtrasList,
 
-            
-                        // Code to show extras
-                        Text("Elige tus extras")
-                            .font(.headline)
-                        Divider()
-            
-                        VStack(alignment : .leading) {
-                            ForEach(extra) { extra in
-                                HStack(spacing: 10) {
-                                    Text(extra.name)
-                                        .frame(width: 150, alignment: .leading)
-            
-            
-                                    Spacer()
-            
-                                    Text(extra.price)
-                                        .frame(width: 70, alignment: .trailing)
-            
-                                    Spacer()
-            
-                                    Button(action: {
-                                        increaseQuantity(for : extra)
-                                        // Acción para agregar extra
-                                    }) {
-                                        Image(systemName: "plus.circle.fill")
-                                            .font(.system(size: 20))
-                                            .foregroundColor(.black)
-                                    }
-            
-                                    Text("\(selectedExtras[extra ] ?? 0)")
-                                        .font(.body)
-                                        .frame(width: 30)
-            
-                                    Button(action: {
-                                        decreaseQuantity(for: extra)
-                                    }) {
-                                        Image(systemName: "minus.circle.fill")
-                                            .font(.system(size: 20))
-                                            .foregroundColor(.black)
-                                    }
-                                }
-                                Divider()
-            
-                                    .padding(.vertical, 5)
-            
-                            }
-                        }
-                    }
-            
-                    .padding()
-            
-                    NavigationLink(destination: ContentView()) {
-                        Text("Agregar al carrito")
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
-                    .padding(.top,20)
-            
-                    .padding()
+                                       cartManager: cartManager,
+                                       navigateToContentView: $navigateToContentView
+                    )
+       
+       
                 }
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            dismiss()
-                        } label: {
-                            HStack {
-                                Image(systemName: "chevron.backward")
-                                Text("Frappes")
-                            }
-                        }
+                        NavigationBackButtonView(title: "Frappes")
                     }
                 }
             }
-        .pinkCakeBackground()
-
+            .pinkCakeBackground()
+            .navigationDestination(isPresented: $navigateToContentView) {
+                ContentView()
+            }
         }
     }
     
+    // MARK - Product Image
     private func increaseQuantity(for extra: Frappe.Extra) {
         let currentQuantity = selectedExtras[extra, default: 0]
         if currentQuantity < 3 {
@@ -131,19 +64,64 @@ struct FrappeDetailsView: View {
         }
     }
     
-    private func decreaseQuantity(for extra : Frappe.Extra ) {
+    private func decreaseQuantity(for extra: Frappe.Extra) {
         if let currentQuantity = selectedExtras[extra], currentQuantity > 0 {
-            return selectedExtras [extra , default : 0] -= 1
-            
+            selectedExtras[extra] = currentQuantity - 1
         }
-        
     }
 }
 
+
+// Function to show all the extras in frappes details view
+private extension FrappeDetailsView {
+    func extrasList() -> some View {
+        VStack(alignment: .leading) {
+            // Showing extras
+            Text("Elige tus extras")
+                .font(.headline)
+            Divider()
+
+            VStack(alignment: .leading) {
+                ForEach(extra) { extra in
+                    HStack(spacing: 10) {
+                        Text(extra.name)
+                            .frame(width: 150, alignment: .leading)
+
+                        Spacer()
+
+                        Text(extra.price)
+                            .frame(width: 70, alignment: .trailing)
+
+                        Spacer()
+
+                     
+                        // Plus Button to add more extras
+                        PlusButtonView(action: {
+                            increaseQuantity(for: extra)}
+                        )
+                        
+                        Text("\(selectedExtras[extra] ?? 0)")
+                            .textItemsStyleModifier()
+
+
+                        MinusButtonView(action:   {                                    decreaseQuantity(for:extra)}
+                        )
+                    }
+                    Divider()
+                        .padding(.vertical, 5)
+                }
+            }
+        }
+        .padding()
+    }
+}
 #Preview {
     let frappes: [Frappe] = Bundle.main.decode("frappes.json")
+    let cartManager = CartManager()
+
     if let frappe = frappes.first(where: { $0.id == "coffee" }) {
         return FrappeDetailsView(frappe: frappe, extra: frappe.extras)
+            .environmentObject(cartManager) 
     } else {
         return Text("Frappe not found")
     }

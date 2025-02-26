@@ -15,7 +15,6 @@ struct BarraDeCafeView: View {
     ]
     
     var body: some View {
-        NavigationStack {
             ScrollView {
                 VStack {
                     VStack(alignment: .leading) {
@@ -50,7 +49,7 @@ struct BarraDeCafeView: View {
             }
             //
             .pinkCakeBackground()
-        }
+        
     }
 }
 

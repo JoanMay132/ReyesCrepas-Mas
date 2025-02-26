@@ -24,6 +24,10 @@ struct ProductImagesModifier: ViewModifier {
 extension Image {
     func productImageStyle() -> some View {
         self.resizable().modifier(ProductImagesModifier())
+        
+    }
+    func productImageDetailsViewStyle() -> some View {
+        self.resizable().modifier(ProductImagesDetailsViewStyle())
     }
 }
 
@@ -35,6 +39,14 @@ struct ShapeProductModifier : ViewModifier {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(.yellowBackground)
             )
+    }
+}
+
+struct ProductImagesDetailsViewStyle : ViewModifier {
+    func body(content: Content ) -> some View {
+        content
+            .frame(width: 350, height: 400)
+            .scaledToFit()
     }
 }
 

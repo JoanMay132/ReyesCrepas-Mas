@@ -14,86 +14,75 @@ struct TapiocaView: View {
     ]
     
     var body: some View {
-        NavigationStack {
             ScrollView {
                 VStack{
-                    VStack(alignment: .leading) {
-                      
-                 
-                        Text("Tapiocas base agua")
-                            .productTitleStyleModifier()
-
-                    }
-                    
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack {
-                            if let waterBasedTapiocas = tapiocas.first(where : {$0.id == "water_based"}) {
-                                ForEach(waterBasedTapiocas.tapioca_drinks) { drink in
-                                    NavigationLink {
-                                        TapiocaDetailsView(tapioca: waterBasedTapiocas, tapiocaDrink: drink, tapiocaSize: drink.size)
-                                    } label: {
-                                        VStack {
-                                            Image(drink.name)
-                                                .productImageStyle()
-                                            
-                                            VStack(alignment : .leading ) {
-                                                Text(drink.name)
-                                                    .font(.headline)
-                                                    .foregroundStyle(.black)
-                                            }
-                                            .productStyleVStack()
-                                        }
-                                        .paddingProductList()
-                                    }
-                                    .shapeProduct()
-                       
-                                }
-                            }
-
-                        }
-               
-
-                        .padding(.horizontal)
-                    }
+                   // Method to show Water Tapiocas
+                    waterTapiocasSection()
+                    milkTapiocasSection()
                 
-                    VStack(alignment: .leading) {
-                        Text("Tapiocas base leche")
-                            .productTitleStyleModifier()
+         
+                }
+            }
+            .pinkCakeBackground()
+    }
+}
 
-                    }
-                    .padding(.horizontal)
-                    VStack {
-                        LazyVGrid(columns: columns) {
-                            
-                            ForEach(tapiocas) { tapioca in
-                                ForEach(tapioca.tapioca_drinks) { drink in
-                                    NavigationLink {
-                                        TapiocaDetailsView(tapioca: tapioca, tapiocaDrink: drink, tapiocaSize: drink.size)
+private extension TapiocaView {
+    func waterTapiocasSection() -> some View {
+        VStack(alignment: .leading) {
+            Text("Tapiocas base agua")
+                .productTitleStyleModifier()
+                .padding(.horizontal)
 
-                                    } label: {
-                                        VStack {
-                                            Image(drink.name)  //
-                                                .productImageStyle()
-                                            
-                                            VStack {
-                                                Text(drink.name)
-                                                    .font(.headline)
-                                                    .foregroundStyle(.black)
-                                            }
-                                            .productStyleVStack()
-                                        }
-                                    }
-                                    .shapeProduct()
-                                }
-                            }
-                            .paddingProductList()
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    if let waterBasedTapiocas = tapiocas.first(where: { $0.id == "water_based" }) {
+                        ForEach(waterBasedTapiocas.tapioca_drinks) { drink in
+                            tapiocaCard(for: drink, in: waterBasedTapiocas)
                         }
                     }
                 }
+                .padding(.horizontal)
             }
-//            .navigationTitle("Tapiocas")
-            .pinkCakeBackground()
         }
+    }
+
+    func milkTapiocasSection() -> some View {
+        VStack(alignment: .leading) {
+            Text("Tapiocas base leche")
+                .productTitleStyleModifier()
+                .padding(.horizontal)
+
+            LazyVGrid(columns: columns, spacing: 16) {
+                ForEach(tapiocas) { tapioca in
+                    ForEach(tapioca.tapioca_drinks) { drink in
+                        tapiocaCard(for: drink, in: tapioca)
+                    }
+                }
+            }
+            .padding(.horizontal)
+        }
+    }
+
+    
+    func tapiocaCard(for drink: Tapioca.TapiocaDrinks, in tapioca: Tapioca) -> some View {
+        NavigationLink {
+            TapiocaDetailsView(tapioca: tapioca, tapiocaDrink: drink, tapiocaSize: drink.size)
+        } label: {
+            VStack {
+                Image(drink.id)
+                    .productImageStyle()
+
+                VStack {
+                    Text(drink.name)
+                        .font(.headline)
+                        .foregroundStyle(.black)
+                }
+                .productStyleVStack()
+            }
+            .paddingProductList()
+        }
+        .shapeProduct()
     }
 }
 

@@ -13,7 +13,6 @@ struct FrappeView: View {
     ]
     
     var body: some View {
-        NavigationStack {
             ScrollView {
                 VStack {
                     VStack(alignment: .leading) {
@@ -24,11 +23,11 @@ struct FrappeView: View {
                     LazyVGrid(columns: columns) {
                         ForEach(frappes) { frappe in
                             NavigationLink {
-                                // Asegúrate de pasar los extras correctamente
+                                
                                 FrappeDetailsView(frappe: frappe, extra: frappe.extras)
                             } label: {
                                 VStack {
-                                    Image(frappe.name)
+                                    Image(frappe.id)
                                         .productImageStyle()
                                     
                                     VStack {
@@ -47,7 +46,7 @@ struct FrappeView: View {
             }
 //            .navigationTitle("Frappes")
             .pinkCakeBackground()
-        }
+        
     }
 }
 

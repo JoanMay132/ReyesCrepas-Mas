@@ -13,7 +13,6 @@ struct TallarinesView: View {
         GridItem(.adaptive(minimum: 150))
     ]
     var body: some View {
-        NavigationStack {
             ScrollView {
                 VStack {
                     VStack(alignment: .leading) {
@@ -28,7 +27,7 @@ struct TallarinesView: View {
                                 TallarinesDetailsView(tallarines : tallarin)
                             } label: {
                                 VStack {
-                                    Image(tallarin.name)
+                                    Image(tallarin.id)
                                         .productImageStyle()
                                     
                                     VStack {
@@ -47,7 +46,7 @@ struct TallarinesView: View {
                 }
             }
             .pinkCakeBackground()
-        }
+        
     }
 
 }
