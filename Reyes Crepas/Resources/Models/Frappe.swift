@@ -5,8 +5,8 @@
 //  Created by Joan May on 21/12/24.
 //
 
-import Foundation
 
+import Foundation
 
 struct Frappe: Identifiable, Codable, Hashable {
     
@@ -21,9 +21,10 @@ struct Frappe: Identifiable, Codable, Hashable {
     let price: String
     let extras: [Extra]
     
-    var image : String {
-        "\(name)"
+    var image: String {
+        name
     }
 }
+
 
 

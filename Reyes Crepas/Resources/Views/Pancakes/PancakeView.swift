@@ -25,7 +25,7 @@ struct PancakesView: View {
                     LazyVGrid(columns: columns) {
                         ForEach(pancakes) { pancake in
                             NavigationLink {
-                                Text("Detalles de \(pancake.name)")
+                                PancakesDetailsView(pancake: pancake)
                             } label: {
                                 VStack {
                                     Image(pancake.name)
