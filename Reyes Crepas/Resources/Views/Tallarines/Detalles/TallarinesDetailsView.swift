@@ -11,7 +11,6 @@ struct TallarinesDetailsView: View {
     var tallarines: Tallarines
     @EnvironmentObject var cartManager: CartManager
     @State private var navigateToContentView = false
-    @Environment(\.dismiss) private var dismiss
     @State private var selectedQuantity: [Tallarines: Int] = [:]
 
     var body: some View {
@@ -77,7 +76,7 @@ private extension TallarinesDetailsView {
 // MARK: - 🔼  Increase Tallarines Quantity
 private extension TallarinesDetailsView {
     func increaseQuantity(for tallarines: Tallarines) {
-        let currentQuantity = selectedQuantity[tallarines, default: 0]
+        let currentQuantity = selectedQuantity[tallarines, default: 1]
         if currentQuantity < 20 {
             selectedQuantity[tallarines] = currentQuantity + 1
         }
@@ -87,7 +86,7 @@ private extension TallarinesDetailsView {
 // MARK: - 🔽 Decrease Tallarines Quantity
 private extension TallarinesDetailsView {
     func decreaseQuantity(for tallarines: Tallarines) {
-        if let currentQuantity = selectedQuantity[tallarines], currentQuantity > 0 {
+        if let currentQuantity = selectedQuantity[tallarines], currentQuantity > 1 {
             selectedQuantity[tallarines] = currentQuantity - 1
         }
     }

@@ -8,106 +8,91 @@
 import SwiftUI
 
 struct PancakesDetailsView: View {
-    let pancake: Pancake
-    @Environment(\.dismiss) private var dismiss
-    @State private var selectedQuantity: Int = 0
-    
+    var pancake: Pancake
+    @State private var selectedQuantity: [Pancake: Int] = [:]
+    @EnvironmentObject var cartManager: CartManager
+    @State private var navigateToContentView = false
+
+
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    VStack {
-                        Image(pancake.name)
-                            .resizable()
-                            .frame(width: 350, height: 400)
-                            .scaledToFit()
-                    }
-                    .shapeProduct()
-                    
-                    VStack {
-                        Text(pancake.name)
-                            .font(.title.bold())
-                            .frame(maxWidth: .infinity, alignment: .leading)
-        
-                        Text(pancake.price)
-                            .font(.subheadline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Divider()
-                        Text(pancake.description)
-                            .font(.subheadline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .padding(.horizontal)
-                    .productStyleVStack()
+                    ProductDetailsView(productID: pancake.id,productName: pancake.name, productPrice: pancake.price, productDescription: pancake.description)
                     
                     // Información sobre el pancake (sin extras)
-                    VStack {
-                        Text("¿Cuántos pancakes desea?")
-                            .font(.headline)
-                        Divider()
-            
-                        HStack(spacing: 10) {
-                            Button(action: {
-                                increaseQuantity()
-                            }) {
-                                Image(systemName: "plus.circle.fill")
-                                    .font(.system(size: 20))
-                                    .foregroundColor(.black)
-                            }
-                            
-                            Text("\(selectedQuantity)")
-                                .font(.body)
-                                .frame(width: 30)
-                            
-                            Button(action: {
-                                decreaseQuantity()
-                            }) {
-                                Image(systemName: "minus.circle.fill")
-                                    .font(.system(size: 20))
-                                    .foregroundColor(.black)
-                            }
-                        }
-                    }
-                    .padding()
+                    quantitySelector()
                     
-                    NavigationLink(destination: ContentView()) {
-                        Text("Agregar al carrito")
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
-                    .padding(.top, 20)
-                    .padding()
+                    AddToCartButtonView(
+                        productName: "Pancake de \(pancake.name)",
+                        productPrice: pancake.price,
+                        itemsQuantity: selectedQuantity.isEmpty ? [] : [
+                            ItemsQuantity(name: pancake.name, price: pancake.price, quantity: selectedQuantity[pancake] ?? 1)],
+                        extras : [],
+                        cartManager: cartManager,
+                        navigateToContentView: $navigateToContentView
+                    )
                 }
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            dismiss()
-                        } label: {
-                            HStack {
-                                Image(systemName: "chevron.backward")
-                                Text("Pancakes")
-                            }
-                        }
+                        NavigationBackButtonView(title : "Pancakes")
+
                     }
                 }
             }
             .pinkCakeBackground()
+            .navigationDestination(isPresented: $navigateToContentView) {
+                ContentView()
+            }
         }
     }
     
-    private func increaseQuantity() {
-        if selectedQuantity < 10 { // Puedes establecer un límite si lo deseas
-            selectedQuantity += 1
+
+    
+
+}
+
+
+// MARK: - 🔢 Select quantity
+private extension PancakesDetailsView {
+    func quantitySelector() -> some View {
+        VStack(alignment: .leading) {
+            HStack(spacing: 10) {
+                Text("¿Cuántos pancakes desea?")
+
+                // Plus Button to add more items to our cart
+                PlusButtonView(action: { increaseQuantity(for: pancake) })
+           
+
+                Text("\(selectedQuantity[pancake] ?? 1)")
+                    .textItemsStyleModifier()
+                
+                MinusButtonView(action: { decreaseQuantity(for: pancake) })
+
+            }
+            .padding()
         }
     }
-    
-    private func decreaseQuantity() {
-        if selectedQuantity > 0 {
-            selectedQuantity -= 1
+}
+
+
+
+// MARK: - 🔼  Increase Pancakes Quantity
+
+private extension PancakesDetailsView {
+    func increaseQuantity(for pancake: Pancake) {
+        let currentQuantity = selectedQuantity[pancake, default: 1]
+        if currentQuantity < 20 {
+            selectedQuantity[pancake] = currentQuantity + 1
+        }
+    }
+}
+// MARK: - 🔽 Decrease Tallarines Quantity
+private extension PancakesDetailsView {
+    func decreaseQuantity(for pancake: Pancake) {
+        if let currentQuantity = selectedQuantity[pancake], currentQuantity > 1 {
+            selectedQuantity[pancake] = currentQuantity - 1
         }
     }
 }
@@ -116,6 +101,7 @@ struct PancakesDetailsView: View {
     let pancakes: [Pancake] = Bundle.main.decode("pancakes.json")
     if let pancake = pancakes.first(where: { $0.id == "tocineta_pancake" }) {
         return PancakesDetailsView(pancake: pancake)
+            .environmentObject(CartManager())
     } else {
         return Text("Pancake not found")
     }
