@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var productViewModel = ProductViewModel() // Inicializamos el ProductViewModel
+    @StateObject var productViewModel = ProductViewModel() // productViewModel initializer
     let frappes: [Frappe] = Bundle.main.decode("frappes.json")
     let tapiocas: [Tapioca] = Bundle.main.decode("tapiocas.json")
     let pancakes: [Pancake] = Bundle.main.decode("pancakes.json")
@@ -20,14 +20,14 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            // Esperamos a que los productos se carguen desde Firestore
+            // Loading products from firestore
             if productViewModel.products.isEmpty {
-                ProgressView() // Muestra un indicador de carga mientras se obtienen los productos
+                ProgressView() // Loader
                     .progressViewStyle(CircularProgressViewStyle())
                     .padding()
             } else {
                 GridProductsLayout(
-                    products: productViewModel.products, // Usamos los productos cargados desde Firestore
+                    products: productViewModel.products, // Products loaded from firestore
                     frappes: frappes,
                     tapiocas: tapiocas,
                     pancakes: pancakes,
@@ -56,7 +56,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            productViewModel.fetchProducts() // Cargamos los productos de Firestore cuando la vista aparece
+            productViewModel.fetchProducts() // loading products from firestore
         }
     }
 }

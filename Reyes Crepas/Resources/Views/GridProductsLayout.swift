@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GridProductsLayout: View {
-    let products: [Product]  // Este es el parámetro que esperas pasar
+    let products: [Product]  
     let frappes: [Frappe]
     let tapiocas: [Tapioca]
     let pancakes: [Pancake]
