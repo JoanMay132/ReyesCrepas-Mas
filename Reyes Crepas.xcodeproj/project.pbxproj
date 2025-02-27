@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		88076D992D6F9DA600EBDE66 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 88076D982D6F9DA600EBDE66 /* FirebaseAnalytics */; };
+		88076D9B2D6F9DA600EBDE66 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 88076D9A2D6F9DA600EBDE66 /* FirebaseAuth */; };
+		88076D9D2D6F9DA600EBDE66 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 88076D9C2D6F9DA600EBDE66 /* FirebaseCore */; };
+		88076D9F2D6F9DA600EBDE66 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 88076D9E2D6F9DA600EBDE66 /* FirebaseDatabase */; };
+		88076DA32D6FB0B200EBDE66 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 88076DA22D6FB0B200EBDE66 /* FirebaseFirestore */; };
+		88076DA52D6FB19300EBDE66 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 88076DA42D6FB19300EBDE66 /* FirebaseAnalyticsOnDeviceConversion */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		88A353522D16098400A50E0F /* Reyes Crepas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reyes Crepas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -39,6 +48,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88076D992D6F9DA600EBDE66 /* FirebaseAnalytics in Frameworks */,
+				88076DA52D6FB19300EBDE66 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				88076D9D2D6F9DA600EBDE66 /* FirebaseCore in Frameworks */,
+				88076D9F2D6F9DA600EBDE66 /* FirebaseDatabase in Frameworks */,
+				88076DA32D6FB0B200EBDE66 /* FirebaseFirestore in Frameworks */,
+				88076D9B2D6F9DA600EBDE66 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +96,12 @@
 			);
 			name = "Reyes Crepas";
 			packageProductDependencies = (
+				88076D982D6F9DA600EBDE66 /* FirebaseAnalytics */,
+				88076D9A2D6F9DA600EBDE66 /* FirebaseAuth */,
+				88076D9C2D6F9DA600EBDE66 /* FirebaseCore */,
+				88076D9E2D6F9DA600EBDE66 /* FirebaseDatabase */,
+				88076DA22D6FB0B200EBDE66 /* FirebaseFirestore */,
+				88076DA42D6FB19300EBDE66 /* FirebaseAnalyticsOnDeviceConversion */,
 			);
 			productName = "ReyesCrepas&Mas";
 			productReference = 88A353522D16098400A50E0F /* Reyes Crepas.app */;
@@ -111,7 +132,7 @@
 			mainGroup = 88A353492D16098400A50E0F;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				88C22D142D66ECE300BCE150 /* XCRemoteSwiftPackageReference "google-maps-ios-utils" */,
+				88076D972D6F9DA600EBDE66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 88A353532D16098400A50E0F /* Products */;
@@ -345,15 +366,48 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		88C22D142D66ECE300BCE150 /* XCRemoteSwiftPackageReference "google-maps-ios-utils" */ = {
+		88076D972D6F9DA600EBDE66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/googlemaps/google-maps-ios-utils.git";
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 11.9.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		88076D982D6F9DA600EBDE66 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88076D972D6F9DA600EBDE66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		88076D9A2D6F9DA600EBDE66 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88076D972D6F9DA600EBDE66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		88076D9C2D6F9DA600EBDE66 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88076D972D6F9DA600EBDE66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		88076D9E2D6F9DA600EBDE66 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88076D972D6F9DA600EBDE66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		88076DA22D6FB0B200EBDE66 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88076D972D6F9DA600EBDE66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		88076DA42D6FB19300EBDE66 /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88076D972D6F9DA600EBDE66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 88A3534A2D16098400A50E0F /* Project object */;
 }

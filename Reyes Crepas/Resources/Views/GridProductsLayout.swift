@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct GridProductsLayout: View {
-    let products: [Product]
-    let frappes: [Frappe]  // Asegúrate de pasar esta variable al inicializar la vista
-    let tapiocas : [Tapioca]
-    let pancakes : [Pancake]
-    let crepas : [Crepas]
-    let tallarines : [Tallarines]
-    let barraDeCafe : [BarraDeCafe]
+    let products: [Product]  // Este es el parámetro que esperas pasar
+    let frappes: [Frappe]
+    let tapiocas: [Tapioca]
+    let pancakes: [Pancake]
+    let crepas: [Crepas]
+    let barraDeCafe: [BarraDeCafe]
+    let tallarines: [Tallarines]
     
     let columns = [
         GridItem(.adaptive(minimum: 150))
@@ -18,52 +18,46 @@ struct GridProductsLayout: View {
             LazyVGrid(columns: columns) {
                 ForEach(products) { product in
                     NavigationLink {
-                        
-                        destinationProduct(for: product, frappes: frappes, tapiocas: tapiocas, pancakes : pancakes, crepas: crepas, barraDeCafe: barraDeCafe, tallarines : tallarines)
-                        
-                    } label : {
+                        destinationProduct(for: product, frappes: frappes, tapiocas: tapiocas, pancakes: pancakes, crepas: crepas, barraDeCafe: barraDeCafe, tallarines: tallarines)
+                    } label: {
                         VStack {
                             Image(product.image)
                                 .productImageStyle()
-                            
                             VStack {
-                                Text(product.productType)
+                                Text(product.productType.rawValue)
                                     .productTextStyleModifier()
                             }
                             .productStyleVStack()
                         }
                         .shapeProduct()
-                        
                     }
                 }
             }
             .paddingProductList()
-            
-            
         }
         .navigationBarBackButtonHidden(true)
         .navigationTitle("Reyes Crepas y Más")
         .pinkCakeBackground()
-        
     }
 }
 
 #Preview {
-    let products: [Product] = Bundle.main.decode("products.json")
-    let frappes: [Frappe] = Bundle.main.decode("frappes.json")
-    let tapiocas: [Tapioca] = Bundle.main.decode("tapiocas.json")
-    let pancakes: [Pancake] = Bundle.main.decode("pancakes.json")
-    let crepas: [Crepas] = Bundle.main.decode("crepas.json")
-    let tallarines: [Tallarines] = Bundle.main.decode("tallarines.json")
-    let barraDeCafe: [BarraDeCafe] = Bundle.main.decode("barra.json")
+    let sampleProducts: [Product] = [
+        Product(id: "1", product_id: 1, productType: .frappe),
+        Product(id: "2", product_id: 2, productType: .tapiocas),
+        Product(id: "3", product_id: 3, productType: .pancakes),
+        Product(id: "4", product_id: 4, productType: .crepas),
+        Product(id: "5", product_id: 5, productType: .barraDeCafe),
+        Product(id: "6", product_id: 6, productType: .tallarines)
+    ]
     
     GridProductsLayout(
-        products: products,
-        frappes: frappes,
-        tapiocas: tapiocas,
-        pancakes: pancakes,
-        crepas: crepas,
-        tallarines: tallarines,
-        barraDeCafe: barraDeCafe
+        products: sampleProducts,
+        frappes: [],
+        tapiocas: [],
+        pancakes: [],
+        crepas: [],
+        barraDeCafe: [],
+        tallarines: []
     )
 }
