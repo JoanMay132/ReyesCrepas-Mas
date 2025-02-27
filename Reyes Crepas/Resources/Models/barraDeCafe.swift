@@ -17,9 +17,9 @@ struct BarraDeCafe: Identifiable, Codable, Hashable {
     let id: String
     let name: String
     let price: String
+    let extras: [Extra]
     
-    
-    var image : String {
-        "\(name)"
+    var image: String {
+        name
     }
 }

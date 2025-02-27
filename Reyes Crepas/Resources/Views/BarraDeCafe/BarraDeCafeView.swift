@@ -26,7 +26,7 @@ struct BarraDeCafeView: View {
                     LazyVGrid(columns: columns) {
                         ForEach(barraDeCafe) { barra in
                             NavigationLink {
-                                Text("Detalles de \(barra.name)")
+                                BarraDeCafeDetailsView(barraDeCafe: barra, extra: barra.extras)
                             } label: {
                                 VStack {
                                     Image(barra.name)
