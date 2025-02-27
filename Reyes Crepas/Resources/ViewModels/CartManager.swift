@@ -12,20 +12,20 @@ class CartManager: ObservableObject {
 
     
     
-    // Obtener el total de los items
+    // Get total of items
     var totalItems: Int {
         items.reduce(0) { sum, item in
             sum + item.quantity
         }
     }
 
-    // Función para agregar un item al carrito
-    // Función para agregar un item al carrito
+
+    // Add item to basket function
     func addItem(
         productName: String,
         productPrice: String,
         itemsQuantity: [ItemsQuantity],
-        extras: [Extras]? = nil,  // Parámetro opcional
+        extras: [Extras]? = nil,  // Optional
         productType: String? = nil,
         productSize: String? = nil,
         quantity: Int = 1
@@ -42,7 +42,7 @@ class CartManager: ObservableObject {
             // Si existe, solo se incrementa la cantidad
             items[index].quantity += quantity
         } else {
-            // Si no existe, se agrega un nuevo item al carrito
+            // If does not exist, add a new one
             let newItem = CartItem(
                 name: productName,
                 price: productPrice,
@@ -63,13 +63,13 @@ class CartManager: ObservableObject {
         }
     }
 
-    // Función para calcular el total de todos los items en el carrito
+    // function to calculate all the items and extras of your basket
     func calculateTotal() -> String {
         let total = items.reduce(0) { sum, item in
             let itemPrice = Double(item.price.replacingOccurrences(of: "$", with: "")) ?? 0
             let itemTotal = itemPrice * Double(item.quantity)
 
-            // Calcula el total de los extras
+            // Get total amount of extras
             let extrasTotal = item.extras?.reduce(0) { extraSum, extra in
                 let extraPrice = Double(extra.price.replacingOccurrences(of: "$", with: "")) ?? 0
                 return extraSum + (extraPrice * Double(extra.quantity))
