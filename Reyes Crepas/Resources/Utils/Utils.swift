@@ -11,7 +11,7 @@ import SwiftUI
 
 func destinationProduct(for product : Product, frappes : [Frappe], tapiocas : [Tapioca], pancakes : [Pancake], crepas: [Crepas], barraDeCafe : [BarraDeCafe], tallarines : [Tallarines]) -> AnyView {
 
-    switch ProductTypes(rawValue : product.productType){
+    switch ProductTypes(rawValue : product.productType.rawValue){
     case .frappe :
         return AnyView(FrappeView(frappes: frappes))
     case .tapiocas :

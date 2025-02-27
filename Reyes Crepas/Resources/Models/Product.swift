@@ -6,9 +6,10 @@
 //
 
 import Foundation
-import SwiftUI
+import Firebase
+import FirebaseFirestore
 
-// Enum of ProductType
+// Enum de tipos de productos
 enum ProductTypes: String, Codable {
     case frappe = "Frappes"
     case tapiocas = "Tapiocas"
@@ -16,21 +17,20 @@ enum ProductTypes: String, Codable {
     case crepas = "Crepas"
     case barraDeCafe = "Barra de Café"
     case tallarines = "Tallarines"
-//    case otro = "Otro"
 }
 
 struct Product: Codable, Identifiable, Hashable {
-    let id: Int
-    let productType: String
+    @DocumentID var id: String?        // El ID se obtiene de Firestore
+    let product_id: Int             // El ID del producto desde Firestore
+    let productType: ProductTypes      // Tipo de producto (Frappes, Tapiocas, etc.)
     
+    // Computed property para mostrar el nombre del producto
     var displayName: String {
-        productType
+        return productType.rawValue
     }
     
+    // Computed property para usar el tipo de producto como nombre de imagen
     var image: String {
-        return productType
+        return productType.rawValue
     }
 }
-
-
- 
