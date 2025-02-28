@@ -16,7 +16,7 @@ class TallarinesViewModel: ObservableObject {
     
     // Función para obtener productos desde Firestore
     func fetchProducts() {
-        db.collection("tallarines").getDocuments { snapshot, error in
+        db.collection("tallarines").addSnapshotListener { snapshot, error in
             if let error = error {
                 print("Error al obtener productos: \(error)")
                 return
