@@ -18,7 +18,7 @@ struct PancakesDetailsView: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    ProductDetailsView(productID: pancake.id,productName: pancake.name, productPrice: pancake.price, productDescription: pancake.description)
+                    ProductDetailsView(productImageName: pancake.name, productName: pancake.name, productPrice: pancake.price, productDescription: pancake.description)
                     
                     // Información sobre el pancake (sin extras)
                     quantitySelector()
@@ -98,11 +98,10 @@ private extension PancakesDetailsView {
 }
 
 #Preview {
-    let pancakes: [Pancake] = Bundle.main.decode("pancakes.json")
-    if let pancake = pancakes.first(where: { $0.id == "tocineta_pancake" }) {
-        return PancakesDetailsView(pancake: pancake)
-            .environmentObject(CartManager())
-    } else {
-        return Text("Pancake not found")
-    }
+    let pancake = Pancake(id: "1", name: "Panchito", price: "$12.00", description: "Delicioso panchito")
+    
+     PancakesDetailsView(pancake: pancake)
+        .environmentObject(CartManager())
+
+    
 }

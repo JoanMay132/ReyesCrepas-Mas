@@ -8,22 +8,26 @@
 import SwiftUI
 
 struct TapiocaView: View {
-    let tapiocas: [Tapioca]
+    @StateObject private var viewModel = TapiocaViewModel()  // Usando el ViewModel para obtener datos
+    
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
     
     var body: some View {
-            ScrollView {
-                VStack{
-                   // Method to show Water Tapiocas
-                    waterTapiocasSection()
-                    milkTapiocasSection()
+        ScrollView {
+            VStack {
+                // Método para mostrar Tapiocas base agua
+                waterTapiocasSection()
                 
-         
-                }
+                // Método para mostrar Tapiocas base leche
+                milkTapiocasSection()
             }
-            .pinkCakeBackground()
+        }
+        .pinkCakeBackground()
+        .onAppear {
+            viewModel.fetchProducts() // Llama a la función para cargar los datos
+        }
     }
 }
 
@@ -33,12 +37,12 @@ private extension TapiocaView {
             Text("Tapiocas base agua")
                 .productTitleStyleModifier()
                 .padding(.horizontal)
-
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    if let waterBasedTapiocas = tapiocas.first(where: { $0.id == "water_based" }) {
-                        ForEach(waterBasedTapiocas.tapioca_drinks) { drink in
-                            tapiocaCard(for: drink, in: waterBasedTapiocas)
+                    ForEach(viewModel.tapiocas.filter { $0.id == "water_based" }) { waterBasedTapioca in
+                        ForEach(waterBasedTapioca.tapioca_drinks) { drink in
+                            tapiocaCard(for: drink, in: waterBasedTapioca)
                         }
                     }
                 }
@@ -46,15 +50,15 @@ private extension TapiocaView {
             }
         }
     }
-
+    
     func milkTapiocasSection() -> some View {
         VStack(alignment: .leading) {
             Text("Tapiocas base leche")
                 .productTitleStyleModifier()
                 .padding(.horizontal)
-
+            
             LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(tapiocas) { tapioca in
+                ForEach(viewModel.tapiocas) { tapioca in
                     ForEach(tapioca.tapioca_drinks) { drink in
                         tapiocaCard(for: drink, in: tapioca)
                     }
@@ -63,7 +67,6 @@ private extension TapiocaView {
             .padding(.horizontal)
         }
     }
-
     
     func tapiocaCard(for drink: Tapioca.TapiocaDrinks, in tapioca: Tapioca) -> some View {
         NavigationLink {
@@ -72,7 +75,7 @@ private extension TapiocaView {
             VStack {
                 Image(drink.id)
                     .productImageStyle()
-
+                
                 VStack {
                     Text(drink.name)
                         .font(.headline)
@@ -85,8 +88,7 @@ private extension TapiocaView {
         .shapeProduct()
     }
 }
-
 #Preview {
-    let tapiocas: [Tapioca] = Bundle.main.decode("tapiocas.json")
-    return TapiocaView(tapiocas: tapiocas)
+    TapiocaView()
+        .environmentObject(TapiocaViewModel()) // Asignar un ViewModel de prueba
 }

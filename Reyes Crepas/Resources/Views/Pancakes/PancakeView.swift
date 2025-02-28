@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PancakesView: View {
-    let pancakes: [Pancake]
+    @StateObject private var pancakeViewModel = PancakeViewModel()
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
@@ -23,12 +23,12 @@ struct PancakesView: View {
                     }
 
                     LazyVGrid(columns: columns) {
-                        ForEach(pancakes) { pancake in
+                        ForEach(pancakeViewModel.pancakes) { pancake in
                             NavigationLink {
                                 PancakesDetailsView(pancake: pancake)
                             } label: {
                                 VStack {
-                                    Image(pancake.name)
+                                    Image(pancake.imageName)
                                         .productImageStyle()
                                      
                                     VStack {
@@ -45,16 +45,17 @@ struct PancakesView: View {
                 }
             }
             //
+            .onAppear {
+                pancakeViewModel.fetchProducts()
+            }
             .pinkCakeBackground()
     }
 }
 
 #Preview {
-    // Decodifica el JSON de frappes
-    let pancakes: [Pancake] = Bundle.main.decode("pancakes.json")
     
     // Retorna la vista FrappeView con los frappes
-    return PancakesView(pancakes: pancakes)
+    PancakesView()
 }
 
 

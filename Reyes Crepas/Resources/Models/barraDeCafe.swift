@@ -5,7 +5,8 @@
 //  Created by David Chong on 1/27/25.
 //
 import Foundation
-
+import Firebase
+import FirebaseFirestore
 struct BarraDeCafe: Identifiable, Codable, Hashable {
     
     struct Extra: Identifiable, Codable, Hashable {
@@ -14,12 +15,12 @@ struct BarraDeCafe: Identifiable, Codable, Hashable {
         let price: String
     }
     
-    let id: String
+    @DocumentID var id: String?
     let name: String
     let price: String
     let extras: [Extra]
     
-    var image: String {
+    var imageName: String {
         name
     }
 }

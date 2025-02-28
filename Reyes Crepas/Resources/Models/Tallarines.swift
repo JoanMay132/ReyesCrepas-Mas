@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseFirestore
 struct Tallarines : Codable, Hashable, Identifiable, Equatable {
     
-    let id : String
+    @DocumentID var id : String?
     let name : String
     let price : String
     let description : String
     
-    var image : String {
-        return "tallarines_\(id)"
+    var imageName : String {
+        return name
     }
 }

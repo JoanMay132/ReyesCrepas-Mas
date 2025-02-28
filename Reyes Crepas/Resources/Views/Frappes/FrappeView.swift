@@ -7,27 +7,34 @@
 import SwiftUI
 
 struct FrappeView: View {
-    let frappes: [Frappe]
+    @StateObject private var frappeViewModel = FrappeViewModel()  // Instancia de ViewModel
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
     
     var body: some View {
-            ScrollView {
-                VStack {
-                    VStack(alignment: .leading) {
-                        Text("Frappes")
-                            .productTitleStyleModifier()
-                    }
-
+        ScrollView {
+            VStack {
+                VStack(alignment: .leading) {
+                    Text("Frappes")
+                        .productTitleStyleModifier()
+                }
+                
+                // Si los frappes están vacíos, muestra un indicador de carga
+                if frappeViewModel.frappes.isEmpty {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .padding()
+                } else {
                     LazyVGrid(columns: columns) {
-                        ForEach(frappes) { frappe in
+                        ForEach(frappeViewModel.frappes) { frappe in
                             NavigationLink {
-                                
                                 FrappeDetailsView(frappe: frappe, extra: frappe.extras)
+
                             } label: {
                                 VStack {
-                                    Image(frappe.id)
+                                    // Aquí puedes agregar la imagen si la tienes en Firestore
+                                    Image(frappe.image)
                                         .productImageStyle()
                                     
                                     VStack {
@@ -44,14 +51,14 @@ struct FrappeView: View {
                     }
                 }
             }
-//            .navigationTitle("Frappes")
-            .pinkCakeBackground()
-        
+        }
+        .onAppear {
+            frappeViewModel.fetchProducts() // Llama a la función para cargar los datos
+        }
+        .pinkCakeBackground()
     }
 }
 
 #Preview {
-    let frappes: [Frappe] = Bundle.main.decode("frappes.json")
-    
-    return FrappeView(frappes: frappes)
+    FrappeView()  // Aquí no necesitas pasar los frappes manualmente, ya que se cargarán desde Firestore
 }

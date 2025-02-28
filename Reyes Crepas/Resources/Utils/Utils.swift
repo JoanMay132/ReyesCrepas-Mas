@@ -13,17 +13,18 @@ func destinationProduct(for product : Product, frappes : [Frappe], tapiocas : [T
 
     switch ProductTypes(rawValue : product.productType.rawValue){
     case .frappe :
-        return AnyView(FrappeView(frappes: frappes))
+        // Aquí debes usar el ViewModel de frappes, asegurándote de que ya está cargado
+        return AnyView(FrappeView())
     case .tapiocas :
-        return AnyView(TapiocaView(tapiocas : tapiocas))
+        return AnyView(TapiocaView())
     case .pancakes :
-        return AnyView(PancakesView(pancakes : pancakes))
+        return AnyView(PancakesView())
     case .crepas :
         return AnyView(CrepasView(crepas: crepas))
     case .barraDeCafe :
-        return AnyView(BarraDeCafeView(barraDeCafe: barraDeCafe))
+        return AnyView(BarraDeCafeView())
     case .tallarines :
-        return AnyView(TallarinesView(tallarines : tallarines))
+        return AnyView(TallarinesView())
     case .none :
         return AnyView(Text("Product not found!"))
     }
