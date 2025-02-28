@@ -14,7 +14,7 @@ class FrappeViewModel: ObservableObject {
     
     // Función para obtener productos desde Firestore
     func fetchProducts() {
-        db.collection("frappes").getDocuments { snapshot, error in
+        db.collection("frappes").addSnapshotListener { snapshot, error in
             if let error = error {
                 print("Error al obtener productos: \(error)")
                 return

@@ -15,7 +15,7 @@ class PancakeViewModel: ObservableObject {
     
     // Función para obtener productos desde Firestore
     func fetchProducts() {
-        db.collection("pancakes").getDocuments { snapshot, error in
+        db.collection("pancakes").addSnapshotListener { snapshot, error in
             if let error = error {
                 print("Error al obtener productos: \(error)")
                 return
