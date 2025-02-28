@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct BarraDeCafeView: View {
-    let barraDeCafe: [BarraDeCafe]
+    @StateObject private var barraDeCafeViewModel = BarraDeCafeViewModel()
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
@@ -24,7 +24,7 @@ struct BarraDeCafeView: View {
                     }
 
                     LazyVGrid(columns: columns) {
-                        ForEach(barraDeCafe) { barra in
+                        ForEach(barraDeCafeViewModel.barraDeCafe) { barra in
                             NavigationLink {
                                 BarraDeCafeDetailsView(barraDeCafe: barra, extra: barra.extras)
                             } label: {
@@ -48,16 +48,17 @@ struct BarraDeCafeView: View {
                 }
             }
             //
+            .onAppear(){
+                barraDeCafeViewModel.fetchProducts()
+            }
             .pinkCakeBackground()
         
     }
 }
 
 #Preview {
-    // Decodifica el JSON de frappes
-    let barraDeCafe: [BarraDeCafe] = Bundle.main.decode("barra.json")
     
     // Retorna la vista FrappeView con los frappes
-    return BarraDeCafeView(barraDeCafe: barraDeCafe)
+     BarraDeCafeView()
 }
 

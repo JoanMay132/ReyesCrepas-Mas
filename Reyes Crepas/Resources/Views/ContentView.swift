@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var productViewModel = ProductViewModel() // productViewModel initializer
-    let frappes: [Frappe] = Bundle.main.decode("frappes.json")
-    let tapiocas: [Tapioca] = Bundle.main.decode("tapiocas.json")
-    let pancakes: [Pancake] = Bundle.main.decode("pancakes.json")
+    @StateObject var frappeViewModel = FrappeViewModel() // productViewModel initializer
+    @StateObject var tapiocaViewModel = TapiocaViewModel() // productViewModel initializer
+    @StateObject var tallarinesViewModel = TallarinesViewModel() // productViewModel initializer
+    @StateObject var pancakesViewModel = PancakeViewModel()
     let crepas: [Crepas] = Bundle.main.decode("crepas.json")
-    let barraDeCafe: [BarraDeCafe] = Bundle.main.decode("barra.json")
-    let tallarines: [Tallarines] = Bundle.main.decode("tallarines.json")
+    @StateObject var barraDeCafeViewModel = BarraDeCafeViewModel()
     @EnvironmentObject var cartManager: CartManager
     @AppStorage("showingGrid") private var showingGrid = true
     
@@ -28,12 +28,12 @@ struct ContentView: View {
             } else {
                 GridProductsLayout(
                     products: productViewModel.products, // Products loaded from firestore
-                    frappes: frappes,
-                    tapiocas: tapiocas,
-                    pancakes: pancakes,
+                    frappes: frappeViewModel.frappes,
+                    tapiocas: tapiocaViewModel.tapiocas,
+                    pancakes: pancakesViewModel.pancakes,
                     crepas: crepas,
-                    barraDeCafe: barraDeCafe,
-                    tallarines: tallarines
+                    barraDeCafe: barraDeCafeViewModel.barraDeCafe,
+                    tallarines: tallarinesViewModel.tallarines
                 )
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {

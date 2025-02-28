@@ -4,30 +4,27 @@
 //
 //  Created by Joan May on 28/01/25.
 //
-
 import SwiftUI
 
 struct TallarinesView: View {
-    let tallarines : [Tallarines]
+    @StateObject private var tallarinesViewModel = TallarinesViewModel()
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
+    
     var body: some View {
+        NavigationStack {
             ScrollView {
-                VStack {
-                    VStack(alignment: .leading) {
-                        Text("Tallarines")
-                            .productTitleStyleModifier()
-
-                    }
-
-                    LazyVGrid(columns: columns) {
-                        ForEach(tallarines) { tallarin in
-                            NavigationLink {
-                                TallarinesDetailsView(tallarines : tallarin)
-                            } label: {
+                VStack(alignment: .leading) {
+                    Text("Tallarines")
+                        .productTitleStyleModifier()
+                        .padding(.leading)
+                    
+                    LazyVGrid(columns: columns, spacing: 15) {
+                        ForEach(tallarinesViewModel.tallarines) { tallarin in
+                            NavigationLink(destination: TallarinesDetailsView(tallarines: tallarin)) {
                                 VStack {
-                                    Image(tallarin.id)
+                                    Image(tallarin.imageName)
                                         .productImageStyle()
                                     
                                     VStack {
@@ -40,18 +37,19 @@ struct TallarinesView: View {
                             }
                             .shapeProduct()
                         }
-                        .paddingProductList()
-                        
                     }
+                    .paddingProductList()
                 }
+                .padding(.horizontal)
+            }
+            .onAppear {
+                tallarinesViewModel.fetchProducts()
             }
             .pinkCakeBackground()
-        
+        }
     }
-
 }
 
 #Preview {
-    let tallarines : [Tallarines] = Bundle.main.decode("tallarines.json")
-    return TallarinesView(tallarines : tallarines)
+    TallarinesView()
 }

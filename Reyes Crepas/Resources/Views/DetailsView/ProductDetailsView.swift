@@ -10,13 +10,13 @@ import SwiftUI
 
 
 struct ProductDetailsView: View {
-    let productID: String
+    let productImageName: String
     let productName : String
     let productPrice : String?
     let productDescription: String?
     var body: some View {
         VStack {
-            Image(productID)
+            Image(productImageName)
                 .productImageDetailsViewStyle()
         }
         .shapeProduct()
@@ -47,5 +47,5 @@ struct ProductDetailsView: View {
 
 
 #Preview {
-    ProductDetailsView(productID: "Coco", productName: "Coco", productPrice: "12.00", productDescription: "Lorem ipsum dolor sit amet")
+    ProductDetailsView(productImageName: "Coco", productName: "Coco", productPrice: "12.00", productDescription: "Lorem ipsum dolor sit amet")
 }

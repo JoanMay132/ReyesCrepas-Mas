@@ -17,7 +17,7 @@ struct TallarinesDetailsView: View {
         ScrollView {
             VStack {
                 
-                ProductDetailsView(productID: tallarines.id,productName: tallarines.name, productPrice: tallarines.price, productDescription: tallarines.description)
+                ProductDetailsView(productImageName: tallarines.name,productName: tallarines.name, productPrice: tallarines.price, productDescription: tallarines.description)
                 
                 quantitySelector()
                 

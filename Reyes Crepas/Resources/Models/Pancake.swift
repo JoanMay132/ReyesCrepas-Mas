@@ -6,17 +6,18 @@
 //
 
 import Foundation
-
+import FirebaseFirestore
+import Firebase
 struct Pancake: Identifiable, Codable, Hashable {
     
-    let id: String
+    @DocumentID var id: String?
     let name: String
     let price: String
     let description: String
     
     
-    var image : String {
-        "\(name)"
+    var imageName : String {
+        name
     }
 }
 

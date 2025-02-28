@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import FirebaseFirestore
+
 
 struct Tapioca : Identifiable, Codable, Hashable {
-    let id : String
+    @DocumentID var id : String?
     let tapioca_type : String
     let tapioca_drinks : [TapiocaDrinks]
     

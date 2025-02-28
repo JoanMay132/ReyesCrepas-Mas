@@ -143,12 +143,10 @@ struct BarraDeCafeDetailsView: View {
 
 
 #Preview {
-    let barraDeCafe: [BarraDeCafe] = Bundle.main.decode("barra.json")
-    if let barra = barraDeCafe.first(where: { $0.id == "americano" }) {
-        return BarraDeCafeDetailsView(barraDeCafe: barra, extra: barra.extras)
-    } else {
-       return Text("Barra de Café not found")
-    }
+    let barraDeCafe = BarraDeCafe(id: "1", name: "Americano", price: "$55.00", extras: [BarraDeCafe.Extra(id: 1, name: "Crema", price: "$5.00")])
+    let extra = barraDeCafe.extras
+    return BarraDeCafeDetailsView(barraDeCafe: barraDeCafe, extra: extra)
+
 }
                                       
                                     

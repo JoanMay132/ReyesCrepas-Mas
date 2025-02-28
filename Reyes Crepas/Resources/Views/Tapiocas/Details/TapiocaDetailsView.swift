@@ -12,8 +12,8 @@ struct TapiocaDetailsView: View {
     let tapiocaSize: [Tapioca.TapiocaDrinks.DrinkSize]
     @EnvironmentObject var cartManager: CartManager
     @State private var navigateToContentView = false // Estado para controlar la navegación
-
     @State private var selectedSize: Tapioca.TapiocaDrinks.DrinkSize
+    
     init(tapioca : Tapioca, tapiocaDrink : Tapioca.TapiocaDrinks, tapiocaSize : [Tapioca.TapiocaDrinks.DrinkSize]) {
         self.tapioca = tapioca
         self.tapiocaDrink = tapiocaDrink
@@ -33,7 +33,7 @@ struct TapiocaDetailsView: View {
             ScrollView {
                 VStack {
                     // Tapioca drink image
-                    ProductDetailsView(productID: tapioca.id,productName: "Tapioca de \(tapiocaDrink.name)", productPrice: nil, productDescription: tapioca.tapioca_type)
+                    ProductDetailsView(productImageName: tapiocaDrink.name,productName: "Tapioca de \(tapiocaDrink.name)", productPrice: nil, productDescription: tapioca.tapioca_type)
                     
                     //Method to choose your tapioca Size
                     chooseYourProductSize()
@@ -86,13 +86,23 @@ private extension TapiocaDetailsView {
 }
 
 #Preview {
-    let tapiocas: [Tapioca] = Bundle.main.decode("tapiocas.json")
-    if let tapioca = tapiocas.first(where: { $0.tapioca_type == "Base leche" }),
-       let drink = tapioca.tapioca_drinks.first(where: { $0.id == "coconut" }) {
-        return TapiocaDetailsView(tapioca: tapioca, tapiocaDrink: drink, tapiocaSize: drink.size)
-            .environmentObject(CartManager())
-
-    } else {
-        return Text("Product Not Found")
-    }
+    let tapiocaDrink = Tapioca.TapiocaDrinks(
+        id: "1",
+        name: "Matcha",
+        size: [
+            Tapioca.TapiocaDrinks.DrinkSize(id: "small", type: "Pequeño", price: "12.00")
+        ]
+    )
+    
+    let tapioca = Tapioca(
+        id: "1",
+        tapioca_type: "Milk",
+        tapioca_drinks: [tapiocaDrink]
+    )
+    
+    return TapiocaDetailsView(
+        tapioca: tapioca,
+        tapiocaDrink: tapiocaDrink,
+        tapiocaSize: tapiocaDrink.size
+    )
 }

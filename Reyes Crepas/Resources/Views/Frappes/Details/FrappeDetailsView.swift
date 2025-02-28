@@ -23,7 +23,7 @@ struct FrappeDetailsView: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    ProductDetailsView(productID: frappe.id,productName: "Frappé de \(frappe.name)", productPrice: frappe.price, productDescription: nil)
+                    ProductDetailsView(productImageName: frappe.name,productName: "Frappé de \(frappe.name)", productPrice: frappe.price, productDescription: nil)
                   
                     // Calling method to show all the extras list in Frappe Details View
                     extrasList()
@@ -116,13 +116,12 @@ private extension FrappeDetailsView {
     }
 }
 #Preview {
-    let frappes: [Frappe] = Bundle.main.decode("frappes.json")
-    let cartManager = CartManager()
-
-    if let frappe = frappes.first(where: { $0.id == "coffee" }) {
-        return FrappeDetailsView(frappe: frappe, extra: frappe.extras)
-            .environmentObject(cartManager) 
-    } else {
-        return Text("Frappe not found")
-    }
+    let frappe = Frappe(id: "1", name: "Café Mocha", price: "$5.00", extras: [
+        Frappe.Extra(id: 1, name: "Leche", price: "$0.50"),
+        Frappe.Extra(id: 2, name: "Chocolate", price: "$1.00")
+    ])
+    let extra = frappe.extras
+    
+    return FrappeDetailsView(frappe: frappe, extra: extra)
+        .environmentObject(CartManager())
 }
