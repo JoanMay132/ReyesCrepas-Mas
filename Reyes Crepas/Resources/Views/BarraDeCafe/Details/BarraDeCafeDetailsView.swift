@@ -26,7 +26,7 @@ struct BarraDeCafeDetailsView: View {
                     .shapeProduct()
             
                     VStack {
-                        Text(barraDeCafe.name)
+                        Text("Café \(barraDeCafe.name)")
                             .font(.title.bold())
                             .frame(maxWidth: .infinity, alignment: .leading)
         
