@@ -24,7 +24,7 @@ struct AddToCartButtonView: View {
                 productName: productName,
                 productPrice: productPrice,
                 itemsQuantity: itemsQuantity,  // Pasa los extras seleccionados (ahora el parámetro correcto)
-                extras : [],  
+                extras : extras,
                 productType: nil,  // Si es necesario, agregar un tipo de producto
                 productSize: nil,  // Si es necesario, agregar un tamaño de producto
                 quantity: quantity

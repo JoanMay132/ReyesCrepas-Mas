@@ -29,7 +29,7 @@ struct FrappeDetailsView: View {
                     extrasList()
             
                     // Add to cart button and going to contentView
-                    
+            
                     AddToCartButtonView(
                         productName: "Frappé de \(frappe.name)",
                                        productPrice: frappe.price,
@@ -61,12 +61,16 @@ struct FrappeDetailsView: View {
         let currentQuantity = selectedExtras[extra, default: 0]
         if currentQuantity < 3 {
             selectedExtras[extra] = currentQuantity + 1
+            print("Extra agregado: \(extra.name), Cantidad: \(selectedExtras[extra] ?? 0)")
+
         }
     }
     
     private func decreaseQuantity(for extra: Frappe.Extra) {
         if let currentQuantity = selectedExtras[extra], currentQuantity > 0 {
             selectedExtras[extra] = currentQuantity - 1
+            print("Extra eliminado: \(extra.name), Cantidad: \(selectedExtras[extra] ?? 0)")
+
         }
     }
 }
