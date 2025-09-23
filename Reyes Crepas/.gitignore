@@ -1,1 +1,4 @@
-git rm --cached .DS_Store
+# macOS
+.DS_Store
+# Ignorar todos los DS_Store en todo el repo
+**/.DS_Store
