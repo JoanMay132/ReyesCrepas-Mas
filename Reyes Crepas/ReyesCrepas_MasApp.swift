@@ -25,17 +25,25 @@ struct ReyesCrepas_MasApp: App {
         UINavigationBar.appearance().standardAppearance = appearance
     }
     
+    // Conection to firebase project
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(cartManager) // Pasar CartManager como un environmentObject
+            RootView()
+            
+//            NavigationStack {
+//                AuthenticationView(showSignInView: .constant(false))
+//                    .environmentObject(cartManager) // Pasar CartManager como un environmentObject
+//            }
+            
+         
 
         }
     }
 }
 
+// Conection to fireabase project
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
