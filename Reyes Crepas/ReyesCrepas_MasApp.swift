@@ -13,6 +13,7 @@ import Firebase
 struct ReyesCrepas_MasApp: App {
     
     @StateObject var cartManager = CartManager()
+    @StateObject private var whatsappVM = WhatsappViewModel()
 
     init() {
         let appearance = UINavigationBarAppearance()
@@ -30,12 +31,15 @@ struct ReyesCrepas_MasApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView()
-            
-//            NavigationStack {
-//                AuthenticationView(showSignInView: .constant(false))
-//                    .environmentObject(cartManager) // Pasar CartManager como un environmentObject
-//            }
+           // RootView()
+            NavigationStack {
+          ContentView()
+                //  UserInformationView()
+
+            }
+            .environmentObject(cartManager)
+            .environmentObject(whatsappVM)
+
             
          
 

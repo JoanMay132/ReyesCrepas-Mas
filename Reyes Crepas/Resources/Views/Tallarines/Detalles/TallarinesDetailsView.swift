@@ -25,7 +25,7 @@ struct TallarinesDetailsView: View {
                     productName: "Tallarin de \(tallarines.name)",
                     productPrice: tallarines.price,
                     itemsQuantity: selectedQuantity.isEmpty ? [] : [
-                        ItemsQuantity(name: tallarines.name, price: tallarines.price, quantity: selectedQuantity[tallarines] ?? 1)],
+                        ItemsQuantity(name: tallarines.name, price: tallarines.price, quantity: selectedQuantity[tallarines] ?? 1)], productSize: "",
                     extras : [],
                     cartManager: cartManager,
                     navigateToContentView: $navigateToContentView

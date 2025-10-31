@@ -10,6 +10,7 @@ struct AddToCartButtonView: View {
     let productName: String
     let productPrice: String
     let itemsQuantity: [ItemsQuantity]  // Lista de extras seleccionados
+    let productSize: String
     let extras : [Extras]
     let cartManager: CartManager
     @Binding var navigateToContentView: Bool
@@ -26,7 +27,7 @@ struct AddToCartButtonView: View {
                 itemsQuantity: itemsQuantity,  // Pasa los extras seleccionados (ahora el parámetro correcto)
                 extras : extras,
                 productType: nil,  // Si es necesario, agregar un tipo de producto
-                productSize: nil,  // Si es necesario, agregar un tamaño de producto
+                productSize: productSize,  // Si es necesario, agregar un tamaño de producto
                 quantity: quantity
             )
             navigateToContentView = true

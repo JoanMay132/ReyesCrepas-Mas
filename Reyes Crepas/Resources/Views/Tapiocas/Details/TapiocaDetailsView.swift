@@ -33,19 +33,29 @@ struct TapiocaDetailsView: View {
             ScrollView {
                 VStack {
                     // Tapioca drink image
-                    ProductDetailsView(productImageName: tapiocaDrink.name,productName: "Tapioca de \(tapiocaDrink.name)", productPrice: nil, productDescription: tapioca.tapioca_type)
+                    ProductDetailsView(
+                        productImageName: tapiocaDrink.name,
+                        productName: "Tapioca de \(tapiocaDrink.name)", productPrice: nil,
+                        productDescription: tapioca.tapioca_type)
                     
                     //Method to choose your tapioca Size
                     chooseYourProductSize()
-                    
                     AddToCartButtonView(
-                        productName: "Tapioca de \(tapiocaDrink.name)",
-                                       productPrice: selectedSize.price,
-                                       itemsQuantity: [],
+                        productName:  "Tapioca de \(tapiocaDrink.name) - \(tapioca.tapioca_type)" 
+                        ,
+                        
+                        
+                                       productPrice:  selectedSize.price,
+                        
+                        itemsQuantity: [],
+                        productSize: selectedSize.type,
                                        extras : [],
                                        cartManager: cartManager,
                                        navigateToContentView: $navigateToContentView
                     )
+                    .onAppear {
+                        print(" ProductSize enviado: \(selectedSize.type)")
+                    }
 
              
                     
@@ -86,17 +96,19 @@ private extension TapiocaDetailsView {
 }
 
 #Preview {
+    
     let tapiocaDrink = Tapioca.TapiocaDrinks(
         id: "1",
         name: "Matcha",
         size: [
-            Tapioca.TapiocaDrinks.DrinkSize(id: "small", type: "Pequeño", price: "12.00")
+            Tapioca.TapiocaDrinks.DrinkSize(id: "small", type: "Normal", price: "$12.00"),
+            Tapioca.TapiocaDrinks.DrinkSize(id: "big", type: "Litro", price: "$24.00")
         ]
     )
     
     let tapioca = Tapioca(
         id: "1",
-        tapioca_type: "Milk",
+        tapioca_type: "Leche",
         tapioca_drinks: [tapiocaDrink]
     )
     
@@ -105,4 +117,5 @@ private extension TapiocaDetailsView {
         tapiocaDrink: tapiocaDrink,
         tapiocaSize: tapiocaDrink.size
     )
+    .environmentObject(CartManager())
 }

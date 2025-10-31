@@ -36,6 +36,8 @@ class CartManager: ObservableObject {
         // Busca si ya existe un producto con las mismas 'itemsQuantity' y 'extras'
         if let index = items.firstIndex(where: {
             $0.name == productName &&
+            $0.productSize == (productSize ?? "") &&
+            $0.tapiocaType == (productType ?? "") &&   
             $0.itemsQuantity == unwrappedItemsQuantity &&  // Comparación directa
             $0.extras == unwrappedExtras  // Comparación directa
         }) {
@@ -50,7 +52,7 @@ class CartManager: ObservableObject {
                 itemsQuantity: unwrappedItemsQuantity,  // Se asignan las 'itemsQuantity'
                 extras: unwrappedExtras,  // Usamos el valor no opcional de extras
                 tapiocaType: productType ?? "",
-                ProductSize: productSize ?? ""
+                productSize: productSize ?? ""
             )
             items.append(newItem)
         }

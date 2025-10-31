@@ -27,7 +27,7 @@ struct PancakesDetailsView: View {
                         productName: "Pancake de \(pancake.name)",
                         productPrice: pancake.price,
                         itemsQuantity: selectedQuantity.isEmpty ? [] : [
-                            ItemsQuantity(name: pancake.name, price: pancake.price, quantity: selectedQuantity[pancake] ?? 1)],
+                            ItemsQuantity(name: pancake.name, price: pancake.price, quantity: selectedQuantity[pancake] ?? 1)], productSize: "",
                         extras : [],
                         cartManager: cartManager,
                         navigateToContentView: $navigateToContentView
