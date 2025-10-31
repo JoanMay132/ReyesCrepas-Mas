@@ -30,6 +30,34 @@ func destinationProduct(for product : Product, frappes : [Frappe], tapiocas : [T
     }
 }
 
+struct TextValidation {
+    static func validateCharacters(newValue: String, oldValue: String, maxLength : Int = 30) -> String {
+        let filtered = newValue.filter { $0.isLetter || $0.isWhitespace }
+        return String(filtered.prefix(maxLength))
+    }
+    
+    static func validatePhoneNumber(newValue: String) -> String {
+        let filtered = newValue.filter { $0.isNumber }
+        return String(filtered.prefix(10))
+    }
+    
+}
+
+
+struct DateUtils {
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "es_MX")
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
+    static func formatted(_ date: Date) -> String {
+        return dateFormatter.string(from: date)
+    }
+}
+
+
 
 final class Utilities {
     static let shared = Utilities()

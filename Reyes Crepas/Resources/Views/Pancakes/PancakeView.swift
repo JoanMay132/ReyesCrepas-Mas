@@ -54,7 +54,7 @@ struct PancakesView: View {
 
 #Preview {
     
-    // Retorna la vista FrappeView con los frappes
+    // Retorna la vista Pancakes view
     PancakesView()
 }
 

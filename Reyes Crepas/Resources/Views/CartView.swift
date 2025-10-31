@@ -9,16 +9,18 @@ import SwiftUI
 
 struct CartView: View {
     @EnvironmentObject var cartManager: CartManager
+    @State private var navigateToUserInformationView = false
 
     var body: some View {
-        NavigationView {
-            VStack {
+        NavigationStack {
+            
+            List {
                 if cartManager.items.isEmpty {
                     Text("El carrito está vacío")
                         .font(.title2)
                         .foregroundColor(.gray)
                 } else {
-                    List {
+                    
                         ForEach(cartManager.items) { item in
                             VStack(alignment: .leading) {
                                 itemInfoView(item)
@@ -26,15 +28,30 @@ struct CartView: View {
                                 itemTapiocaTypeView(item)
                             }
                         }
-                    }
                     
-                    // Showing total amount of your cart
                     totalView()
-                    checkOutButton()
+                     
+                    
+                    NavigationLink(destination: UserInformationView()){
+                        Label("Checkout", systemImage: "cart")
+                 
+                            .bold()
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                        
+                    }
                 }
+
             }
+            .scrollContentBackground(.hidden)
+
+            .pinkCakeBackground()
             .navigationTitle("Carrito")
         }
+
     }
 
     private func itemInfoView(_ item: CartItem) -> some View {
@@ -45,7 +62,10 @@ struct CartView: View {
                 HStack {
                     Text(item.price)
                     itemProductSize(item)
-                    
+
+                    .onAppear {
+                        print(" Item en carrito: \(item.name) | Tamaño: \(item.productSize)")
+                                          }
                 }
                 .font(.subheadline)
                 .foregroundColor(.gray)
@@ -97,9 +117,9 @@ struct CartView: View {
     
     private func itemProductSize(_ item: CartItem) -> some View {
         Group {
-            if !item.ProductSize.isEmpty {
+            if !item.productSize.isEmpty {
                 HStack {
-                    Text("- \(item.ProductSize)")
+                    Text("- \(item.productSize)")
                         .font(.subheadline)
                     Spacer()
                 }
@@ -107,13 +127,6 @@ struct CartView: View {
         }
     }
     
-    private func checkOutButton() -> some View {
-        Button(action: {}) {
-            Text("Checkout")
-                .buttonStyleModifier()
-        }
-
-    }
 
     private func removeItem(_ item: CartItem) {
         if let index = cartManager.items.firstIndex(where: { $0.id == item.id }) {
@@ -130,31 +143,35 @@ struct CartView: View {
     }
 }
 
+
 #Preview {
-    let cartManager = CartManager()
-    
-    // Agregar algunos elementos de prueba
-    cartManager.items = [
-        CartItem(
-            name: "Tallarines con Pollo",
-            price: "$120",
-            quantity: 2,
-            itemsQuantity: [ItemsQuantity(name: "Salsa extra", price: "$10", quantity: 1)],
-            extras : [],
-            tapiocaType: "",
-            ProductSize: "Grande"
-        ),
-        CartItem(
-            name: "Bubble Tea",
-            price: "$85",
-            quantity: 1,
-            itemsQuantity: [],
-            extras: [Extras(name: "Con chocolate", price: "$5", quantity: 1)], // Aquí creamos un objeto `Extras`
-            tapiocaType: "Matcha",
-            ProductSize: "Mediano"
-        )
-    ]
-    
-    return CartView()
-        .environmentObject(cartManager) // Pasamos el cartManager al entorno
+    let cartManager: CartManager = {
+        let cm = CartManager()
+        cm.items = [
+            CartItem(
+                name: "Tallarines con Pollo",
+                price: "$120",
+                quantity: 2,
+                itemsQuantity: [ItemsQuantity(name: "Salsa extra", price: "$10", quantity: 1)],
+                extras: [],
+                tapiocaType: "",
+                productSize: "Grande"
+            ),
+            CartItem(
+                name: "Bubble Tea",
+                price: "$85",
+                quantity: 1,
+                itemsQuantity: [],
+                extras: [Extras(name: "Con chocolate", price: "$5", quantity: 1)],
+                tapiocaType: "Matcha",
+                productSize: "Mediano"
+            )
+        ]
+        return cm
+    }()
+
+    NavigationStack {
+        CartView()
+            .environmentObject(cartManager)
+    }
 }

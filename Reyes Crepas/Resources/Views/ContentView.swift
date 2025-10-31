@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var productViewModel = ProductViewModel() // productViewModel initializer
-    @StateObject var frappeViewModel = FrappeViewModel() // productViewModel initializer
-    @StateObject var tapiocaViewModel = TapiocaViewModel() // productViewModel initializer
-    @StateObject var tallarinesViewModel = TallarinesViewModel() // productViewModel initializer
-    @StateObject var pancakesViewModel = PancakeViewModel()
+    @StateObject var frappeViewModel = FrappeViewModel() // frappeViewModel initializer
+    @StateObject var tapiocaViewModel = TapiocaViewModel() // tapiocaViewModel initializer
+    @StateObject var tallarinesViewModel = TallarinesViewModel() // tallarinesViewModel initializer
+    @StateObject var pancakesViewModel = PancakeViewModel() // pancakesViewModel initializer
     let crepas: [Crepas] = Bundle.main.decode("crepas.json")
+    @StateObject var whatsappViewModel = WhatsappViewModel() 
     @StateObject var barraDeCafeViewModel = BarraDeCafeViewModel()
     @EnvironmentObject var cartManager: CartManager
     @AppStorage("showingGrid") private var showingGrid = true

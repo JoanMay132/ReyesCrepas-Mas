@@ -37,6 +37,6 @@ struct CartItem: Identifiable, Equatable {
     var itemsQuantity: [ItemsQuantity]
     var extras : [Extras]?
     var tapiocaType : String
-    var ProductSize : String
+    var productSize : String
 
 }
