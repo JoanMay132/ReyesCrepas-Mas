@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct PancakesDetailsView: View {
-    var pancake: Pancake
-    @State private var selectedQuantity: [Pancake: Int] = [:]
+    var pancake: MenuItem
+    
+    @State private var selectedQuantity: [MenuItem: Int] = [:]
+    
     @EnvironmentObject var cartManager: CartManager
+    
     @State private var navigateToContentView = false
 
 
@@ -18,16 +21,16 @@ struct PancakesDetailsView: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    ProductDetailsView(productImageName: pancake.name, productName: pancake.name, productPrice: pancake.price, productDescription: pancake.description)
+                    ProductDetailsView(productImageName: pancake.name ?? "default", productName: pancake.name ?? "default", productPrice: pancake.price, productDescription: pancake.description)
                     
                     // Información sobre el pancake (sin extras)
                     quantitySelector()
                     
                     AddToCartButtonView(
-                        productName: "Pancake de \(pancake.name)",
-                        productPrice: pancake.price,
+                        productName: "Pancake de \(pancake.name ?? "default")",
+                        productPrice: pancake.price ?? "default",
                         itemsQuantity: selectedQuantity.isEmpty ? [] : [
-                            ItemsQuantity(name: pancake.name, price: pancake.price, quantity: selectedQuantity[pancake] ?? 1)], productSize: "",
+                            ItemsQuantity(name: pancake.name ?? "default", price: pancake.price ?? "default", quantity: selectedQuantity[pancake] ?? 1)], productSize: "",
                         extras : [],
                         cartManager: cartManager,
                         navigateToContentView: $navigateToContentView
@@ -81,7 +84,7 @@ private extension PancakesDetailsView {
 // MARK: - 🔼  Increase Pancakes Quantity
 
 private extension PancakesDetailsView {
-    func increaseQuantity(for pancake: Pancake) {
+    func increaseQuantity(for pancake: MenuItem) {
         let currentQuantity = selectedQuantity[pancake, default: 1]
         if currentQuantity < 20 {
             selectedQuantity[pancake] = currentQuantity + 1
@@ -90,7 +93,7 @@ private extension PancakesDetailsView {
 }
 // MARK: - 🔽 Decrease Tallarines Quantity
 private extension PancakesDetailsView {
-    func decreaseQuantity(for pancake: Pancake) {
+    func decreaseQuantity(for pancake: MenuItem) {
         if let currentQuantity = selectedQuantity[pancake], currentQuantity > 1 {
             selectedQuantity[pancake] = currentQuantity - 1
         }
@@ -98,10 +101,8 @@ private extension PancakesDetailsView {
 }
 
 #Preview {
-    let pancake = Pancake(id: "1", name: "Panchito", price: "$12.00", description: "Delicioso panchito")
+    let pancake = MenuItem(id: "1", name: "Panchito", price: "$12.00", extras: nil, description: "Delicioso panchito", personalización: nil, especialidades: nil)
     
-     PancakesDetailsView(pancake: pancake)
+    PancakesDetailsView(pancake: pancake)
         .environmentObject(CartManager())
-
-    
 }

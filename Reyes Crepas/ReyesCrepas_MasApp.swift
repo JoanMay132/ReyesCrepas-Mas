@@ -33,8 +33,8 @@ struct ReyesCrepas_MasApp: App {
         WindowGroup {
            // RootView()
             NavigationStack {
-          ContentView()
-                //  UserInformationView()
+              CrepasView()
+          //      ContentView()
 
             }
             .environmentObject(cartManager)

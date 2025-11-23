@@ -1,21 +1,21 @@
 //
-//  PancakeViewModel.swift
+//  CrepaViewModel.swift
 //  Reyes Crepas
 //
-//  Created by Joan May on 28/02/25.
+//  Created by Joan May on 09/11/25.
 //
 
 import Firebase
 import FirebaseFirestore
 
-class PancakeViewModel: ObservableObject {
-    @Published var pancakes: [Pancake] = []
+class CrepaViewModel: ObservableObject {
+    @Published var crepas: [MenuItem] = []
     
     private var db = Firestore.firestore()
     
     // Función para obtener productos desde Firestore
     func fetchProducts() {
-        db.collection("pancakes").addSnapshotListener { snapshot, error in
+        db.collection("crepas").addSnapshotListener { snapshot, error in
             if let error = error {
                 print("Error al obtener productos: \(error)")
                 return
@@ -28,9 +28,9 @@ class PancakeViewModel: ObservableObject {
                 }
                 
                 // Mapeamos los documentos de Firestore a objetos Product
-                self.pancakes = snapshot?.documents.compactMap { doc -> Pancake? in
+                self.crepas = snapshot?.documents.compactMap { doc -> MenuItem? in
                     do {
-                        return try doc.data(as: Pancake.self)
+                        return try doc.data(as: MenuItem.self)
                     } catch {
                         print("Error al decodificar producto: \(error.localizedDescription)")
                         return nil
@@ -40,4 +40,3 @@ class PancakeViewModel: ObservableObject {
         }
     }
 }
-

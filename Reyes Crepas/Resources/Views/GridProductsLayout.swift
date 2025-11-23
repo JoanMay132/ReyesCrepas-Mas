@@ -1,13 +1,7 @@
 import SwiftUI
-
+// MARK: - GridProductsLayout
 struct GridProductsLayout: View {
-    let products: [Product]  
-    let frappes: [Frappe]
-    let tapiocas: [Tapioca]
-    let pancakes: [Pancake]
-    let crepas: [Crepas]
-    let barraDeCafe: [BarraDeCafe]
-    let tallarines: [Tallarines]
+    let products: [Product]
     
     let columns = [
         GridItem(.adaptive(minimum: 150))
@@ -15,49 +9,53 @@ struct GridProductsLayout: View {
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: columns) {
+            LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(products) { product in
                     NavigationLink {
-                        destinationProduct(for: product, frappes: frappes, tapiocas: tapiocas, pancakes: pancakes, crepas: crepas, barraDeCafe: barraDeCafe, tallarines: tallarines)
+                        destinationProduct(for: product)
                     } label: {
                         VStack {
                             Image(product.image)
                                 .productImageStyle()
-                            VStack {
-                                Text(product.productType.rawValue)
-                                    .productTextStyleModifier()
-                            }
-                            .productStyleVStack()
+                            
+                            Text(product.productType.rawValue)
+                                .productTextStyleModifier()
                         }
-                        .shapeProduct()
+                        .productStyleVStack()
                     }
+                    .shapeProduct()
                 }
             }
             .paddingProductList()
         }
         .navigationBarBackButtonHidden(true)
-        .navigationTitle("Reyes Crepas y Más")
-        .pinkCakeBackground()
+               .navigationTitle("Reyes Crepas y Más")
+               .pinkCakeBackground()
+    }
+    
+    // MARK: - Decide la vista destino según productType
+    @ViewBuilder
+    func destinationProduct(for product: Product) -> some View {
+        switch product.productType {
+        case .frappe:
+            FrappeView()               // Cada subview se encarga de su fetch
+                .environmentObject(CartManager())
+        case .tapiocas:
+            TapiocaView()
+                .environmentObject(CartManager())
+        case .pancakes:
+            PancakesView()
+                .environmentObject(CartManager())
+        case .crepas:
+            CrepasView()     // si usas JSON, pásalos aquí
+                .environmentObject(CartManager())
+        case .barraDeCafe:
+            BarraDeCafeView()
+                .environmentObject(CartManager())
+        case .tallarines:
+            TallarinesView()
+                .environmentObject(CartManager())
+        }
     }
 }
 
-#Preview {
-    let sampleProducts: [Product] = [
-        Product(id: "1", product_id: 1, productType: .frappe),
-        Product(id: "2", product_id: 2, productType: .tapiocas),
-        Product(id: "3", product_id: 3, productType: .pancakes),
-        Product(id: "4", product_id: 4, productType: .crepas),
-        Product(id: "5", product_id: 5, productType: .barraDeCafe),
-        Product(id: "6", product_id: 6, productType: .tallarines)
-    ]
-    
-    GridProductsLayout(
-        products: sampleProducts,
-        frappes: [],
-        tapiocas: [],
-        pancakes: [],
-        crepas: [],
-        barraDeCafe: [],
-        tallarines: []
-    )
-}

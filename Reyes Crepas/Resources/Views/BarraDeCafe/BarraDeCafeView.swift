@@ -9,7 +9,9 @@ import SwiftUI
 
 
 struct BarraDeCafeView: View {
-    @StateObject private var barraDeCafeViewModel = BarraDeCafeViewModel()
+
+   
+    @StateObject private var viewModel = MenuViewModel()
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
@@ -24,16 +26,16 @@ struct BarraDeCafeView: View {
                     }
 
                     LazyVGrid(columns: columns) {
-                        ForEach(barraDeCafeViewModel.barraDeCafe) { barra in
+                        ForEach(viewModel.items) { item in
                             NavigationLink {
-                                BarraDeCafeDetailsView(barraDeCafe: barra, extra: barra.extras)
+                                BarraDeCafeDetailsView(barraDeCafe: item, extra: item.extras ?? [])
                             } label: {
                                 VStack {
-                                    Image(barra.name)
+                                    Image(item.name ?? "default")
                                         .productImageStyle()
                                     
                                     VStack {
-                                        Text(barra.name)
+                                        Text(item.name ?? "default")
                                             .font(.headline)
                                             .foregroundStyle(.black)
                                     }
@@ -49,7 +51,7 @@ struct BarraDeCafeView: View {
             }
             //
             .onAppear(){
-                barraDeCafeViewModel.fetchProducts()
+                viewModel.fetchProducts(from: "barra_de_cafe")
             }
             .pinkCakeBackground()
         
@@ -60,5 +62,6 @@ struct BarraDeCafeView: View {
     
     // Retorna la vista FrappeView con los frappes
      BarraDeCafeView()
+        .environmentObject(CartManager())
 }
 
