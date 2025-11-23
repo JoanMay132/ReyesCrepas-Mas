@@ -8,28 +8,24 @@
 import SwiftUI
 
 struct FrappeDetailsView: View {
-    let frappe: Frappe
-    let extra: [Frappe.Extra]
-    @StateObject private var extrasManager = ExtrasSelectionManager<Frappe.Extra>()
+    let frappe: MenuItem
+    let extra: [MenuItem.Extra]
+    @StateObject private var extrasManager = ExtrasSelectionManager<MenuItem.Extra>()
     @EnvironmentObject var cartManager: CartManager
 
-    @State private var selectedExtras: [Frappe.Extra: Int] = [:]
-    @State private var navigateToContentView = false 
-//    private var selectedExtrasList: [Extras] {
-//        selectedExtras.compactMap { (extra, quantity) in
-//            quantity > 0 ? Extras(name: extra.name, price: extra.price, quantity: quantity) : nil
-//        }
-//    }
+    @State private var selectedExtras: [MenuItem.Extra: Int] = [:]
+    @State private var navigateToContentView = false
+
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    ProductDetailsView(productImageName: frappe.name,productName: "Frappé de \(frappe.name)", productPrice: frappe.price, productDescription: nil)
+                    ProductDetailsView(productImageName: frappe.name ?? "default",productName: "Frappé de \(frappe.name ?? "default")", productPrice: frappe.price, productDescription: nil)
                     
                     // Calling method to show all the extras list in Frappe Details View
                     ExtrasListView(
                         title: "Elige tus extras",
-                        extras: frappe.extras,
+                        extras: extra,
                         getName: {$0.name},
                         getPrice: {$0.price},
                         onSelect: { extra in
@@ -39,8 +35,8 @@ struct FrappeDetailsView: View {
                         // Add to cart button and going to contentView
             
                     AddToCartButtonView(
-                        productName: "Frappé de \(frappe.name)",
-                                       productPrice: frappe.price,
+                        productName: "Frappé de \(frappe.name ?? "default")",
+                        productPrice: frappe.price ?? "default",
                         itemsQuantity: [], productSize: "",
                         extras:
                             extrasManager.selectedExtras.map { extra, quantity in
@@ -71,13 +67,15 @@ struct FrappeDetailsView: View {
 
 
 #Preview {
-    let frappe = Frappe(id: "1", name: "Café Mocha", price: "$5.00", extras: [
-        Frappe.Extra(id: 1, name: "Leche", price: "$0.50"),
-        Frappe.Extra(id: 2, name: "Chocolate", price: "$1.00"),
-        Frappe.Extra(id: 3, name: "chookie", price: "$3.00")
-    ])
-    let extra = frappe.extras
+    let frappe = MenuItem(id: "1", name: "Café Mocha", price: "$5.00", extras: [
+        MenuItem.Extra(id: 1, name: "Leche", price: "$0.50"),
+        MenuItem.Extra(id: 2, name: "Chocolate", price: "$1.00"),
+        MenuItem.Extra(id: 3, name: "chookie", price: "$3.00")
+    ],
+                          description: nil, personalización: nil,
+                          especialidades: nil)
     
-    return FrappeDetailsView(frappe: frappe, extra: extra)
+    
+    FrappeDetailsView(frappe: frappe, extra: frappe.extras ?? [])
         .environmentObject(CartManager())
 }

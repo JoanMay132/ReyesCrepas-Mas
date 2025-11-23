@@ -7,34 +7,25 @@
 
 import SwiftUI
 
+// MARK: - ContentView
 struct ContentView: View {
-    @StateObject var productViewModel = ProductViewModel() // productViewModel initializer
-    @StateObject var frappeViewModel = FrappeViewModel() // frappeViewModel initializer
-    @StateObject var tapiocaViewModel = TapiocaViewModel() // tapiocaViewModel initializer
-    @StateObject var tallarinesViewModel = TallarinesViewModel() // tallarinesViewModel initializer
-    @StateObject var pancakesViewModel = PancakeViewModel() // pancakesViewModel initializer
-    let crepas: [Crepas] = Bundle.main.decode("crepas.json")
-    @StateObject var whatsappViewModel = WhatsappViewModel() 
-    @StateObject var barraDeCafeViewModel = BarraDeCafeViewModel()
+    @StateObject var productViewModel = ProductViewModel() // Carga tipos de productos
     @EnvironmentObject var cartManager: CartManager
-    @AppStorage("showingGrid") private var showingGrid = true
     
     var body: some View {
         NavigationStack {
-            // Loading products from firestore
             if productViewModel.products.isEmpty {
-                ProgressView() // Loader
+                // Loader mientras carga los tipos de productos
+                ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
                     .padding()
+                    .onAppear {
+                        productViewModel.fetchProducts()
+                    }
             } else {
                 GridProductsLayout(
-                    products: productViewModel.products, // Products loaded from firestore
-                    frappes: frappeViewModel.frappes,
-                    tapiocas: tapiocaViewModel.tapiocas,
-                    pancakes: pancakesViewModel.pancakes,
-                    crepas: crepas,
-                    barraDeCafe: barraDeCafeViewModel.barraDeCafe,
-                    tallarines: tallarinesViewModel.tallarines
+                    products: productViewModel.products,
+                   
                 )
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -55,14 +46,7 @@ struct ContentView: View {
                     }
                 }
             }
-        }
-        .onAppear {
-            productViewModel.fetchProducts() // loading products from firestore
+            
         }
     }
-}
-
-#Preview {
-    ContentView()
-        .environmentObject(CartManager())
 }

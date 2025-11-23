@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct TallarinesView: View {
-    @StateObject private var tallarinesViewModel = TallarinesViewModel()
+    @StateObject private var viewModel = MenuViewModel()
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
@@ -21,14 +21,14 @@ struct TallarinesView: View {
                         .padding(.leading)
                     
                     LazyVGrid(columns: columns, spacing: 15) {
-                        ForEach(tallarinesViewModel.tallarines) { tallarin in
-                            NavigationLink(destination: TallarinesDetailsView(tallarines: tallarin)) {
+                        ForEach(viewModel.items) { item in
+                            NavigationLink(destination: TallarinesDetailsView(tallarines: item)) {
                                 VStack {
-                                    Image(tallarin.imageName)
+                                    Image(item.imageName)
                                         .productImageStyle()
                                     
                                     VStack {
-                                        Text(tallarin.name)
+                                        Text(item.name ?? "default")
                                             .font(.headline)
                                             .foregroundStyle(.black)
                                     }
@@ -43,7 +43,7 @@ struct TallarinesView: View {
                 .padding(.horizontal)
             }
             .onAppear {
-                tallarinesViewModel.fetchProducts()
+                viewModel.fetchProducts(from: "tallarines")
             }
             .pinkCakeBackground()
         }

@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct TallarinesDetailsView: View {
-    var tallarines: Tallarines
+    var tallarines: MenuItem
     @EnvironmentObject var cartManager: CartManager
     @State private var navigateToContentView = false
-    @State private var selectedQuantity: [Tallarines: Int] = [:]
+    @State private var selectedQuantity: [MenuItem: Int] = [:]
 
     var body: some View {
         ScrollView {
             VStack {
                 
-                ProductDetailsView(productImageName: tallarines.name,productName: tallarines.name, productPrice: tallarines.price, productDescription: tallarines.description)
+                ProductDetailsView(productImageName: tallarines.name ?? "default",productName: tallarines.name ?? "default", productPrice: tallarines.price, productDescription: tallarines.description)
                 
                 quantitySelector()
                 
                 AddToCartButtonView(
-                    productName: "Tallarin de \(tallarines.name)",
-                    productPrice: tallarines.price,
+                    productName: "Tallarin de \(tallarines.name ?? "default")",
+                    productPrice: tallarines.price ?? "dault",
                     itemsQuantity: selectedQuantity.isEmpty ? [] : [
-                        ItemsQuantity(name: tallarines.name, price: tallarines.price, quantity: selectedQuantity[tallarines] ?? 1)], productSize: "",
+                        ItemsQuantity(name: tallarines.name ?? "default", price: tallarines.price ?? "default", quantity: selectedQuantity[tallarines] ?? 1)], productSize: "",
                     extras : [],
                     cartManager: cartManager,
                     navigateToContentView: $navigateToContentView
@@ -75,7 +75,7 @@ private extension TallarinesDetailsView {
 
 // MARK: - 🔼  Increase Tallarines Quantity
 private extension TallarinesDetailsView {
-    func increaseQuantity(for tallarines: Tallarines) {
+    func increaseQuantity(for tallarines: MenuItem) {
         let currentQuantity = selectedQuantity[tallarines, default: 1]
         if currentQuantity < 20 {
             selectedQuantity[tallarines] = currentQuantity + 1
@@ -85,7 +85,7 @@ private extension TallarinesDetailsView {
 
 // MARK: - 🔽 Decrease Tallarines Quantity
 private extension TallarinesDetailsView {
-    func decreaseQuantity(for tallarines: Tallarines) {
+    func decreaseQuantity(for tallarines: MenuItem) {
         if let currentQuantity = selectedQuantity[tallarines], currentQuantity > 1 {
             selectedQuantity[tallarines] = currentQuantity - 1
         }
@@ -94,13 +94,11 @@ private extension TallarinesDetailsView {
 
 // MARK: - 👀 Preview View
 #Preview {
-    let tallarines: [Tallarines] = Bundle.main.decode("tallarines.json")
+    let tallarines: [MenuItem] = Bundle.main.decode("tallarines.json")
     if let tallarin = tallarines.first(where: { $0.id == "kinder_fresa" }) {
-        return TallarinesDetailsView(
-            tallarines: tallarin
-        )
-        .environmentObject(CartManager())
+        TallarinesDetailsView(tallarines: tallarin)
+            .environmentObject(CartManager())
     } else {
-        return Text("Product Not Found")
+        Text("Producto no encontrado")
     }
 }

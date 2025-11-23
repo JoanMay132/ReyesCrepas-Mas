@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PancakesView: View {
-    @StateObject private var pancakeViewModel = PancakeViewModel()
+    @StateObject private var viewModel = MenuViewModel()
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
@@ -23,16 +23,16 @@ struct PancakesView: View {
                     }
 
                     LazyVGrid(columns: columns) {
-                        ForEach(pancakeViewModel.pancakes) { pancake in
+                        ForEach(viewModel.items) { item in
                             NavigationLink {
-                                PancakesDetailsView(pancake: pancake)
+                                PancakesDetailsView(pancake: item)
                             } label: {
                                 VStack {
-                                    Image(pancake.imageName)
+                                    Image(item.imageName)
                                         .productImageStyle()
                                      
                                     VStack {
-                                        Text(pancake.name)
+                                        Text(item.name ?? "default")
                                             .productTextStyleModifier()
                                     }
                                     .productStyleVStack()
@@ -46,7 +46,7 @@ struct PancakesView: View {
             }
             //
             .onAppear {
-                pancakeViewModel.fetchProducts()
+                viewModel.fetchProducts(from: "pancakes")
             }
             .pinkCakeBackground()
     }

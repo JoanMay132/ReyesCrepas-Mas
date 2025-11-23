@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-func destinationProduct(for product : Product, frappes : [Frappe], tapiocas : [Tapioca], pancakes : [Pancake], crepas: [Crepas], barraDeCafe : [BarraDeCafe], tallarines : [Tallarines]) -> AnyView {
+func destinationProduct(for product : Product, frappes : [MenuItem], tapiocas : [Tapioca], pancakes : [MenuItem], crepas: [MenuItem], barraDeCafe : [MenuItem], tallarines : [MenuItem]) -> AnyView {
 
     switch ProductTypes(rawValue : product.productType.rawValue){
     case .frappe :
@@ -20,7 +20,7 @@ func destinationProduct(for product : Product, frappes : [Frappe], tapiocas : [T
     case .pancakes :
         return AnyView(PancakesView())
     case .crepas :
-        return AnyView(CrepasView(crepas: crepas))
+        return AnyView(CrepasView())
     case .barraDeCafe :
         return AnyView(BarraDeCafeView())
     case .tallarines :

@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct BarraDeCafeDetailsView: View {
-    let barraDeCafe: BarraDeCafe
-    let extra: [BarraDeCafe.Extra]
-    @StateObject private var extrasManager = ExtrasSelectionManager<BarraDeCafe.Extra>()
+    let barraDeCafe: MenuItem
+    let extra: [MenuItem.Extra]
+    @StateObject private var extrasManager = ExtrasSelectionManager<MenuItem.Extra>()
     @EnvironmentObject var cartManager: CartManager
     
-    @State private var selectedExtras: [BarraDeCafe.Extra : Int] =  [ : ]
+    @State private var selectedExtras: [MenuItem.Extra : Int] =  [ : ]
     
     @State private var navigateToContentView = false
 
@@ -21,20 +21,21 @@ struct BarraDeCafeDetailsView: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    ProductDetailsView(productImageName: barraDeCafe.name, productName: "Café \(barraDeCafe.name)", productPrice: barraDeCafe.price, productDescription: nil)
+                    ProductDetailsView(productImageName: barraDeCafe.name ?? "default", productName: "Café \(barraDeCafe.name ?? "default")", productPrice: barraDeCafe.price, productDescription: nil)
                 }
                 // Calling method to show all the extras list in Barra de cafe Details View
                 ExtrasListView(
                     title: "Elige tus extras",
-                    extras: barraDeCafe.extras, getName: {$0.name},
+                    extras: extra,
+                    getName: {$0.name},
                     getPrice: {$0.price},
                     onSelect: {extra in
                         extrasManager.selectQuantity(for: extra)}
                 )
                 // Add to cart button and going to contentView
                 AddToCartButtonView(
-                    productName: "Café \(barraDeCafe.name)",
-                    productPrice: barraDeCafe.price,
+                    productName: "Café \(barraDeCafe.name ?? "default")",
+                    productPrice: barraDeCafe.price ?? "default",
                     itemsQuantity: [], productSize: "",
                     extras:
                         extrasManager.selectedExtras.map { extra, quantity in
@@ -68,11 +69,13 @@ struct BarraDeCafeDetailsView: View {
     
     
     #Preview {
-        let barraDeCafe = BarraDeCafe(id: "1", name: "Americano", price: "$55.00", extras: [BarraDeCafe.Extra(id: 1, name: "Crema", price: "$5.00")])
-        let extra = barraDeCafe.extras
-        return BarraDeCafeDetailsView(barraDeCafe: barraDeCafe, extra: extra)
-            .environmentObject(CartManager())
+        let barraDeCafe = MenuItem(id: "1", name: "Café de taro", price: "$20.92",
+            extras: [MenuItem.Extra(id: 1, name: "vodka", price: "$30.99")],
+                                   description: nil, personalización: nil,
+                                   especialidades: nil)
         
+        BarraDeCafeDetailsView(barraDeCafe: barraDeCafe, extra: barraDeCafe.extras ?? [] )
+            .environmentObject(CartManager())
         
     }
                                       

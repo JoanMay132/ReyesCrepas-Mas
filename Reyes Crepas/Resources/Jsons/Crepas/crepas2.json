@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "especialidades": [
+      { "id": "1",
+        "name": "Crepizza",
+        "price": "$60",
+        "description": "Queso manchego y pepperoni con topping de chipotle."
+      },
+      { "id": "2",
+        "name": "ChocoBanana",
+        "price": "$55",
+        "description": "Crepa de chocolate con plátano y crema batida."
+      },
+      { "id": "3",
+        "name": "FresaCrema",
+        "price": "$50",
+        "description": "Crepa rellena de fresas y crema pastelera."
+      }
+    ]
+  }
+]

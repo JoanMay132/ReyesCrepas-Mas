@@ -41,7 +41,7 @@ struct TapiocaDetailsView: View {
                     //Method to choose your tapioca Size
                     chooseYourProductSize()
                     AddToCartButtonView(
-                        productName:  "Tapioca de \(tapiocaDrink.name) - \(tapioca.tapioca_type)" 
+                        productName:  "Tapioca de \(tapiocaDrink.name) - \(tapioca.tapioca_type)"
                         ,
                         
                         

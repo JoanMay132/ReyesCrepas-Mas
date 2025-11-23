@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct FrappeView: View {
-    @StateObject private var frappeViewModel = FrappeViewModel()  // Instancia de ViewModel
+    @StateObject private var viewModel = MenuViewModel()  // Instancia de ViewModel
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
@@ -20,40 +20,33 @@ struct FrappeView: View {
                         .productTitleStyleModifier()
                 }
                 
-                // Si los frappes están vacíos, muestra un indicador de carga
-                if frappeViewModel.frappes.isEmpty {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .padding()
-                } else {
-                    LazyVGrid(columns: columns) {
-                        ForEach(frappeViewModel.frappes) { frappe in
-                            NavigationLink {
-                                FrappeDetailsView(frappe: frappe, extra: frappe.extras)
-
-                            } label: {
+                LazyVGrid(columns: columns) {
+                    ForEach(viewModel.items) { item in
+                        NavigationLink {
+                            FrappeDetailsView(frappe: item, extra: item.extras ?? [])
+                        } label: {
+                            VStack {
+                                Image(item.name ?? "default")
+                                    .productImageStyle()
+                                
                                 VStack {
-                                    // Aquí puedes agregar la imagen si la tienes en Firestore
-                                    Image(frappe.image)
-                                        .productImageStyle()
-                                    
-                                    VStack {
-                                        Text(frappe.name)
-                                            .font(.headline)
-                                            .foregroundStyle(.black)
-                                    }
-                                    .productStyleVStack()
+                                    Text(item.name ?? "default")
+                                        .font(.headline)
+                                        .foregroundStyle(.black)
                                 }
+                                .productStyleVStack()
                             }
-                            .shapeProduct()
                         }
-                        .paddingProductList()
+                        .shapeProduct()
                     }
+                    .paddingProductList()
+                    
                 }
+ 
             }
         }
         .onAppear {
-            frappeViewModel.fetchProducts() // Llama a la función para cargar los datos
+            viewModel.fetchProducts(from: "frappes") // Llama a la función para cargar los datos
         }
         .pinkCakeBackground()
     }
