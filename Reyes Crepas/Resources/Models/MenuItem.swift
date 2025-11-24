@@ -21,15 +21,55 @@ struct MenuItem: Codable, Identifiable, Hashable {
     
    // MARK: Especialidades de crepas
     let especialidades : [Especialidad]?
-    
+    var esCrepa: Bool {
+        name == "Crepas" || name == "Crepa"
+    }
     struct Personalizacion : Identifiable, Codable, Hashable {
         let id: Int
         let base_price : Int
         let ingredientes : Ingredientes
         let precios_combinaciones: [PrecioCombinacion]
         let topping : [String]
+        let extra_toppings : [Extra_Toppings]
     }
     
+    struct Extra_Toppings:  Identifiable, Codable, Hashable {
+        let id : Int
+        let extra_name: String
+        let price: Int
+    }
+    
+    enum IngredientOption: Hashable {
+        case simple(String)
+        case extra(Extra_Toppings)
+        case detailed(name: String, price: Double?)
+
+        var displayName: String {
+            switch self {
+            case .simple(let name):
+                return name
+
+            case .extra(let extra):
+                return extra.extra_name
+
+            case .detailed(let name, _):
+                return name
+            }
+        }
+
+        var price: Double {
+            switch self {
+            case .simple:
+                return 0
+
+            case .extra(let extra):
+                return Double(extra.price)
+
+            case .detailed(_, let price):
+                return price ?? 0
+            }
+        }
+    }
     struct Ingredientes : Codable, Hashable {
         let clasicos : [String]
         let premium : [String]
@@ -58,23 +98,3 @@ struct MenuItem: Codable, Identifiable, Hashable {
     }
 }
 
-    //MARK: -- This struct must be here when we update our database to mongo
-    
-  //  let tapioca: Tapioca? // Solo los productos tapioca lo tendrán
-//    struct Tapioca: Codable, Hashable, Identifiable {
-//        let id: String
-//        let tapioca_type: String
-//        let tapioca_drinks: [TapiocaDrink]
-//        
-//        struct TapiocaDrink: Codable, Hashable, Identifiable {
-//            let id: String
-//            let name: String
-//            let size: [DrinkSize]
-//            
-//            struct DrinkSize: Codable, Hashable, Identifiable {
-//                let id: String
-//                let type: String
-//                let price: String
-//            }
-//        }
-//    }
