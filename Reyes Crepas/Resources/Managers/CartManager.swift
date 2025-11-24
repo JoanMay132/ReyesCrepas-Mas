@@ -66,18 +66,40 @@ class CartManager: ObservableObject {
     }
 
     // function to calculate all the items and extras of your basket
+//    func calculateTotal() -> String {
+//        let total = items.reduce(0) { sum, item in
+//            let itemPrice = Double(item.price.replacingOccurrences(of: "$", with: "")) ?? 0
+//            let itemTotal = itemPrice * Double(item.quantity)
+//
+//            // Get total amount of extras
+//            let extrasTotal = item.extras?.reduce(0) { extraSum, extra in
+//                let extraPrice = Double(extra.price.replacingOccurrences(of: "$", with: "")) ?? 0
+//                return extraSum + (extraPrice * Double(extra.quantity))
+//            } ?? 0
+//            return sum + itemTotal + extrasTotal
+//        }
+//        return String(format: "$%.2f", total)
+//    }
     func calculateTotal() -> String {
         let total = items.reduce(0) { sum, item in
+            // Convertir el price principal a Double
             let itemPrice = Double(item.price.replacingOccurrences(of: "$", with: "")) ?? 0
-            let itemTotal = itemPrice * Double(item.quantity)
-
-            // Get total amount of extras
-            let extrasTotal = item.extras?.reduce(0) { extraSum, extra in
-                let extraPrice = Double(extra.price.replacingOccurrences(of: "$", with: "")) ?? 0
-                return extraSum + (extraPrice * Double(extra.quantity))
-            } ?? 0
-            return sum + itemTotal + extrasTotal
+            
+            // Determinar si debemos sumar extras
+            let extrasTotal: Double
+            if item.extras?.isEmpty == false {
+                extrasTotal = item.extras!.reduce(0) { extraSum, extra in
+                    let extraPrice = Double(extra.price.replacingOccurrences(of: "$", with: "")) ?? 0
+                    return extraSum + (extraPrice * Double(extra.quantity))
+                }
+            } else {
+                extrasTotal = 0
+            }
+            
+            // Sumar el precio del item y de sus extras si corresponde
+            return sum + (itemPrice * Double(item.quantity)) + extrasTotal
         }
+        
         return String(format: "$%.2f", total)
     }
 }
