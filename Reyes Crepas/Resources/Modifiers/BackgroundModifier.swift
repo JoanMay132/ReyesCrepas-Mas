@@ -10,7 +10,10 @@ import SwiftUI
 struct BackgroundModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .background(.pinkCakeBackground)
+            .background(
+                     Color.pinkCakeBackground
+                         .ignoresSafeArea() // Esto hace que el fondo cubra toda la pantalla
+                 )
     }
 }
 
