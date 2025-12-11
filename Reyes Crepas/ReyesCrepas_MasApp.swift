@@ -7,9 +7,14 @@
 
 import SwiftUI
 
+import Firebase
+
 @main
 struct ReyesCrepas_MasApp: App {
     
+    @StateObject var cartManager = CartManager()
+    @StateObject private var whatsappVM = WhatsappViewModel()
+
     init() {
         let appearance = UINavigationBarAppearance()
         
@@ -20,9 +25,34 @@ struct ReyesCrepas_MasApp: App {
         // Aplica la apariencia
         UINavigationBar.appearance().standardAppearance = appearance
     }
+    
+    // Conection to firebase project
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+           // RootView()
+            NavigationStack {
+            //  CrepasView()
+              ContentView()
+
+            }
+            .environmentObject(cartManager)
+            .environmentObject(whatsappVM)
+
+            
+         
+
         }
     }
 }
+
+// Conection to fireabase project
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+    return true
+  }
+}
+
