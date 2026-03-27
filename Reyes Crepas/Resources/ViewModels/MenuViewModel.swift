@@ -13,7 +13,7 @@ import FirebaseFirestore
 class MenuViewModel : ObservableObject {
     
     @Published var items : [MenuItem] = []
-    
+ 
     private var db = Firestore.firestore()
     
     //Función para obtener productos de firebase
@@ -35,7 +35,26 @@ class MenuViewModel : ObservableObject {
                                        return nil
                     }
                 } ?? []
+             
+                
+                Task {
+                    await self.resolveImages()
+                }
             }
+        }
+    }
+    
+    private func resolveImages() async {
+        for item in items {
+            guard let id = item.id,
+                  let path = item.imagePath else {
+                print("❌ Falta id o imagePath")
+                continue
+            }
+            
+            print("🔄 Cargando imagen:", path)
+            
+
         }
     }
 }

@@ -29,6 +29,9 @@ struct TextProductModifier : ViewModifier {
         content
             .font(.headline)
             .foregroundStyle(.black)
+            .lineLimit(2)
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: .infinity)
     }
 }
 

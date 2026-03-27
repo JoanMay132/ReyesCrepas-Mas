@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PancakesDetailsView: View {
     var pancake: MenuItem
-    
+
     @State private var selectedQuantity: [MenuItem: Int] = [:]
     
     @EnvironmentObject var cartManager: CartManager
@@ -21,9 +21,9 @@ struct PancakesDetailsView: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    ProductDetailsView(productImageName: pancake.name ?? "default", productName: pancake.name ?? "default", productPrice: pancake.price, productDescription: pancake.description)
+                    ProductDetailsView(imageName: pancake.imagePath, productName: pancake.name ?? "default", productPrice: pancake.price, productDescription: pancake.description)
                     
-                    // Información sobre el pancake (sin extras)
+                    // El usuario desea más pancakes?
                     quantitySelector()
                     
                     AddToCartButtonView(
@@ -63,15 +63,17 @@ private extension PancakesDetailsView {
         VStack(alignment: .leading) {
             HStack(spacing: 10) {
                 Text("¿Cuántos pancakes desea?")
-
+                
+    
+                
+                MinusButtonView(action: { decreaseQuantity(for: pancake) })
+                Text("\(selectedQuantity[pancake] ?? 1)")
+                    .textItemsStyleModifier()
                 // Plus Button to add more items to our cart
                 PlusButtonView(action: { increaseQuantity(for: pancake) })
            
 
-                Text("\(selectedQuantity[pancake] ?? 1)")
-                    .textItemsStyleModifier()
-                
-                MinusButtonView(action: { decreaseQuantity(for: pancake) })
+       
 
             }
             .padding()
@@ -101,8 +103,8 @@ private extension PancakesDetailsView {
 }
 
 #Preview {
-    let pancake = MenuItem(id: "1", name: "Panchito", price: "$12.00", extras: nil, description: "Delicioso panchito", personalización: nil, especialidades: nil)
+    let pancake = MenuItem(id: "1", name: "Panchito", imagePath: nil,price: "$12.00", extras: nil, description: "Delicioso panchito", personalización: nil,  especialidades: nil)
     
-    PancakesDetailsView(pancake: pancake)
+    PancakesDetailsView(pancake: pancake, )
         .environmentObject(CartManager())
 }

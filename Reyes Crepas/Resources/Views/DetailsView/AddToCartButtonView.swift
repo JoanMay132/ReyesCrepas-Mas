@@ -35,7 +35,7 @@ struct AddToCartButtonView: View {
             Text("Agregar al carrito")
                 .padding()
                 .frame(maxWidth: .infinity, minHeight: 50)
-                .background(isEnabled ? Color.green : Color.gray)
+                .background(isEnabled ? Color.blue : Color.gray)
                 .foregroundColor(.white)
                 .cornerRadius(8)
         }

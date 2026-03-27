@@ -10,6 +10,7 @@ import SwiftUI
 struct FrappeDetailsView: View {
     let frappe: MenuItem
     let extra: [MenuItem.Extra]
+
     @StateObject private var extrasManager = ExtrasSelectionManager<MenuItem.Extra>()
     @EnvironmentObject var cartManager: CartManager
 
@@ -20,7 +21,7 @@ struct FrappeDetailsView: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    ProductDetailsView(productImageName: frappe.name ?? "default",productName: "Frappé de \(frappe.name ?? "default")", productPrice: frappe.price, productDescription: nil)
+                    ProductDetailsView(imageName: frappe.imagePath ,productName: "Frappé de \(frappe.name ?? "default")", productPrice: frappe.price, productDescription: nil)
                     
                     // Calling method to show all the extras list in Frappe Details View
                     ExtrasListView(
@@ -67,7 +68,7 @@ struct FrappeDetailsView: View {
 
 
 #Preview {
-    let frappe = MenuItem(id: "1", name: "Café Mocha", price: "$5.00", extras: [
+    let frappe = MenuItem(id: "1", name: "Café Mocha",imagePath: nil , price: "$5.00",  extras: [
         MenuItem.Extra(id: 1, name: "Leche", price: "$0.50"),
         MenuItem.Extra(id: 2, name: "Chocolate", price: "$1.00"),
         MenuItem.Extra(id: 3, name: "chookie", price: "$3.00")
@@ -76,6 +77,8 @@ struct FrappeDetailsView: View {
                           especialidades: nil)
     
     
-    FrappeDetailsView(frappe: frappe, extra: frappe.extras ?? [])
+    FrappeDetailsView(frappe: frappe, extra: frappe.extras ?? [],
+)
         .environmentObject(CartManager())
 }
+

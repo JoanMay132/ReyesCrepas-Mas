@@ -17,7 +17,7 @@ struct MinusButtonView: View {
             Button(action: {
                 action()
             }) {
-                Image(systemName: "plus.circle.fill")
+                Image(systemName: "minus.circle.fill")
                     .font(.system(size: 20))
                     .foregroundColor(.black)
             }

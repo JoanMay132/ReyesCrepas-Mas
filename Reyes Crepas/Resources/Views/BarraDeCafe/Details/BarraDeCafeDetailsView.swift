@@ -21,7 +21,12 @@ struct BarraDeCafeDetailsView: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    ProductDetailsView(productImageName: barraDeCafe.name ?? "default", productName: "Café \(barraDeCafe.name ?? "default")", productPrice: barraDeCafe.price, productDescription: nil)
+                    ProductDetailsView(
+                        imageName: barraDeCafe.imagePath,
+                        productName: "Café \(barraDeCafe.name ?? "default")",
+                        productPrice: barraDeCafe.price,
+                        productDescription: nil
+                    )
                 }
                 // Calling method to show all the extras list in Barra de cafe Details View
                 ExtrasListView(
@@ -69,12 +74,16 @@ struct BarraDeCafeDetailsView: View {
     
     
     #Preview {
-        let barraDeCafe = MenuItem(id: "1", name: "Café de taro", price: "$20.92",
+        let barraDeCafe = MenuItem(id: "1", name: "Café de taro", imagePath: nil, price: "$20.92",
             extras: [MenuItem.Extra(id: 1, name: "vodka", price: "$30.99")],
                                    description: nil, personalización: nil,
                                    especialidades: nil)
         
-        BarraDeCafeDetailsView(barraDeCafe: barraDeCafe, extra: barraDeCafe.extras ?? [] )
+        BarraDeCafeDetailsView(
+           
+            barraDeCafe: barraDeCafe,
+            extra: barraDeCafe.extras ?? [] ,
+            )
             .environmentObject(CartManager())
         
     }

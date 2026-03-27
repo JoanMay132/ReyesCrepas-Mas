@@ -130,15 +130,24 @@ struct UserInformationView: View {
                onlyDigits.count == 10
     }
 
+    // MARK: - Información del cliente
+    private var customerInfo: String {
+        """
+        🧍 Cliente:
+        Nombre: \(userName) \(lastName)
+        Celular: \(phoneNumber)
+        """
+    }
     // MARK: - Resumen de orden
     private var orderSummary: String {
-        cartManager.items.map { item in
-            var description = "\(item.quantity)x \(item.name) - $\(item.price)"
+       let itemsText = cartManager.items.map { item in
+            var description = "\(item.quantity) - \(item.name) (\(item.price))"
+            
             
             if let extras = item.extras, !extras.isEmpty {
-                let extrasText = extras.map { "\($0.quantity) x \($0.name)" }
+                let extrasText = extras.map { "\($0.name) (\($0.price))" }
                                        .joined(separator: ", ")
-                description += " + Extras: [\(extrasText)]"
+                description += " con extras de: [\(extrasText)]\n\n"
             }
             
             if !item.tapiocaType.isEmpty {
@@ -148,6 +157,14 @@ struct UserInformationView: View {
             return description
         }
         .joined(separator: "\n")
+        
+        
+        return """
+        \(customerInfo)
+
+        🧾 Pedido:
+        \(itemsText)
+        """
     }
 }
 
