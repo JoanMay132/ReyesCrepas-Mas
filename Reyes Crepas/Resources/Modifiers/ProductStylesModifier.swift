@@ -9,6 +9,7 @@ import SwiftUI
 struct ProductStylesModifier : ViewModifier {
     func body(content: Content) -> some View {
         content
+            .frame(width: 130)
             .padding(.vertical)
             .frame(maxWidth: .infinity)
             .background(.yellowBackground)
@@ -18,7 +19,19 @@ struct ProductStylesModifier : ViewModifier {
             )
     }
 }
-
+struct ProductDetailsStyleModifier : ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding(.horizontal)
+            .padding(.vertical)
+            .frame(maxWidth: .infinity)
+            .background(.yellowBackground)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.clear)
+            )
+    }
+}
 struct paddingProductListModifier : ViewModifier {
     func body(content : Content ) -> some View {
         content
@@ -35,6 +48,9 @@ extension View {
     
     func paddingProductList () -> some View {
         self.modifier(paddingProductListModifier())
+    }
+    func productDetailsStyleVStack() -> some View {
+        self.modifier(ProductDetailsStyleModifier())
     }
     
 }

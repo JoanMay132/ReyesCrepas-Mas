@@ -17,6 +17,7 @@ struct Tapioca : Identifiable, Codable, Hashable {
     struct TapiocaDrinks : Codable, Hashable, Identifiable{
         let id : String
         let name : String
+        let imagePath: String?
         let size : [DrinkSize]
         
         struct DrinkSize : Codable, Hashable, Identifiable{

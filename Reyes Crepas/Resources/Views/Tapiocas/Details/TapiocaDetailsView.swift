@@ -10,15 +10,15 @@ struct TapiocaDetailsView: View {
     var tapioca: Tapioca
     let tapiocaDrink: Tapioca.TapiocaDrinks
     let tapiocaSize: [Tapioca.TapiocaDrinks.DrinkSize]
+ 
     @EnvironmentObject var cartManager: CartManager
     @State private var navigateToContentView = false // Estado para controlar la navegación
     @State private var selectedSize: Tapioca.TapiocaDrinks.DrinkSize
     
-    init(tapioca : Tapioca, tapiocaDrink : Tapioca.TapiocaDrinks, tapiocaSize : [Tapioca.TapiocaDrinks.DrinkSize]) {
+    init(tapioca : Tapioca, tapiocaDrink : Tapioca.TapiocaDrinks, tapiocaSize : [Tapioca.TapiocaDrinks.DrinkSize] ){
         self.tapioca = tapioca
         self.tapiocaDrink = tapiocaDrink
         self.tapiocaSize = tapiocaSize
-        
         if let normalSize = tapiocaSize.first(where : { $0.type == "Normal"}) {
             _selectedSize = State(initialValue: normalSize)
 
@@ -28,13 +28,13 @@ struct TapiocaDetailsView: View {
         }
 
     }
-
+ 
     var body: some View {
             ScrollView {
                 VStack {
                     // Tapioca drink image
                     ProductDetailsView(
-                        productImageName: tapiocaDrink.name,
+                        imageName: tapiocaDrink.imagePath,
                         productName: "Tapioca de \(tapiocaDrink.name)", productPrice: nil,
                         productDescription: tapioca.tapioca_type)
                     
@@ -99,7 +99,7 @@ private extension TapiocaDetailsView {
     
     let tapiocaDrink = Tapioca.TapiocaDrinks(
         id: "1",
-        name: "Matcha",
+        name: "Matcha", imagePath: "coco",
         size: [
             Tapioca.TapiocaDrinks.DrinkSize(id: "small", type: "Normal", price: "$12.00"),
             Tapioca.TapiocaDrinks.DrinkSize(id: "big", type: "Litro", price: "$24.00")
@@ -112,7 +112,7 @@ private extension TapiocaDetailsView {
         tapioca_drinks: [tapiocaDrink]
     )
     
-    return TapiocaDetailsView(
+    TapiocaDetailsView(
         tapioca: tapioca,
         tapiocaDrink: tapiocaDrink,
         tapiocaSize: tapiocaDrink.size

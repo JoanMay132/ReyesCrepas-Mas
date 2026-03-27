@@ -12,24 +12,32 @@ import SwiftUI
 struct ProductImagesModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
+      
             .scaledToFill()
-            .frame(width: 150, height: 130)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .padding()
+            .frame( height: 174)
+            .clipped()
+            .cornerRadius(12)
     }
 }
 
+struct ProductImagesDefault: ViewModifier {
+    let imageName : String
 
-
-extension Image {
-    func productImageStyle() -> some View {
-        self.resizable().modifier(ProductImagesModifier())
+    func body(content: Content) -> some View {
+        content
         
-    }
-    func productImageDetailsViewStyle() -> some View {
-        self.resizable().modifier(ProductImagesDetailsViewStyle())
+            .scaledToFill()
+            .frame(height: 150)
+            .overlay(
+                Text("❌ \(imageName)")
+                    .font(.caption)
+                    .foregroundColor(.red)
+            )
     }
 }
+
+
+
 
 struct ShapeProductModifier : ViewModifier {
     func body(content: Content ) -> some View {
@@ -47,6 +55,20 @@ struct ProductImagesDetailsViewStyle : ViewModifier {
         content
             .frame(width: 350, height: 400)
             .scaledToFit()
+    }
+}
+
+extension Image {
+    func productImageStyle() -> some View {
+        self.resizable().modifier(ProductImagesModifier())
+        
+    }
+    func productImageDefaultStyle(_ name: String) -> some View {
+        self.resizable().modifier(ProductImagesDefault(imageName: name))
+        
+    }
+    func productImageDetailsViewStyle() -> some View {
+        self.resizable().modifier(ProductImagesDetailsViewStyle())
     }
 }
 

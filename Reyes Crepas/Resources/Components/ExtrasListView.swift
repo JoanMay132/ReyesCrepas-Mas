@@ -44,5 +44,6 @@ struct ExtrasListView<ExtraType: Identifiable>: View {
             }
         }
         .padding(20)
+        .vstackStyleModifier()
     }
 }

@@ -100,6 +100,6 @@ class CartManager: ObservableObject {
             return sum + (itemPrice * Double(item.quantity)) + extrasTotal
         }
         
-        return String(format: "$%.2f", total)
+        return String(format: "%.2f", total)
     }
 }

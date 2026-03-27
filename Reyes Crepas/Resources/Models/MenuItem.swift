@@ -11,13 +11,15 @@ import FirebaseFirestore
 struct MenuItem: Codable, Identifiable, Hashable {
     @DocumentID var id: String?
     let name: String?
+    let imagePath: String?
+
     let price: String?
     let extras: [Extra]?
     let description: String?
     //Personalización crepas
     let personalización : Personalizacion?
     
-    var imageName: String { name ?? "" }
+ 
     
    // MARK: Especialidades de crepas
     let especialidades : [Especialidad]?
@@ -26,6 +28,7 @@ struct MenuItem: Codable, Identifiable, Hashable {
     }
     struct Personalizacion : Identifiable, Codable, Hashable {
         let id: Int
+        let imagePath: String?
         let base_price : Int
         let ingredientes : Ingredientes
         let precios_combinaciones: [PrecioCombinacion]
@@ -94,6 +97,7 @@ struct MenuItem: Codable, Identifiable, Hashable {
         let id: Int
         let name: String
         let price: String
+        let imagePath: String?
         let description: String
     }
 }

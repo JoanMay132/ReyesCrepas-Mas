@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TallarinesDetailsView: View {
     var tallarines: MenuItem
+  
     @EnvironmentObject var cartManager: CartManager
     @State private var navigateToContentView = false
     @State private var selectedQuantity: [MenuItem: Int] = [:]
@@ -17,7 +18,7 @@ struct TallarinesDetailsView: View {
         ScrollView {
             VStack {
                 
-                ProductDetailsView(productImageName: tallarines.name ?? "default",productName: tallarines.name ?? "default", productPrice: tallarines.price, productDescription: tallarines.description)
+                ProductDetailsView(imageName: tallarines.imagePath ,productName: tallarines.name ?? "default", productPrice: tallarines.price, productDescription: tallarines.description)
                 
                 quantitySelector()
                 
@@ -55,14 +56,17 @@ private extension TallarinesDetailsView {
             HStack(spacing: 10) {
                 Text("¿Cuántos tallarines deseas?")
                 
+                MinusButtonView(action: { decreaseQuantity(for: tallarines) })
+                
+                Text("\(selectedQuantity[tallarines] ?? 1)")
+                    .textItemsStyleModifier()
+                
                 // Plus Button to add more items to our cart
                 PlusButtonView(action: { increaseQuantity(for: tallarines) })
            
 
-                Text("\(selectedQuantity[tallarines] ?? 1)")
-                    .textItemsStyleModifier()
-                
-                MinusButtonView(action: { decreaseQuantity(for: tallarines) })
+   
+
 
             }
             .padding()
@@ -92,13 +96,3 @@ private extension TallarinesDetailsView {
     }
 }
 
-// MARK: - 👀 Preview View
-#Preview {
-    let tallarines: [MenuItem] = Bundle.main.decode("tallarines.json")
-    if let tallarin = tallarines.first(where: { $0.id == "kinder_fresa" }) {
-        TallarinesDetailsView(tallarines: tallarin)
-            .environmentObject(CartManager())
-    } else {
-        Text("Producto no encontrado")
-    }
-}

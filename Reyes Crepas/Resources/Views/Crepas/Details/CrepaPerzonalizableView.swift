@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CrepaDetailsView: View {
+struct CrepaPersonalizableView: View {
     let crepa: MenuItem
     
     let categories = ["Clásicos", "Premium"]
@@ -274,6 +274,7 @@ struct CrepaDetailsView: View {
 #Preview {
     let samplePersonalizacion = MenuItem.Personalizacion(
         id: 1,
+        imagePath: nil,
         base_price: 50,
         ingredientes: MenuItem.Ingredientes(clasicos: ["Chocolate", "Plátano"], premium: ["Nutella", "Fresas"]),
         precios_combinaciones: [],
@@ -284,6 +285,7 @@ struct CrepaDetailsView: View {
     let sampleCrepa = MenuItem(
         id: "1",
         name: "Crepa",
+        imagePath: nil,
         price: nil,
         extras: nil,
         description: nil,
@@ -291,6 +293,6 @@ struct CrepaDetailsView: View {
         especialidades: nil
     )
     
-    CrepaDetailsView(crepa: sampleCrepa)
+    CrepaPersonalizableView(crepa: sampleCrepa)
         .environmentObject(CartManager())
 }

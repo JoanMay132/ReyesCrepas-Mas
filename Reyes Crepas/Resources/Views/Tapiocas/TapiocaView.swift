@@ -39,7 +39,7 @@ private extension TapiocaView {
                 .padding(.horizontal)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
+                HStack(spacing: 16) {
                     ForEach(viewModel.tapiocas.filter { $0.id == "water_based" }) { waterBasedTapioca in
                         ForEach(waterBasedTapioca.tapioca_drinks) { drink in
                             tapiocaCard(for: drink, in: waterBasedTapioca)
@@ -58,9 +58,10 @@ private extension TapiocaView {
                 .padding(.horizontal)
             
             LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(viewModel.tapiocas) { tapioca in
-                    ForEach(tapioca.tapioca_drinks) { drink in
-                        tapiocaCard(for: drink, in: tapioca)
+                ForEach(viewModel.tapiocas.filter {$0.id == "milk_based"}) { milkBasedTapioca
+                    in
+                    ForEach(milkBasedTapioca.tapioca_drinks) { drink in
+                        tapiocaCard(for: drink, in: milkBasedTapioca)
                     }
                 }
             }
@@ -70,20 +71,34 @@ private extension TapiocaView {
     
     func tapiocaCard(for drink: Tapioca.TapiocaDrinks, in tapioca: Tapioca) -> some View {
         NavigationLink {
-            TapiocaDetailsView(tapioca: tapioca, tapiocaDrink: drink, tapiocaSize: drink.size)
+           
+                
+                TapiocaDetailsView(tapioca: tapioca, tapiocaDrink: drink, tapiocaSize: drink.size)
+        
         } label: {
             VStack {
-                Image(drink.id)
-                    .productImageStyle()
                 
+                if let imageName = drink.imagePath {
+                    if UIImage(named: imageName) != nil {
+                        Image(imageName)
+                            .productImageStyle() // style of image
+                    } else {
+                        Image("default")
+                            .productImageDefaultStyle(imageName)
+                    }
+                } else {
+                    ProgressView()
+                        .frame(height: 150)
+                }
                 VStack {
                     Text(drink.name)
-                        .font(.headline)
-                        .foregroundStyle(.black)
+                        .productTextStyleModifier()
+
                 }
                 .productStyleVStack()
             }
             .paddingProductList()
+
         }
         .shapeProduct()
     }

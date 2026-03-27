@@ -13,40 +13,55 @@ struct TallarinesView: View {
     ]
     
     var body: some View {
-        NavigationStack {
+        
             ScrollView {
-                VStack(alignment: .leading) {
-                    Text("Tallarines")
-                        .productTitleStyleModifier()
-                        .padding(.leading)
-                    
-                    LazyVGrid(columns: columns, spacing: 15) {
-                        ForEach(viewModel.items) { item in
-                            NavigationLink(destination: TallarinesDetailsView(tallarines: item)) {
-                                VStack {
-                                    Image(item.imageName)
-                                        .productImageStyle()
+                VStack {
+                    VStack(alignment: .leading) {
+                        Text("Tallarines")
+                            .productTitleStyleModifier()
+                    }
+                        LazyVGrid(columns: columns, spacing: 15) {
+                            ForEach(viewModel.items) { item in
+                                NavigationLink {
+                      
+                                        TallarinesDetailsView(tallarines: item)
                                     
+                                } label: {
                                     VStack {
-                                        Text(item.name ?? "default")
-                                            .font(.headline)
-                                            .foregroundStyle(.black)
+                                        
+                                        if let imageName = item.imagePath {
+                                            if UIImage(named: imageName) != nil {
+                                                Image(imageName)
+                                                    .productImageStyle()
+                                            } else {
+                                                Image("default")
+                                                    .productImageDefaultStyle(imageName)
+                                            }
+                                        } else {
+                                            ProgressView()
+                                                .frame(height: 150)
+                                        }
+                                        VStack {
+                                            Text(item.name ?? "default")
+                                                .productTextStyleModifier()
+
+                                        }
+                                        .productStyleVStack()
                                     }
-                                    .productStyleVStack()
+                                    .paddingProductList()
+
                                 }
-                            }
-                            .shapeProduct()
+                                .shapeProduct()
+                            
                         }
                     }
-                    .paddingProductList()
                 }
-                .padding(.horizontal)
             }
             .onAppear {
                 viewModel.fetchProducts(from: "tallarines")
             }
             .pinkCakeBackground()
-        }
+        
     }
 }
 

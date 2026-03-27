@@ -28,24 +28,35 @@ struct BarraDeCafeView: View {
                     LazyVGrid(columns: columns) {
                         ForEach(viewModel.items) { item in
                             NavigationLink {
-                                BarraDeCafeDetailsView(barraDeCafe: item, extra: item.extras ?? [])
+                               
+                                    BarraDeCafeDetailsView(barraDeCafe: item, extra: item.extras ?? [])
+                        
                             } label: {
                                 VStack {
-                                    Image(item.name ?? "default")
-                                        .productImageStyle()
                                     
+                                    if let imageName = item.imagePath {
+                                        if UIImage(named: imageName) != nil {
+                                            Image(imageName)
+                                                .productImageStyle()
+                                        } else {
+                                            Image("default")
+                                                .productImageDefaultStyle(imageName)
+                                        }
+                                    } else {
+                                        ProgressView()
+                                            .frame(height: 150)
+                                    }
                                     VStack {
                                         Text(item.name ?? "default")
-                                            .font(.headline)
-                                            .foregroundStyle(.black)
+                                            .productTextStyleModifier()
+
                                     }
                                     .productStyleVStack()
                                 }
+                                .paddingProductList()
                             }
                             .shapeProduct()
                         }
-                        .paddingProductList()
-                        
                     }
                 }
             }
