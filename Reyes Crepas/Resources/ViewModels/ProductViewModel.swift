@@ -22,10 +22,7 @@ class ProductViewModel: ObservableObject {
             }
             
             DispatchQueue.main.async {
-                // Depura los datos recibidos
-                snapshot?.documents.forEach { doc in
-                    print(doc.data()) // Verifica que los datos del documento son correctos
-                }
+          
                 
                 // Mapeamos los documentos de Firestore a objetos Product
                 self.products = snapshot?.documents.compactMap { doc -> Product? in

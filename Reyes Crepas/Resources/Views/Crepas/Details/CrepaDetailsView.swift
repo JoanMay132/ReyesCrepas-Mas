@@ -31,7 +31,13 @@ struct CrepaDetailsView: View {
                         AddToCartButtonView(
                             productName: "Crepa de \(especialidad.name)",
                             productPrice: especialidad.price,
-                            itemsQuantity: [], productSize: "",
+                            itemsQuantity: [
+                                ItemsQuantity(
+                                    name: especialidad.name,
+                                    price: especialidad.price,
+                                    quantity: selectedQuantity[crepa] ?? 1
+                                )
+                            ], productSize: "",
                             extras: [],
                             cartManager:
                                 cartManager, navigateToContentView: $navigateToContentView
@@ -84,19 +90,19 @@ private extension CrepaDetailsView {
 
 
 
-// MARK: - 🔼  Increase Tallarines Quantity
+// MARK: - 🔼  Increase crepas Quantity
 private extension CrepaDetailsView {
-    func increaseQuantity(for tallarines: MenuItem) {
-        let currentQuantity = selectedQuantity[tallarines, default: 1]
+    func increaseQuantity(for crepa: MenuItem) {
+        let currentQuantity = selectedQuantity[crepa, default: 1]
         if currentQuantity < 20 {
             selectedQuantity[crepa] = currentQuantity + 1
         }
     }
 }
 
-// MARK: - 🔽 Decrease Tallarines Quantity
+// MARK: - 🔽 Decrease crepas Quantity
 private extension CrepaDetailsView {
-    func decreaseQuantity(for tallarines: MenuItem) {
+    func decreaseQuantity(for crepa: MenuItem) {
         if let currentQuantity = selectedQuantity[crepa], currentQuantity > 1 {
             selectedQuantity[crepa] = currentQuantity - 1
         }

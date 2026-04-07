@@ -56,7 +56,7 @@ class WhatsappViewModel: ObservableObject {
         let urlString = "https://wa.me/\(whatsappMessage.number)?text=\(message)"
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
 
-        print("Link de WhatsApp: \(urlString ?? "error")")
+       
 
         if let urlString = urlString, let url = URL(string: urlString) {
             UIApplication.shared.open(url)

@@ -37,24 +37,9 @@ class MenuViewModel : ObservableObject {
                 } ?? []
              
                 
-                Task {
-                    await self.resolveImages()
-                }
+    
             }
         }
     }
     
-    private func resolveImages() async {
-        for item in items {
-            guard let id = item.id,
-                  let path = item.imagePath else {
-                print("❌ Falta id o imagePath")
-                continue
-            }
-            
-            print("🔄 Cargando imagen:", path)
-            
-
-        }
-    }
 }

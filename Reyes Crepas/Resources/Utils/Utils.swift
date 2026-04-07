@@ -9,26 +9,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-func destinationProduct(for product : Product, frappes : [MenuItem], tapiocas : [Tapioca], pancakes : [MenuItem], crepas: [MenuItem], barraDeCafe : [MenuItem], tallarines : [MenuItem]) -> AnyView {
 
-    switch ProductTypes(rawValue : product.productType.rawValue){
-    case .frappe :
-        // Aquí debes usar el ViewModel de frappes, asegurándote de que ya está cargado
-        return AnyView(FrappeView())
-    case .tapiocas :
-        return AnyView(TapiocaView())
-    case .pancakes :
-        return AnyView(PancakesView())
-    case .crepas :
-        return AnyView(CrepasView())
-    case .barraDeCafe :
-        return AnyView(BarraDeCafeView())
-    case .tallarines :
-        return AnyView(TallarinesView())
-    case .none :
-        return AnyView(Text("Product not found!"))
-    }
-}
 
 struct TextValidation {
     static func validateCharacters(newValue: String, oldValue: String, maxLength : Int = 30) -> String {

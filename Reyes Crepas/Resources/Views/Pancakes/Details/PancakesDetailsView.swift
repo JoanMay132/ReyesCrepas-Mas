@@ -94,7 +94,7 @@ private extension PancakesDetailsView {
         }
     }
 }
-// MARK: - 🔽 Decrease Tallarines Quantity
+// MARK: - 🔽 Decrease pancakes Quantity
 private extension PancakesDetailsView {
     func decreaseQuantity(for pancake: MenuItem) {
         if let currentQuantity = selectedQuantity[pancake], currentQuantity > 1 {

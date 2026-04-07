@@ -35,27 +35,9 @@ class TapiocaViewModel: ObservableObject {
                     }
                 } ?? []
                 
-                // 🔥 Limpiar imágenes anteriores
-          
-                // 🔥 Resolver imágenes
-                Task {
-                    await self.resolveImages()
-                }
+
             }
         }
     }
-    
-    // 🔥 Igual que en MenuViewModel pero adaptado
-    private func resolveImages() async {
-        for tapioca in tapiocas {
-            for drink in tapioca.tapioca_drinks {
-                
-                let id = drink.id
-                let path = drink.imagePath
-                
-                print("🔄 Cargando imagen tapioca:", path ?? "null")
-         
-            }
-        }
-    }
+
 }
