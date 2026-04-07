@@ -134,7 +134,7 @@ struct CartView: View {
 
     private func totalView() -> some View {
         VStack {
-            Text("Total: \(cartManager.calculateTotal())")
+            Text("Total: $\(cartManager.calculateTotal())")
                 .font(.title2.bold())
                 .padding()
         }

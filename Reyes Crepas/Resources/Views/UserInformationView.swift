@@ -108,7 +108,7 @@ struct UserInformationView: View {
             }
 
             Divider()
-            Text("Total de tu pedido: \(cartManager.calculateTotal())")
+            Text("Total de tu pedido:  $\(cartManager.calculateTotal())")
                 .font(.headline)
             Divider()
         }
