@@ -18,37 +18,36 @@ struct PancakesDetailsView: View {
 
 
     var body: some View {
-        NavigationStack {
+
             ScrollView {
                 VStack {
                     ProductDetailsView(imageName: pancake.imagePath, productName: pancake.name ?? "default", productPrice: pancake.price, productDescription: pancake.description)
-                    
-                    // El usuario desea más pancakes?
-                    quantitySelector()
-                    
-                    AddToCartButtonView(
-                        productName: "Pancake de \(pancake.name ?? "default")",
-                        productPrice: pancake.price ?? "default",
-                        itemsQuantity: selectedQuantity.isEmpty ? [] : [
-                            ItemsQuantity(name: pancake.name ?? "default", price: pancake.price ?? "default", quantity: selectedQuantity[pancake] ?? 1)], productSize: "",
-                        extras : [],
-                        cartManager: cartManager,
-                        navigateToContentView: $navigateToContentView
-                    )
-                }
-                .navigationBarBackButtonHidden(true)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        NavigationBackButtonView(title : "Pancakes")
-
+                    VStack {
+                        // El usuario desea más pancakes?
+                        quantitySelector()
+                        
+                        AddToCartButtonView(
+                            productName: "Pancake de \(pancake.name ?? "default")",
+                            productPrice: pancake.price ?? "default",
+                            itemsQuantity: selectedQuantity.isEmpty ? [] : [
+                                ItemsQuantity(name: pancake.name ?? "default", price: pancake.price ?? "default", quantity: selectedQuantity[pancake] ?? 1)], productSize: "",
+                            extras : [],
+                            cartManager: cartManager,
+                            navigateToContentView: $navigateToContentView
+                        )
                     }
+                    .padding()
+                    .background(Color.white)
+                    .clipShape(.rect(cornerRadius: 8))
+                    .frame(maxWidth: .infinity)
                 }
+
             }
             .pinkCakeBackground()
             .navigationDestination(isPresented: $navigateToContentView) {
                 ContentView()
             }
-        }
+        
     }
     
 
@@ -63,6 +62,8 @@ private extension PancakesDetailsView {
         VStack(alignment: .leading) {
             HStack(spacing: 10) {
                 Text("¿Cuántos pancakes desea?")
+                    .productTextStyleModifier()
+
                 
     
                 

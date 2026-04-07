@@ -18,7 +18,7 @@ struct BarraDeCafeDetailsView: View {
     @State private var navigateToContentView = false
 
     var body: some View {
-        NavigationStack {
+      
             ScrollView {
                 VStack {
                     ProductDetailsView(
@@ -52,15 +52,10 @@ struct BarraDeCafeDetailsView: View {
             }
             
             
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationBackButtonView(title: "Barra de Café")
-                }
-            }
+
             .pinkCakeBackground()
             
-        }
+        
         .navigationDestination(isPresented: $navigateToContentView) {
             ContentView()
         }

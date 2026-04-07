@@ -18,7 +18,7 @@ struct FrappeDetailsView: View {
     @State private var navigateToContentView = false
 
     var body: some View {
-        NavigationStack {
+      
             ScrollView {
                 VStack {
                     ProductDetailsView(imageName: frappe.imagePath ,productName: "Frappé de \(frappe.name ?? "default")", productPrice: frappe.price, productDescription: nil)
@@ -48,18 +48,13 @@ struct FrappeDetailsView: View {
                     )
        
                 }
-                .navigationBarBackButtonHidden(true)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        NavigationBackButtonView(title: "Frappes")
-                    }
-                }
+
             }
             .pinkCakeBackground()
             .navigationDestination(isPresented: $navigateToContentView) {
                 ContentView()
             }
-        }
+        
     }
     
 

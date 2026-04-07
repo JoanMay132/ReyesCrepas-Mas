@@ -80,6 +80,7 @@ struct CartView: View {
                 Image(systemName: "trash")
                     .foregroundColor(.red)
             }
+            .buttonStyle(.plain)
         }
     }
 

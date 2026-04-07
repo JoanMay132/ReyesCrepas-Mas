@@ -15,6 +15,8 @@ struct VstackStyleModifier: ViewModifier {
                     .fill(Color.white)
                     .shadow(radius: 2) 
             )
+            .foregroundStyle(.black)
+
             .padding(8)
     }
 }

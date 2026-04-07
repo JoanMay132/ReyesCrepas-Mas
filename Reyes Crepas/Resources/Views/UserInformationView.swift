@@ -57,7 +57,7 @@ struct UserInformationView: View {
                             showAlert = true
                         }
                     }) {
-                        Text("Place your order")
+                        Text("Envía tu orden")
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(isFormValid && !whatsappVM.messages.isEmpty ? Color.blue : Color.gray)

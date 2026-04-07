@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct CrepaDetailsView: View {
     let crepa: MenuItem
@@ -18,38 +19,39 @@ struct CrepaDetailsView: View {
     @State private var navigateToContentView = false
 
     var body: some View {
-        NavigationStack {
+
             ScrollView {
                 VStack {
-                    ProductDetailsView(imageName: crepa.imagePath ,productName: "Crepa de \(especialidad.name)", productPrice: especialidad.price, productDescription: especialidad.description)
+                    ProductDetailsView(imageName: especialidad.imagePath ,productName: "Crepa de \(especialidad.name)", productPrice: especialidad.price, productDescription: especialidad.description)
         
-                    // El usuario desea más crepas?
-                    quantitySelector()
-                    
+                    VStack {
+                        // El usuario desea más crepas?
+                        quantitySelector()
+                        
                         // Add to cart button and going to contentView
-            
-                    AddToCartButtonView(
-                        productName: "Crepa de \(especialidad.name)",
-                        productPrice: especialidad.price,
-                        itemsQuantity: [], productSize: "",
-                        extras: [],
-                        cartManager:
-                            cartManager, navigateToContentView: $navigateToContentView
-                    )
+                        
+                        AddToCartButtonView(
+                            productName: "Crepa de \(especialidad.name)",
+                            productPrice: especialidad.price,
+                            itemsQuantity: [], productSize: "",
+                            extras: [],
+                            cartManager:
+                                cartManager, navigateToContentView: $navigateToContentView
+                        )
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .clipShape(.rect(cornerRadius: 8))
+                    .frame(maxWidth: .infinity)
        
                 }
-                .navigationBarBackButtonHidden(true)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        NavigationBackButtonView(title: "Especialidades")
-                    }
-                }
+
             }
             .pinkCakeBackground()
             .navigationDestination(isPresented: $navigateToContentView) {
                 ContentView()
             }
-        }
+        
     }
     
 
@@ -61,7 +63,8 @@ private extension CrepaDetailsView {
         VStack(alignment: .leading) {
             HStack(spacing: 10) {
                 Text("¿Cuántas crepas deseas?")
-                
+                    .foregroundStyle(.black)
+
                 MinusButtonView(action: { decreaseQuantity(for: crepa) })
                 
                 Text("\(selectedQuantity[crepa] ?? 1)")

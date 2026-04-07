@@ -10,7 +10,11 @@ import SwiftUI
 struct TitleStylesModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
+            .padding(.horizontal)
+
             .font(.title.bold())
+        
+            .foregroundColor(.black)
             .padding(.horizontal)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -39,7 +43,9 @@ struct TextStyleSizeModifier: ViewModifier {
     func body(content : Content) -> some View {
         content
             .font(.body)
-            .frame(width: 30)
+            .frame(width: 50)
+            .foregroundStyle(.black)
+
     }
 }
 

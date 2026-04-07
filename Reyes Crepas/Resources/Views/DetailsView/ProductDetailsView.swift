@@ -49,6 +49,8 @@ struct ProductDetailsView: View {
 
 #Preview {
     ProductDetailsView(imageName: "Coco", productName: "Coco", productPrice: "12.00", productDescription: "Lorem ipsum dolor sit amet")
+        .preferredColorScheme(.dark)
+
 }
 
 //

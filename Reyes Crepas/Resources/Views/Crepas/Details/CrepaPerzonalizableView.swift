@@ -124,20 +124,18 @@ struct CrepaPersonalizableView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Personaliza tu crepa")
                 .productTitleStyleModifier()
-                .padding(.horizontal)
             
             VStack {
                 Text("Selecciona de 1 a 2 ingredientes")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .productTextStyleModifier()
                 Spacer()
-                Picker("Categoría", selection: $selectedCategory) {
-                    ForEach(categories, id: \.self) { category in
-                        Text(category)
-                    }
-                }
-                .pickerStyle(.segmented)
-                
+                SegmentedSelector(
+                    items: categories,
+                    titleProvider: {category in category},
+                    selectedItem: $selectedCategory
+                )
+
+                //showing ingredients type
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 8) {
                         ForEach(ingredientsToShow, id: \.self) { ingrediente in
@@ -158,24 +156,33 @@ struct CrepaPersonalizableView: View {
                 // Toppings gratis
                 VStack {
                     Text("Elige tu topping")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .productTextStyleModifier()
                     Spacer()
                     Text("¡UNO GRATIS!")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .productTextStyleModifier()
                     Spacer()
                     
-                    Picker("Topping gratis", selection: $selectedToppings) {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(spacing: 8) {
                             ForEach(personalizacion.topping, id: \.self) { topping in
-                                Text(topping)
-                                    .tag(MenuItem.IngredientOption.simple(topping) as MenuItem.IngredientOption?)
+                                let toppingOption = MenuItem.IngredientOption.simple(topping)
+                                Button {
+                                    selectedToppings = toppingOption
+                                } label: {
+                                    Text(topping)
+                                        .font(.subheadline.bold())
+                                        .frame(maxWidth: .infinity)
+                                        .padding(.vertical, 8)
+                                        .foregroundStyle(selectedToppings == toppingOption ? .white : .black)
+                                        .background(selectedToppings == toppingOption ? Color.blue : Color.gray.opacity(0.15))
+                                        .clipShape(.rect(cornerRadius: 8))
+                                }
+                                .buttonStyle(.plain)
                             }
+                        }
+                        .padding(.horizontal)
                     }
-                        .pickerStyle(.wheel)
-                        .frame(height: 90)
-                        .scaleEffect(0.8)
-                                    
+                    Spacer()
                     
                 }
                 .vstackStyleModifier()
@@ -185,8 +192,7 @@ struct CrepaPersonalizableView: View {
                 // Extra toppings
                 VStack {
                     Text("Añade topping extra")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .productTextStyleModifier()
                     Spacer()
                     
                     ScrollView(.vertical, showsIndicators: false) {
@@ -295,4 +301,5 @@ struct CrepaPersonalizableView: View {
     
     CrepaPersonalizableView(crepa: sampleCrepa)
         .environmentObject(CartManager())
+        
 }

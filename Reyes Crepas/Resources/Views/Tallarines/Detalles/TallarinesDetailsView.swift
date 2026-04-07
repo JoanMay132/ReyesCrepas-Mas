@@ -19,26 +19,28 @@ struct TallarinesDetailsView: View {
             VStack {
                 
                 ProductDetailsView(imageName: tallarines.imagePath ,productName: tallarines.name ?? "default", productPrice: tallarines.price, productDescription: tallarines.description)
-                
-                quantitySelector()
-                
-                AddToCartButtonView(
-                    productName: "Tallarin de \(tallarines.name ?? "default")",
-                    productPrice: tallarines.price ?? "dault",
-                    itemsQuantity: selectedQuantity.isEmpty ? [] : [
-                        ItemsQuantity(name: tallarines.name ?? "default", price: tallarines.price ?? "default", quantity: selectedQuantity[tallarines] ?? 1)], productSize: "",
-                    extras : [],
-                    cartManager: cartManager,
-                    navigateToContentView: $navigateToContentView
-                )
-            }
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationBackButtonView(title : "Tallarines")
+                VStack {
+                    quantitySelector()
+                    
+                    AddToCartButtonView(
+                        productName: "Tallarin de \(tallarines.name ?? "default")",
+                        productPrice: tallarines.price ?? "dault",
+                        itemsQuantity: selectedQuantity.isEmpty ? [] : [
+                            ItemsQuantity(name: tallarines.name ?? "default", price: tallarines.price ?? "default", quantity: selectedQuantity[tallarines] ?? 1)], productSize: "",
+                        extras : [],
+                        cartManager: cartManager,
+                        navigateToContentView: $navigateToContentView
+                    )
                 }
+                .padding()
+                .background(Color.white)
+                .clipShape(.rect(cornerRadius: 8))
+                .frame(maxWidth: .infinity)
             }
+            
+
         }
+        
         .pinkCakeBackground()
         .navigationDestination(isPresented: $navigateToContentView) {
             ContentView()
@@ -55,7 +57,8 @@ private extension TallarinesDetailsView {
         VStack(alignment: .leading) {
             HStack(spacing: 10) {
                 Text("¿Cuántos tallarines deseas?")
-                
+                    .foregroundStyle(.black)
+
                 MinusButtonView(action: { decreaseQuantity(for: tallarines) })
                 
                 Text("\(selectedQuantity[tallarines] ?? 1)")

@@ -30,14 +30,15 @@ struct TapiocaDetailsView: View {
     }
  
     var body: some View {
-            ScrollView {
+        ScrollView {
+            VStack {
+                // Tapioca drink image
+                ProductDetailsView(
+                    imageName: tapiocaDrink.imagePath,
+                    productName: "Tapioca de \(tapiocaDrink.name)", productPrice: nil,
+                    productDescription: tapioca.tapioca_type)
+                
                 VStack {
-                    // Tapioca drink image
-                    ProductDetailsView(
-                        imageName: tapiocaDrink.imagePath,
-                        productName: "Tapioca de \(tapiocaDrink.name)", productPrice: nil,
-                        productDescription: tapioca.tapioca_type)
-                    
                     //Method to choose your tapioca Size
                     chooseYourProductSize()
                     AddToCartButtonView(
@@ -45,28 +46,29 @@ struct TapiocaDetailsView: View {
                         ,
                         
                         
-                                       productPrice:  selectedSize.price,
+                        productPrice:  selectedSize.price,
                         
                         itemsQuantity: [],
                         productSize: selectedSize.type,
-                                       extras : [],
-                                       cartManager: cartManager,
-                                       navigateToContentView: $navigateToContentView
+                        extras : [],
+                        cartManager: cartManager,
+                        navigateToContentView: $navigateToContentView
                     )
                     .onAppear {
                         print(" ProductSize enviado: \(selectedSize.type)")
                     }
-
-             
-                    
                 }
-                .navigationBarBackButtonHidden(true)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        NavigationBackButtonView(title : "Tapioca")
-                    }
-                }
+                .padding()
+                .background(Color.white)
+                .clipShape(.rect(cornerRadius: 8))
+                .frame(maxWidth: .infinity)
+                
+                
+                
             }
+        }
+     
+            
             .pinkCakeBackground()
             .navigationDestination(isPresented: $navigateToContentView) {
                 ContentView()
@@ -81,16 +83,13 @@ private extension TapiocaDetailsView {
         VStack(alignment: .leading) {
             
             Text("Tamaño de tu tapioca")
-                .font(.headline)
-                .padding(.horizontal)
-
-            Picker("Tamaño de tu tapioca", selection: $selectedSize) {
-                ForEach(tapiocaSize, id: \.self) { size in
-                    Text("\(size.type) - \(size.price)")
-                }
-            }
-            .pickerStyle(.segmented)
-            .padding()
+                .productTextStyleModifier()
+            SegmentedSelector(
+                items: tapiocaSize,
+                titleProvider: { size in "\(size.type) - \(size.price)" },
+                selectedItem: $selectedSize
+            )
+ 
         }
     }
 }
@@ -108,7 +107,7 @@ private extension TapiocaDetailsView {
     
     let tapioca = Tapioca(
         id: "1",
-        tapioca_type: "Leche",
+        tapioca_type: "Base leche",
         tapioca_drinks: [tapiocaDrink]
     )
     

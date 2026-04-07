@@ -11,13 +11,22 @@ struct PlusButtonView: View {
     let action: () -> Void
 
     var body: some View {
+
+        
         Button(action: {
-            action() 
+            action()
         }) {
-            Image(systemName: "plus.circle.fill")
-                .font(.system(size: 20))
-                .foregroundColor(.black)
+            ZStack {
+                Circle()
+                    .fill(.white)
+                    .frame(width: 20, height: 20)
+
+                Image(systemName: "plus.circle.fill")
+                    .font(.system(size: 20))
+                    .foregroundColor(.gray.opacity(1.2))
+            }
         }
+    
     }
 }
 

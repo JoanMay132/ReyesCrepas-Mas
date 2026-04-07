@@ -29,6 +29,7 @@ struct CrepasView: View {
             .padding(.bottom, 40)
         }
         .pinkCakeBackground()
+
         .onAppear {
             viewModel.fetchProducts(from: "crepas")
         }

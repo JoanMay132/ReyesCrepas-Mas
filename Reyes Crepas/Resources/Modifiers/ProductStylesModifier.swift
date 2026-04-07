@@ -26,6 +26,7 @@ struct ProductDetailsStyleModifier : ViewModifier {
             .padding(.vertical)
             .frame(maxWidth: .infinity)
             .background(.yellowBackground)
+            .foregroundStyle(.black)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.clear)
