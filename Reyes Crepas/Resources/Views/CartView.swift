@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CartView: View {
     @EnvironmentObject var cartManager: CartManager
-    @State private var navigateToUserInformationView = false
 
     var body: some View {
         List {
@@ -60,9 +59,6 @@ struct CartView: View {
                     Text(item.price)
                     itemProductSize(item)
 
-                    .onAppear {
-                        print(" Item en carrito: \(item.name) | Tamaño: \(item.productSize)")
-                                          }
                 }
                 .font(.subheadline)
                 .foregroundColor(.gray)

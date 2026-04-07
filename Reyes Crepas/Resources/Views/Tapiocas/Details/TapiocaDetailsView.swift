@@ -54,9 +54,7 @@ struct TapiocaDetailsView: View {
                         cartManager: cartManager,
                         navigateToContentView: $navigateToContentView
                     )
-                    .onAppear {
-                        print(" ProductSize enviado: \(selectedSize.type)")
-                    }
+               
                 }
                 .padding()
                 .background(Color.white)

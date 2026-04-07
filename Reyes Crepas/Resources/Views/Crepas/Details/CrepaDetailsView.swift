@@ -11,11 +11,9 @@ import UIKit
 struct CrepaDetailsView: View {
     let crepa: MenuItem
     let especialidad: MenuItem.Especialidad
-    @StateObject private var extrasManager = ExtrasSelectionManager<MenuItem.Extra>()
     @EnvironmentObject var cartManager: CartManager
     @State private var selectedQuantity: [MenuItem: Int] = [:]
 
-    @State private var selectedExtras: [MenuItem.Extra: Int] = [:]
     @State private var navigateToContentView = false
 
     var body: some View {

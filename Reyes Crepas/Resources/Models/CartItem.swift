@@ -21,12 +21,6 @@ struct Extras: Identifiable, Equatable , Hashable{
     var quantity: Int
 }
 
-struct TapiocaDrink : Identifiable, Equatable {
-    let id = UUID()
-    let name : String
-    let price : String
-
-}
 
 
 struct CartItem: Identifiable, Equatable {

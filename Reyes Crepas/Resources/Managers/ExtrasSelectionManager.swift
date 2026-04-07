@@ -16,7 +16,6 @@ final class ExtrasSelectionManager<ExtraType: Hashable> : ObservableObject {
         let currentQuantity = selectedExtras[extra, default: 0]
         if currentQuantity <= 1 {
             selectedExtras[extra] = currentQuantity + 1
-            print("Extra agregado: \(extra), Cantidad: \(selectedExtras[extra ] ?? 0)")
 
         }
     }

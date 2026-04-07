@@ -36,34 +36,6 @@ struct RootView : View  {
     }
 }
 
-//struct RootView: View {
-//    @Binding var showSignInView: Bool
-//
-//    var body: some View {
-//        ZStack {
-//            NavigationStack {
-//                ContentView()
-//            }
-//        }
-//        .onAppear {
-//            let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
-//            self.showSignInView = authUser == nil
-//        }
-//        .fullScreenCover(isPresented: $showSignInView) {
-//            NavigationStack {
-//                AuthenticationView(showSignInView: $showSignInView)
-//            }
-//        }
-//    }
-//}
-//
-//struct RootView_Previews: PreviewProvider {
-//    @State static var show = false
-//
-//    static var previews: some View {
-//        RootView(showSignInView: $show)
-//    }
-//}
 
 struct RootView_Previews: PreviewProvider {
     @State static var show = false

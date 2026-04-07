@@ -45,23 +45,17 @@ struct GridProductsLayout: View {
     func destinationProduct(for product: Product) -> some View {
         switch product.productType {
         case .frappe:
-            FrappeView()               
-                .environmentObject(CartManager())
+            FrappeView()
         case .tapiocas:
             TapiocaView()
-                .environmentObject(CartManager())
         case .pancakes:
             PancakesView()
-                .environmentObject(CartManager())
         case .crepas:
             CrepasView()
-                .environmentObject(CartManager())
         case .barraDeCafe:
             BarraDeCafeView()
-                .environmentObject(CartManager())
         case .tallarines:
             TallarinesView()
-                .environmentObject(CartManager())
         }
     }
 }

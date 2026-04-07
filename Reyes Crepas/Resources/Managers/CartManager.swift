@@ -66,20 +66,7 @@ class CartManager: ObservableObject {
     }
 
     // function to calculate all the items and extras of your basket
-//    func calculateTotal() -> String {
-//        let total = items.reduce(0) { sum, item in
-//            let itemPrice = Double(item.price.replacingOccurrences(of: "$", with: "")) ?? 0
-//            let itemTotal = itemPrice * Double(item.quantity)
-//
-//            // Get total amount of extras
-//            let extrasTotal = item.extras?.reduce(0) { extraSum, extra in
-//                let extraPrice = Double(extra.price.replacingOccurrences(of: "$", with: "")) ?? 0
-//                return extraSum + (extraPrice * Double(extra.quantity))
-//            } ?? 0
-//            return sum + itemTotal + extrasTotal
-//        }
-//        return String(format: "$%.2f", total)
-//    }
+
     func calculateTotal() -> String {
         let total = items.reduce(0) { sum, item in
             // Convertir el price principal a Double
