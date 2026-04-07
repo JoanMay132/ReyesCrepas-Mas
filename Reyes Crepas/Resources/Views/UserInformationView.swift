@@ -101,6 +101,7 @@ struct UserInformationView: View {
 
             if showMap {
                 MapLocalView(showButton: false)
+                    .equatable()
                     .frame(height: 300)
             } else {
                 Color.gray.frame(height: 300)

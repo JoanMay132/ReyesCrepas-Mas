@@ -38,7 +38,10 @@ struct GrayNumberField: View {
             }
         }
         .onChange(of: text) {
-            text = TextValidation.validatePhoneNumber(newValue: text)
+            let validatedText = TextValidation.validatePhoneNumber(newValue: text)
+            if validatedText != text {
+                text = validatedText
+            }
         }
         
     }

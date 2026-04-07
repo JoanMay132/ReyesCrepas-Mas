@@ -8,9 +8,13 @@
 import SwiftUI
 import MapKit
 
-struct MapLocalView: View {
+struct MapLocalView: View, Equatable {
 
     let showButton: Bool
+
+    static func == (lhs: MapLocalView, rhs: MapLocalView) -> Bool {
+        lhs.showButton == rhs.showButton
+    }
     @State private var region = MKCoordinateRegion(
         center: Place.reyesCrepas.coordinate,
         span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)

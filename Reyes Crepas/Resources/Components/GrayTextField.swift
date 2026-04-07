@@ -24,7 +24,10 @@ struct GrayTextField : View {
                     .stroke(Color.gray.opacity(0.3), lineWidth: 1)
             )
             .onChange(of: text) {
-                text = TextValidation.validateCharacters(newValue: text, oldValue: text)
+                let validatedText = TextValidation.validateCharacters(newValue: text, oldValue: text)
+                if validatedText != text {
+                    text = validatedText
+                }
             }
 
     }
