@@ -25,7 +25,7 @@ struct GrayTextField : View {
             )
             .onChange(of: text) {
                 text = TextValidation.validateCharacters(newValue: text, oldValue: text)
-                 }
+            }
 
     }
 }

@@ -12,46 +12,43 @@ struct CartView: View {
     @State private var navigateToUserInformationView = false
 
     var body: some View {
-        NavigationStack {
-            
-            List {
-                if cartManager.items.isEmpty {
-                    Text("El carrito está vacío")
-                        .font(.title2)
-                        .foregroundColor(.gray)
-                } else {
-                    
-                        ForEach(cartManager.items) { item in
-                            VStack(alignment: .leading) {
-                                itemInfoView(item)
-                                itemExtrasView(item)
-                                itemTapiocaTypeView(item)
-                            }
-                        }
-                    
-                    totalView()
-                     
-                    
-                    NavigationLink(destination: UserInformationView()){
-                        Label("Checkout", systemImage: "cart")
-                 
-                            .bold()
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                        
+        List {
+            if cartManager.items.isEmpty {
+                Text("El carrito está vacío")
+                    .font(.title2)
+                    .foregroundColor(.gray)
+                    .listRowBackground(Color.white)
+            } else {
+                ForEach(cartManager.items) { item in
+                    VStack(alignment: .leading) {
+                        itemInfoView(item)
+                        itemExtrasView(item)
+                        itemTapiocaTypeView(item)
                     }
+                    .listRowBackground(Color.white)
+                    .foregroundStyle(.black)
                 }
+                
+                totalView()
+                    .listRowBackground(Color.white)
+                    .foregroundStyle(.black)
 
+                
+                NavigationLink(destination: UserInformationView()){
+                    Label("Checkout", systemImage: "cart")
+                        .bold()
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                .listRowBackground(Color.white)
             }
-            .scrollContentBackground(.hidden)
-
-            .pinkCakeBackground()
-            .navigationTitle("Carrito")
         }
-
+        .scrollContentBackground(.hidden)
+        .pinkCakeBackground()
+        .navigationTitle("Carrito")
     }
 
     private func itemInfoView(_ item: CartItem) -> some View {

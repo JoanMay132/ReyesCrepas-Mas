@@ -16,7 +16,6 @@ struct GrayNumberField: View {
         VStack(alignment: .leading, spacing: 2) { 
             TextField(placeholder, text: $text)
                 .keyboardType(keyboard)
-                
                 .padding(10)
                 .background(Color(.systemGray6))
                 .cornerRadius(8)

@@ -39,6 +39,7 @@ struct ReyesCrepas_MasApp: App {
                 
 
             }
+            .preferredColorScheme(.light)
             .environmentObject(cartManager)
             .environmentObject(whatsappVM)
 
