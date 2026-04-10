@@ -1,4 +1,4 @@
-<H1 > Reyes Crepas y Mas<</H1>
+<H1 > Reyes Crepas y Mas</H1>
 
 <h2> User Interface Inspiration</h2>
 
@@ -14,3 +14,18 @@
 
 
 <h5>These screenshots showcase features and designs that inspire our approach to user experience.</h5>
+
+## Support – Reyes Crepas y Más
+
+If you have any questions, issues, or feedback regarding the app, please contact us:
+
+📧 Email: jcmd270@outlook.com
+
+This app allows users to browse the menu and place orders easily via WhatsApp.
+
+We will respond as soon as possible.
+
+## About the App
+
+Reyes Crepas y Más is a café located in Ciudad del Carmen, Campeche.  
+This app allows customers to explore the menu, including crepes, coffee, frappes, and more, and place orders quickly via WhatsApp.
