@@ -56,7 +56,7 @@ struct CartView: View {
                 Text(item.name)
                     .font(.headline)
                 HStack {
-                    Text(item.price)
+                    Text(item.price + " c/u")
                     itemProductSize(item)
 
                 }
