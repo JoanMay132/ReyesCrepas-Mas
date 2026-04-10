@@ -2,3 +2,4 @@
 .DS_Store
 # Ignorar todos los DS_Store en todo el repo
 **/.DS_Store
+GoogleService-Info.plist
